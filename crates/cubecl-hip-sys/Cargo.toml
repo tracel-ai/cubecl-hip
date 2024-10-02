@@ -1,0 +1,21 @@
+[package]
+authors = ["Tracel Technologies Inc."]
+categories = ["external-ffi-bindings"]
+description = "Raw ROCm HIP runtime bindings for Rust."
+keywords = ["ROCm", "HIP", "API", "bindings"]
+edition.workspace = true
+license.workspace = true
+name = "cubecl-hip-sys"
+readme.workspace = true
+repository = "https://github.com/tracel-ai/cubecl-hip/tree/main/crates/cubecl-hip-sys"
+version.workspace = true
+rust-version = "1.81"
+
+[build-dependencies]
+bindgen = { workspace = true }
+
+[dependencies]
+libc = { workspace = true }
+
+[dev-dependencies]
+rstest = { workspace = true }
