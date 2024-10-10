@@ -1,7 +1,7 @@
 [package]
 authors = ["Tracel Technologies Inc."]
 categories = ["external-ffi-bindings"]
-description = "Raw ROCm HIP runtime bindings for Rust."
+description = "Rust bindings for AMD ROCm HIP runtime libraries."
 keywords = ["ROCm", "HIP", "API", "bindings"]
 edition.workspace = true
 license.workspace = true
