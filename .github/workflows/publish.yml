@@ -1,0 +1,14 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  cubecl-hip-sys:
+    uses: tracel-ai/github-actions/.github/workflows/publish-crate.yml@v1
+    with:
+      crate: cubecl-hip-sys
+    secrets:
+      CRATES_IO_API_TOKEN: ${{ secrets.CRATES_IO_API_TOKEN }}
