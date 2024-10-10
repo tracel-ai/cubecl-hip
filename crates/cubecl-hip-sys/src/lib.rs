@@ -1,23 +1,29 @@
-#![allow(non_upper_case_globals)]
+#![allow(clippy::too_many_arguments)]
+#![allow(clippy::useless_transmute)]
+#![allow(improper_ctypes)]
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
+#![allow(non_upper_case_globals)]
 #![allow(unused_variables)]
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
 #[test]
 fn test_launch_kernel_end_to_end() {
-    use std::{ptr, ffi::CString, time::Instant};
+    use std::{ffi::CString, ptr, time::Instant};
 
     // Kernel that computes y values of a linear equation in slop-intercept form
-    let source = CString::new(r#"
+    let source = CString::new(
+        r#"
     extern "C" __global__ void kernel(float a, float *x, float *b, float *out, int n) {
        int tid = blockIdx.x * blockDim.x + threadIdx.x;
        if (tid < n) {
            out[tid] = x[tid] * a + b[tid];
        }
     }
-    "#).expect("Should construct kernel string");
+    "#,
+    )
+    .expect("Should construct kernel string");
 
     let func_name = CString::new("kernel".to_string()).unwrap();
     // reference: https://rocm.docs.amd.com/projects/HIP/en/docs-6.0.0/user_guide/hip_rtc.html
@@ -31,8 +37,14 @@ fn test_launch_kernel_end_to_end() {
     let free: usize = 0;
     let total: usize = 0;
     unsafe {
-        let status = hipMemGetInfo(&free as *const _ as *mut usize, &total as *const _ as *mut usize);
-        assert_eq!(status, HIP_SUCCESS, "Should get the available memory of the device");
+        let status = hipMemGetInfo(
+            &free as *const _ as *mut usize,
+            &total as *const _ as *mut usize,
+        );
+        assert_eq!(
+            status, HIP_SUCCESS,
+            "Should get the available memory of the device"
+        );
         println!("Free: {} | Total:{}", free, total);
     }
 
@@ -40,53 +52,74 @@ fn test_launch_kernel_end_to_end() {
     let mut program: hiprtcProgram = ptr::null_mut();
     unsafe {
         let status = hiprtcCreateProgram(
-            &mut program,               // Program
-            source.as_ptr(),            // kernel string
-            ptr::null(),                // Name of the file (there is no file)
-            0,                          // Number of headers
-            ptr::null_mut(),            // Header sources
-            ptr::null_mut(),            // Name of header files
+            &mut program,    // Program
+            source.as_ptr(), // kernel string
+            ptr::null(),     // Name of the file (there is no file)
+            0,               // Number of headers
+            ptr::null_mut(), // Header sources
+            ptr::null_mut(), // Name of header files
         );
-        assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should create the program");
+        assert_eq!(
+            status, hiprtcResult_HIPRTC_SUCCESS,
+            "Should create the program"
+        );
     }
 
     // Step 2: Compile the program
     unsafe {
         let status = hiprtcCompileProgram(
-            program,                    // Program
-            0,                          // Number of options
-            ptr::null_mut(),            // Clang Options
+            program,         // Program
+            0,               // Number of options
+            ptr::null_mut(), // Clang Options
         );
         if status != hiprtcResult_HIPRTC_SUCCESS {
             let mut log_size: usize = 0;
             let status = hiprtcGetProgramLogSize(program, &mut log_size as *mut usize);
-            assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should retrieve the compilation log size");
+            assert_eq!(
+                status, hiprtcResult_HIPRTC_SUCCESS,
+                "Should retrieve the compilation log size"
+            );
             println!("Compilation log size: {log_size}");
-            let mut log_buffer = vec![0i8;log_size];
+            let mut log_buffer = vec![0i8; log_size];
             let status = hiprtcGetProgramLog(program, log_buffer.as_mut_ptr());
-            assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should retrieve the compilation log contents");
+            assert_eq!(
+                status, hiprtcResult_HIPRTC_SUCCESS,
+                "Should retrieve the compilation log contents"
+            );
             let log = std::ffi::CStr::from_ptr(log_buffer.as_ptr());
             println!("Compilation log: {}", log.to_string_lossy());
         }
-        assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should compile the program");
+        assert_eq!(
+            status, hiprtcResult_HIPRTC_SUCCESS,
+            "Should compile the program"
+        );
     }
 
     // Step 3: Load compiled code
     let mut code_size: usize = 0;
     unsafe {
         let status = hiprtcGetCodeSize(program, &mut code_size);
-        assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should get size of compiled code");
+        assert_eq!(
+            status, hiprtcResult_HIPRTC_SUCCESS,
+            "Should get size of compiled code"
+        );
     }
     let mut code: Vec<u8> = vec![0; code_size];
     unsafe {
         let status = hiprtcGetCode(program, code.as_mut_ptr() as *mut _);
-        assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should load compiled code");
+        assert_eq!(
+            status, hiprtcResult_HIPRTC_SUCCESS,
+            "Should load compiled code"
+        );
     }
 
     // Step 4: Once the compiled code is loaded, the program can be destroyed
     unsafe {
         let status = hiprtcDestroyProgram(&mut program as *mut *mut _);
-        assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should destroy the program");
+        assert_eq!(
+            status, hiprtcResult_HIPRTC_SUCCESS,
+            "Should destroy the program"
+        );
     }
     assert!(!code.is_empty(), "Generated code should not be empty");
 
@@ -108,7 +141,10 @@ fn test_launch_kernel_end_to_end() {
         let status_b = hipMalloc(&mut device_b, n * std::mem::size_of::<f32>());
         assert_eq!(status_b, HIP_SUCCESS, "Should allocate memory for device_b");
         let status_out = hipMalloc(&mut device_out, n * std::mem::size_of::<f32>());
-        assert_eq!(status_out, HIP_SUCCESS, "Should allocate memory for device_out");
+        assert_eq!(
+            status_out, HIP_SUCCESS,
+            "Should allocate memory for device_out"
+        );
     }
 
     // Step 6: Copy data to GPU memory
@@ -119,14 +155,20 @@ fn test_launch_kernel_end_to_end() {
             n * std::mem::size_of::<f32>(),
             hipMemcpyKind_hipMemcpyHostToDevice,
         );
-        assert_eq!(status_device_x, HIP_SUCCESS, "Should copy device_x successfully");
+        assert_eq!(
+            status_device_x, HIP_SUCCESS,
+            "Should copy device_x successfully"
+        );
         let status_device_b = hipMemcpy(
             device_b,
             b.as_ptr() as *const libc::c_void,
             n * std::mem::size_of::<f32>(),
             hipMemcpyKind_hipMemcpyHostToDevice,
         );
-        assert_eq!(status_device_b, HIP_SUCCESS, "Should copy device_b successfully");
+        assert_eq!(
+            status_device_b, HIP_SUCCESS,
+            "Should copy device_b successfully"
+        );
         // Initialize the output memory on device to 0.0
         let status_device_out = hipMemcpy(
             device_out,
@@ -134,7 +176,10 @@ fn test_launch_kernel_end_to_end() {
             n * std::mem::size_of::<f32>(),
             hipMemcpyKind_hipMemcpyHostToDevice,
         );
-        assert_eq!(status_device_out, HIP_SUCCESS, "Should copy device_out successfully");
+        assert_eq!(
+            status_device_out, HIP_SUCCESS,
+            "Should copy device_out successfully"
+        );
     }
 
     // Step 7: Create the module containing the kernel and get the function that points to it
@@ -142,9 +187,15 @@ fn test_launch_kernel_end_to_end() {
     let mut function: hipFunction_t = ptr::null_mut();
     unsafe {
         let status_module = hipModuleLoadData(&mut module, code.as_ptr() as *const libc::c_void);
-        assert_eq!(status_module, HIP_SUCCESS, "Should load compiled code into module");
+        assert_eq!(
+            status_module, HIP_SUCCESS,
+            "Should load compiled code into module"
+        );
         let status_function = hipModuleGetFunction(&mut function, module, func_name.as_ptr());
-        assert_eq!(status_function, HIP_SUCCESS, "Should return module function");
+        assert_eq!(
+            status_function, HIP_SUCCESS,
+            "Should return module function"
+        );
     }
 
     // Step 8: Launch Kernel
@@ -161,7 +212,7 @@ fn test_launch_kernel_end_to_end() {
     let block_dim_x: usize = 64;
     let grid_dim_x: usize = n / block_dim_x;
     // We could use the default stream by passing 0 to the launch kernel but for the sake of
-    // coverage we create a stream explicily
+    // coverage we create a stream explicitly
     let mut stream: hipStream_t = std::ptr::null_mut();
     unsafe {
         let stream_status = hipStreamCreate(&mut stream);
@@ -169,13 +220,17 @@ fn test_launch_kernel_end_to_end() {
     }
     unsafe {
         let status_launch = hipModuleLaunchKernel(
-            function,                  // Kernel function
-            block_dim_x as u32, 1, 1,  // Grid dimensions (group of blocks)
-            grid_dim_x as u32, 1, 1,   // Block dimensions (group of threads)
-            0,                         // Shared memory size
-            stream,                    // Created stream
-            args.as_mut_ptr(),         // Kernel arguments
-            ptr::null_mut(),           // Extra options
+            function, // Kernel function
+            block_dim_x as u32,
+            1,
+            1, // Grid dimensions (group of blocks)
+            grid_dim_x as u32,
+            1,
+            1,                 // Block dimensions (group of threads)
+            0,                 // Shared memory size
+            stream,            // Created stream
+            args.as_mut_ptr(), // Kernel arguments
+            ptr::null_mut(),   // Extra options
         );
         assert_eq!(status_launch, HIP_SUCCESS, "Should launch the kernel");
     }
@@ -193,7 +248,8 @@ fn test_launch_kernel_end_to_end() {
             out.as_mut_ptr() as *mut libc::c_void,
             device_out as *mut libc::c_void,
             n * std::mem::size_of::<f32>(),
-            hipMemcpyKind_hipMemcpyDeviceToHost);
+            hipMemcpyKind_hipMemcpyDeviceToHost,
+        );
     }
 
     // Step 10: Verify the results
@@ -206,11 +262,10 @@ fn test_launch_kernel_end_to_end() {
     // Step 11: Free up allocated memory on GPU device
     unsafe {
         let status = hipFree(device_x as *mut libc::c_void);
-        assert_eq!(status, HIP_SUCCESS, "Should free device_x successfuly");
+        assert_eq!(status, HIP_SUCCESS, "Should free device_x successfully");
         let status = hipFree(device_b as *mut libc::c_void);
-        assert_eq!(status, HIP_SUCCESS, "Should free device_b successfuly");
+        assert_eq!(status, HIP_SUCCESS, "Should free device_b successfully");
         let status = hipFree(device_out as *mut libc::c_void);
-        assert_eq!(status, HIP_SUCCESS, "Should free device_out successfuly");
+        assert_eq!(status, HIP_SUCCESS, "Should free device_out successfully");
     }
-
 }
