@@ -12,7 +12,7 @@ on:
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Setup Rust
         uses: tracel-ai/github-actions/setup-rust@v1
@@ -31,18 +31,29 @@ jobs:
           TERM: xterm-256color
         run: cargo xtask check format
       # --------------------------------------------------------------------------------
+      - name: Typos
+        uses: tracel-ai/github-actions/check-typos@v1
+
+  tests:
+    runs-on: amd-rx7600
+    steps:
+      - name: Setup Rust
+        uses: tracel-ai/github-actions/setup-rust@v1
+        with:
+          rust-toolchain: stable
+          cache-key: stable-linux
+      # --------------------------------------------------------------------------------
       - name: Lint
         run: cargo xtask check lint
       # --------------------------------------------------------------------------------
-      - name: Typos
-        uses: tracel-ai/github-actions/check-typos@v1
-      # --------------------------------------------------------------------------------
       - name: Unit Tests
+        shell: bash
         run: cargo xtask test unit
       # --------------------------------------------------------------------------------
       - name: Integration Tests
+        shell: bash
         run: cargo xtask test integration
       # --------------------------------------------------------------------------------
       - name: Documentation Tests
+        shell: bash
         run: cargo xtask doc tests
-
