@@ -11,7 +11,7 @@ fn test_launch_kernel_end_to_end() {
 
     // Kernel that computes y values of a linear equation in slop-intercept form
     let source = CString::new(r#"
-    extern "C" __global__ void linear_equation(float a, float *x, float *b, float *out, int n) {
+    extern "C" __global__ void kernel(float a, float *x, float *b, float *out, int n) {
        int tid = blockIdx.x * blockDim.x + threadIdx.x;
        if (tid < n) {
            out[tid] = x[tid] * a + b[tid];
@@ -19,6 +19,7 @@ fn test_launch_kernel_end_to_end() {
     }
     "#).expect("Should construct kernel string");
 
+    let func_name = CString::new("kernel".to_string()).unwrap();
     // reference: https://rocm.docs.amd.com/projects/HIP/en/docs-6.0.0/user_guide/hip_rtc.html
 
     // Step 0: Select the GPU device
@@ -27,14 +28,21 @@ fn test_launch_kernel_end_to_end() {
         assert_eq!(status, HIP_SUCCESS, "Should set the GPU device");
     }
 
+    let free: usize = 0;
+    let total: usize = 0;
+    unsafe {
+        let status = hipMemGetInfo(&free as *const _ as *mut usize, &total as *const _ as *mut usize);
+        assert_eq!(status, HIP_SUCCESS, "Should get the available memory of the device");
+        println!("Free: {} | Total:{}", free, total);
+    }
+
     // Step 1: Create the program
-    let kernel_name = CString::new("linear_equation").expect("CString::new should succeed");
     let mut program: hiprtcProgram = ptr::null_mut();
     unsafe {
         let status = hiprtcCreateProgram(
             &mut program,               // Program
             source.as_ptr(),            // kernel string
-            kernel_name.as_ptr(),       // Name of the file
+            ptr::null(),                // Name of the file (there is no file)
             0,                          // Number of headers
             ptr::null_mut(),            // Header sources
             ptr::null_mut(),            // Name of header files
@@ -49,6 +57,17 @@ fn test_launch_kernel_end_to_end() {
             0,                          // Number of options
             ptr::null_mut(),            // Clang Options
         );
+        if status != hiprtcResult_HIPRTC_SUCCESS {
+            let mut log_size: usize = 0;
+            let status = hiprtcGetProgramLogSize(program, &mut log_size as *mut usize);
+            assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should retrieve the compilation log size");
+            println!("Compilation log size: {log_size}");
+            let mut log_buffer = vec![0i8;log_size];
+            let status = hiprtcGetProgramLog(program, log_buffer.as_mut_ptr());
+            assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should retrieve the compilation log contents");
+            let log = std::ffi::CStr::from_ptr(log_buffer.as_ptr());
+            println!("Compilation log: {}", log.to_string_lossy());
+        }
         assert_eq!(status, hiprtcResult_HIPRTC_SUCCESS, "Should compile the program");
     }
 
@@ -124,7 +143,7 @@ fn test_launch_kernel_end_to_end() {
     unsafe {
         let status_module = hipModuleLoadData(&mut module, code.as_ptr() as *const libc::c_void);
         assert_eq!(status_module, HIP_SUCCESS, "Should load compiled code into module");
-        let status_function = hipModuleGetFunction(&mut function, module, kernel_name.as_ptr());
+        let status_function = hipModuleGetFunction(&mut function, module, func_name.as_ptr());
         assert_eq!(status_function, HIP_SUCCESS, "Should return module function");
     }
 
