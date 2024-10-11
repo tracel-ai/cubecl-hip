@@ -1,8 +1,8 @@
 [package]
 authors = ["Tracel Technologies Inc."]
 categories = ["external-ffi-bindings"]
-description = "Rust bindings for AMD ROCm HIP runtime libraries."
-keywords = ["ROCm", "HIP", "API", "bindings"]
+description = "Rust bindings for AMD ROCm HIP runtime libraries used by CubeCL."
+keywords = ["cubecl", "ROCm", "HIP", "API", "bindings"]
 edition.workspace = true
 license.workspace = true
 name = "cubecl-hip-sys"
