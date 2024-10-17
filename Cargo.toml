@@ -17,7 +17,6 @@ readme = "README.md"
 
 [workspace.dependencies]
 bindgen = "0.70.1"
-cc = "1.1.23"
 libc = "0.2.159"
 log = "0.4.22"
 rstest = "0.2.1"

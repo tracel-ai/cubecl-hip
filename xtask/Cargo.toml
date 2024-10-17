@@ -4,6 +4,7 @@ version = "1.0.0"
 edition = "2021"
 
 [dependencies]
+bindgen = { workspace = true }
 strum = { workspace = true }
 log = { workspace = true }
 tracel-xtask = { workspace = true }
