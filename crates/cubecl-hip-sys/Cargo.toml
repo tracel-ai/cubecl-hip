@@ -11,8 +11,9 @@ repository = "https://github.com/tracel-ai/cubecl-hip/tree/main/crates/cubecl-hi
 version.workspace = true
 rust-version = "1.81"
 
-[build-dependencies]
-bindgen = { workspace = true }
+[features]
+default = ["rocm_622"]
+rocm_622 = []
 
 [dependencies]
 libc = { workspace = true }

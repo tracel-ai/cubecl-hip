@@ -6,7 +6,8 @@
 #![allow(non_upper_case_globals)]
 #![allow(unused_variables)]
 
-include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+mod bindings;
+pub use bindings::*;
 
 #[test]
 fn test_launch_kernel_end_to_end() {
