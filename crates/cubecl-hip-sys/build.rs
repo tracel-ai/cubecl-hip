@@ -2,25 +2,25 @@ use std::env;
 use std::path::Path;
 
 fn main() {
-    let env_vars = [
-        "CUBECL_ROCM_PATH",
-        "ROCM_PATH",
-    ];
+    println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rerun-if-env-changed=CUBECL_ROCM_PATH");
+    println!("cargo:rerun-if-env-changed=ROCM_PATH");
 
-    let rocm_path = env_vars
+    let env_vars: Vec<_> = ["CUBECL_ROCM_PATH", "ROCM_PATH"]
         .into_iter()
-        .map(env::var)
-        .filter_map(Result::ok)
-        .find(|path| {
-            let hip_path = Path::new(path).join("include/hip");
-            hip_path.exists()
-        });
+        .filter_map(|var| env::var(var).ok())
+        .collect();
 
-    if let Some(found_rocm_path) = rocm_path {
+    let rocm_path = env_vars.iter().find(|path| {
+        let hip_path = Path::new(path).join("include/hip");
+        hip_path.exists()
+    });
+
+    if let Some(valid_rocm_path) = rocm_path {
         println!("cargo:rustc-link-lib=dylib=hiprtc");
         println!("cargo:rustc-link-lib=dylib=amdhip64");
-        println!("cargo:rustc-link-search=native={}/lib", found_rocm_path);
-    } else {
-        panic!("Please set the CUBECL_ROCM_PATH or ROCM_PATH environment variable to a valid directory containing the ROCm HIP installation.");
+        println!("cargo:rustc-link-search=native={}/lib", valid_rocm_path);
+    } else if !env_vars.is_empty() {
+        panic!("HIP headers not found in any of the defined CUBECL_ROCM_PATH or ROCM_PATH directories.");
     }
 }

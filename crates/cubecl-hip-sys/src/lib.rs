@@ -7,6 +7,7 @@
 #![allow(unused_variables)]
 
 mod bindings;
+#[allow(unused)]
 pub use bindings::*;
 
 #[test]
@@ -247,7 +248,7 @@ fn test_launch_kernel_end_to_end() {
     unsafe {
         hipMemcpy(
             out.as_mut_ptr() as *mut libc::c_void,
-            device_out as *mut libc::c_void,
+            device_out,
             n * std::mem::size_of::<f32>(),
             hipMemcpyKind_hipMemcpyDeviceToHost,
         );
@@ -262,11 +263,11 @@ fn test_launch_kernel_end_to_end() {
 
     // Step 11: Free up allocated memory on GPU device
     unsafe {
-        let status = hipFree(device_x as *mut libc::c_void);
+        let status = hipFree(device_x);
         assert_eq!(status, HIP_SUCCESS, "Should free device_x successfully");
-        let status = hipFree(device_b as *mut libc::c_void);
+        let status = hipFree(device_b);
         assert_eq!(status, HIP_SUCCESS, "Should free device_b successfully");
-        let status = hipFree(device_out as *mut libc::c_void);
+        let status = hipFree(device_out);
         assert_eq!(status, HIP_SUCCESS, "Should free device_out successfully");
     }
 }

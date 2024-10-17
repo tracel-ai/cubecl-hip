@@ -1,6 +1,9 @@
 use std::path::{Path, PathBuf};
 
-use tracel_xtask::{prelude::*, utils::workspace::{get_workspace_members, WorkspaceMember, WorkspaceMemberType}};
+use tracel_xtask::{
+    prelude::*,
+    utils::workspace::{get_workspace_members, WorkspaceMember, WorkspaceMemberType},
+};
 
 #[derive(clap::Args)]
 pub struct BindgenCmdArgs {
@@ -41,7 +44,7 @@ fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> any
         } else {
             group_info!("Skip '{}' because it has been excluded!", &member.name);
         }
-    };
+    }
     Ok(())
 }
 
@@ -50,7 +53,10 @@ fn get_rocm_path(installation_path: &str, version: &str) -> anyhow::Result<PathB
     if path.exists() {
         Ok(path)
     } else {
-        Err(anyhow::anyhow!("Cannot find ROCm base installation path on your system: {}", path.display()))
+        Err(anyhow::anyhow!(
+            "Cannot find ROCm base installation path on your system: {}",
+            path.display()
+        ))
     }
 }
 
@@ -59,7 +65,10 @@ fn get_include_path(installation_path: &str, version: &str) -> anyhow::Result<St
     if path.exists() {
         Ok(path.to_string_lossy().into_owned())
     } else {
-        Err(anyhow::anyhow!("Cannot find include path on your system: {}", path.display()))
+        Err(anyhow::anyhow!(
+            "Cannot find include path on your system: {}",
+            path.display()
+        ))
     }
 }
 
@@ -68,12 +77,15 @@ fn get_output_path(member: &WorkspaceMember) -> anyhow::Result<PathBuf> {
     if path.exists() {
         Ok(path)
     } else {
-        Err(anyhow::anyhow!("Cannot find output path: {}", path.display()))
+        Err(anyhow::anyhow!(
+            "Cannot find output path: {}",
+            path.display()
+        ))
     }
 }
 
 fn get_bindings_file_path(member: &WorkspaceMember, version: &str) -> anyhow::Result<String> {
-    let out_path = get_output_path(&member)?;
+    let out_path = get_output_path(member)?;
     let path = out_path.join(format!("bindings_{}.rs", version.replace('.', "")));
     Ok(path.to_string_lossy().into_owned())
 }
@@ -83,12 +95,15 @@ fn get_input_path(member: &WorkspaceMember) -> anyhow::Result<PathBuf> {
     if path.exists() {
         Ok(path)
     } else {
-        Err(anyhow::anyhow!("Cannot find input path: {}", path.display()))
+        Err(anyhow::anyhow!(
+            "Cannot find input path: {}",
+            path.display()
+        ))
     }
 }
 
 fn get_wrapper_file_path(member: &WorkspaceMember) -> anyhow::Result<String> {
-    let out_path = get_input_path(&member)?;
+    let out_path = get_input_path(member)?;
     let path = out_path.join("wrapper.h");
     Ok(path.to_string_lossy().into_owned())
 }
