@@ -65,6 +65,42 @@ cargo xtask test --features rocm_622
 
 ## Generate bindings for a given version of ROCm
 
+1) To generate the bindings you need to first meet the expectations for both `Prerequisites`
+and `Usage` sections.
+
+2) Generate the bindings using the dedicated xtask command `bindgen`. For instance, to generate
+the bindings for the crate `cubecl-hip-sys` and the ROCm version `6.2.2`:
+
+```sh
+cargo xtask bindgen -c cubecl-hip-sys -v 6.2.2
+```
+
+3) Declare a new feature in the `Cargo.toml` of the corresponding crate `cubecl-hip-sys` with
+the format `rocm_<version>` where `<version>` is the ROCm version without any separator. For
+instance for the version `6.2.2`:
+
+```toml
+[features]
+rocm_622 = []
+```
+
+4) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
+conditionally to the new feature you just declared as well as the re-exports:
+
+```rs
+#[cfg(feature = "rocm_622")]
+mod bindings_622;
+#[cfg(feature = "rocm_622")]
+pub use bindings_622::*;
+```
+
+5) Run the tests as explain in the previous section. Use the new feature you just created.
+Currently there is no test selection mechanism in place given a ROCm version. If there are
+errors you can use conditional attributes for now.
+
+
+6) Open a pull request with the modifications, do not forget to add the new generated bindings
+file in the `crates/cubecl-hip-sys/src/bindings/` directory.
 
 [1]: https://rocmdocs.amd.com/projects/install-on-linux/en/latest/install/detailed-install.html
 [2]: https://crates.io/crates/cubecl-hip-sys
