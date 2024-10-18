@@ -3,6 +3,8 @@ name: CI
 env:
   TYPOS_LINK: "https://github.com/crate-ci/typos/releases/download"
   TYPOS_VERSION: "1.23.4"
+  CUBECL_ROCM_PATH: "/opt/rocm"
+  ROCM_VERSION_FEATURE: "rocm_622"
 
 on:
   push:
@@ -19,7 +21,7 @@ jobs:
         with:
           rust-toolchain: stable
           cache-key: stable-linux
-      # --------------------------------------------------------------------------------
+    # --------------------------------------------------------------------------------
       - name: Audit
         run: cargo xtask check audit
       # --------------------------------------------------------------------------------
@@ -48,11 +50,11 @@ jobs:
       # --------------------------------------------------------------------------------
       - name: Unit Tests
         shell: bash
-        run: cargo xtask test unit
+        run: cargo xtask test --features ${{ env.ROCM_VERSION_FEATURE }} unit
       # --------------------------------------------------------------------------------
       - name: Integration Tests
         shell: bash
-        run: cargo xtask test integration
+        run: cargo xtask test  --features ${{ env.ROCM_VERSION_FEATURE }} integration
       # --------------------------------------------------------------------------------
       - name: Documentation Tests
         shell: bash
