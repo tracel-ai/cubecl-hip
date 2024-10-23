@@ -31,7 +31,7 @@ corresponding to the version of ROCm you have installed.
 If you no feature corresponds to your ROCm installation then read the next section to learn
 how to generate and submit new bindings for your version.
 
-Next you need to point out where you installed ROCm so that `rustc` can link to your ROCM libraries. To do so set the variable `ROCM_PATH` or the more specific `CUBECL_ROCM_PATH` to its
+Next you need to point out where you installed ROCm so that `rustc` can link to your ROCM libraries. To do so set the variable `ROCM_PATH`, or `HIP_PATH` or the more specific `CUBECL_ROCM_PATH` to its
 installation base directory, it is often `/opt/rocm`.
 
 Here is the table of currently available bindings:
