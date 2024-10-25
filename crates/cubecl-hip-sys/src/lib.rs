@@ -31,7 +31,7 @@ extern "C" __global__ void kernel(float a, float *x, float *b, float *out, int n
 }
  "#,
         )
-            .expect("Should construct kernel string");
+        .expect("Should construct kernel string");
 
         let func_name = CString::new("kernel".to_string()).unwrap();
         // reference: https://rocm.docs.amd.com/projects/HIP/en/docs-6.0.0/user_guide/hip_rtc.html
@@ -194,7 +194,8 @@ extern "C" __global__ void kernel(float a, float *x, float *b, float *out, int n
         let mut module: hipModule_t = ptr::null_mut();
         let mut function: hipFunction_t = ptr::null_mut();
         unsafe {
-            let status_module = hipModuleLoadData(&mut module, code.as_ptr() as *const libc::c_void);
+            let status_module =
+                hipModuleLoadData(&mut module, code.as_ptr() as *const libc::c_void);
             assert_eq!(
                 status_module, HIP_SUCCESS,
                 "Should load compiled code into module"
@@ -278,5 +279,3 @@ extern "C" __global__ void kernel(float a, float *x, float *b, float *out, int n
         }
     }
 }
-
-
