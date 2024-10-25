@@ -12,6 +12,7 @@ version.workspace = true
 rust-version = "1.81"
 
 [features]
+default = ["rocm_622"]
 rocm_622 = []
 
 [dependencies]
