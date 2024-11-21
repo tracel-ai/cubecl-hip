@@ -17,10 +17,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Setup Rust
-        uses: tracel-ai/github-actions/setup-rust@v1
+        uses: tracel-ai/github-actions/setup-rust@v1.8
         with:
           rust-toolchain: stable
           cache-key: stable-linux
+          linux-pre-cleanup: false
     # --------------------------------------------------------------------------------
       - name: Audit
         run: cargo xtask check audit
@@ -40,10 +41,11 @@ jobs:
     runs-on: amd-rx7600
     steps:
       - name: Setup Rust
-        uses: tracel-ai/github-actions/setup-rust@v1
+        uses: tracel-ai/github-actions/setup-rust@v1.8
         with:
           rust-toolchain: stable
           cache-key: stable-linux
+          linux-pre-cleanup: false
       # --------------------------------------------------------------------------------
       - name: Lint
         run: cargo xtask check lint
