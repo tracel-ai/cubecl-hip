@@ -11,6 +11,7 @@ fn main() {
         .into_iter()
         .filter_map(|var| env::var(var).ok())
         .collect();
+    // default installation path
     paths.push("/opt/rocm".to_string());
 
     let rocm_path = paths.iter().find(|path| {
@@ -22,7 +23,7 @@ fn main() {
         println!("cargo:rustc-link-lib=dylib=hiprtc");
         println!("cargo:rustc-link-lib=dylib=amdhip64");
         println!("cargo:rustc-link-search=native={}/lib", valid_rocm_path);
-    } else if !paths.is_empty() {
+    } else if paths.len() > 1 {
         panic!("HIP headers not found in any of the defined CUBECL_ROCM_PATH, ROCM_PATH or HIP_PATH directories.");
     }
 }
