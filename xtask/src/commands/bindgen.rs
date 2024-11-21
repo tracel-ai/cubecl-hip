@@ -35,6 +35,7 @@ fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> any
                 .header(header_path)
                 .clang_arg("-D__HIP_PLATFORM_AMD__")
                 .clang_arg(format!("-I{}", include_path))
+                .layout_tests(false)
                 .generate()
                 .expect("Should generate HIP RTC bindings");
             bindings

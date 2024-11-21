@@ -448,39 +448,18 @@ pub struct div_t {
     pub quot: ::std::os::raw::c_int,
     pub rem: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of div_t"][::std::mem::size_of::<div_t>() - 8usize];
-    ["Alignment of div_t"][::std::mem::align_of::<div_t>() - 4usize];
-    ["Offset of field: div_t::quot"][::std::mem::offset_of!(div_t, quot) - 0usize];
-    ["Offset of field: div_t::rem"][::std::mem::offset_of!(div_t, rem) - 4usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ldiv_t {
     pub quot: ::std::os::raw::c_long,
     pub rem: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ldiv_t"][::std::mem::size_of::<ldiv_t>() - 16usize];
-    ["Alignment of ldiv_t"][::std::mem::align_of::<ldiv_t>() - 8usize];
-    ["Offset of field: ldiv_t::quot"][::std::mem::offset_of!(ldiv_t, quot) - 0usize];
-    ["Offset of field: ldiv_t::rem"][::std::mem::offset_of!(ldiv_t, rem) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct lldiv_t {
     pub quot: ::std::os::raw::c_longlong,
     pub rem: ::std::os::raw::c_longlong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of lldiv_t"][::std::mem::size_of::<lldiv_t>() - 16usize];
-    ["Alignment of lldiv_t"][::std::mem::align_of::<lldiv_t>() - 8usize];
-    ["Offset of field: lldiv_t::quot"][::std::mem::offset_of!(lldiv_t, quot) - 0usize];
-    ["Offset of field: lldiv_t::rem"][::std::mem::offset_of!(lldiv_t, rem) - 8usize];
-};
 extern "C" {
     pub fn __ctype_get_mb_cur_max() -> usize;
 }
@@ -601,12 +580,6 @@ pub type __pid_t = ::std::os::raw::c_int;
 pub struct __fsid_t {
     pub __val: [::std::os::raw::c_int; 2usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __fsid_t"][::std::mem::size_of::<__fsid_t>() - 8usize];
-    ["Alignment of __fsid_t"][::std::mem::align_of::<__fsid_t>() - 4usize];
-    ["Offset of field: __fsid_t::__val"][::std::mem::offset_of!(__fsid_t, __val) - 0usize];
-};
 pub type __clock_t = ::std::os::raw::c_long;
 pub type __rlim_t = ::std::os::raw::c_ulong;
 pub type __rlim64_t = ::std::os::raw::c_ulong;
@@ -672,12 +645,6 @@ pub type register_t = ::std::os::raw::c_long;
 pub struct __sigset_t {
     pub __val: [::std::os::raw::c_ulong; 16usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __sigset_t"][::std::mem::size_of::<__sigset_t>() - 128usize];
-    ["Alignment of __sigset_t"][::std::mem::align_of::<__sigset_t>() - 8usize];
-    ["Offset of field: __sigset_t::__val"][::std::mem::offset_of!(__sigset_t, __val) - 0usize];
-};
 pub type sigset_t = __sigset_t;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -685,26 +652,12 @@ pub struct timeval {
     pub tv_sec: __time_t,
     pub tv_usec: __suseconds_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of timeval"][::std::mem::size_of::<timeval>() - 16usize];
-    ["Alignment of timeval"][::std::mem::align_of::<timeval>() - 8usize];
-    ["Offset of field: timeval::tv_sec"][::std::mem::offset_of!(timeval, tv_sec) - 0usize];
-    ["Offset of field: timeval::tv_usec"][::std::mem::offset_of!(timeval, tv_usec) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct timespec {
     pub tv_sec: __time_t,
     pub tv_nsec: __syscall_slong_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of timespec"][::std::mem::size_of::<timespec>() - 16usize];
-    ["Alignment of timespec"][::std::mem::align_of::<timespec>() - 8usize];
-    ["Offset of field: timespec::tv_sec"][::std::mem::offset_of!(timespec, tv_sec) - 0usize];
-    ["Offset of field: timespec::tv_nsec"][::std::mem::offset_of!(timespec, tv_nsec) - 8usize];
-};
 pub type suseconds_t = __suseconds_t;
 pub type __fd_mask = ::std::os::raw::c_long;
 #[repr(C)]
@@ -712,12 +665,6 @@ pub type __fd_mask = ::std::os::raw::c_long;
 pub struct fd_set {
     pub __fds_bits: [__fd_mask; 16usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of fd_set"][::std::mem::size_of::<fd_set>() - 128usize];
-    ["Alignment of fd_set"][::std::mem::align_of::<fd_set>() - 8usize];
-    ["Offset of field: fd_set::__fds_bits"][::std::mem::offset_of!(fd_set, __fds_bits) - 0usize];
-};
 pub type fd_mask = __fd_mask;
 extern "C" {
     pub fn select(
@@ -754,58 +701,18 @@ pub struct __atomic_wide_counter__bindgen_ty_1 {
     pub __low: ::std::os::raw::c_uint,
     pub __high: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __atomic_wide_counter__bindgen_ty_1"]
-        [::std::mem::size_of::<__atomic_wide_counter__bindgen_ty_1>() - 8usize];
-    ["Alignment of __atomic_wide_counter__bindgen_ty_1"]
-        [::std::mem::align_of::<__atomic_wide_counter__bindgen_ty_1>() - 4usize];
-    ["Offset of field: __atomic_wide_counter__bindgen_ty_1::__low"]
-        [::std::mem::offset_of!(__atomic_wide_counter__bindgen_ty_1, __low) - 0usize];
-    ["Offset of field: __atomic_wide_counter__bindgen_ty_1::__high"]
-        [::std::mem::offset_of!(__atomic_wide_counter__bindgen_ty_1, __high) - 4usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __atomic_wide_counter"][::std::mem::size_of::<__atomic_wide_counter>() - 8usize];
-    ["Alignment of __atomic_wide_counter"]
-        [::std::mem::align_of::<__atomic_wide_counter>() - 8usize];
-    ["Offset of field: __atomic_wide_counter::__value64"]
-        [::std::mem::offset_of!(__atomic_wide_counter, __value64) - 0usize];
-    ["Offset of field: __atomic_wide_counter::__value32"]
-        [::std::mem::offset_of!(__atomic_wide_counter, __value32) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __pthread_internal_list {
     pub __prev: *mut __pthread_internal_list,
     pub __next: *mut __pthread_internal_list,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __pthread_internal_list"][::std::mem::size_of::<__pthread_internal_list>() - 16usize];
-    ["Alignment of __pthread_internal_list"]
-        [::std::mem::align_of::<__pthread_internal_list>() - 8usize];
-    ["Offset of field: __pthread_internal_list::__prev"]
-        [::std::mem::offset_of!(__pthread_internal_list, __prev) - 0usize];
-    ["Offset of field: __pthread_internal_list::__next"]
-        [::std::mem::offset_of!(__pthread_internal_list, __next) - 8usize];
-};
 pub type __pthread_list_t = __pthread_internal_list;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __pthread_internal_slist {
     pub __next: *mut __pthread_internal_slist,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __pthread_internal_slist"]
-        [::std::mem::size_of::<__pthread_internal_slist>() - 8usize];
-    ["Alignment of __pthread_internal_slist"]
-        [::std::mem::align_of::<__pthread_internal_slist>() - 8usize];
-    ["Offset of field: __pthread_internal_slist::__next"]
-        [::std::mem::offset_of!(__pthread_internal_slist, __next) - 0usize];
-};
 pub type __pthread_slist_t = __pthread_internal_slist;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -819,27 +726,6 @@ pub struct __pthread_mutex_s {
     pub __elision: ::std::os::raw::c_short,
     pub __list: __pthread_list_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __pthread_mutex_s"][::std::mem::size_of::<__pthread_mutex_s>() - 40usize];
-    ["Alignment of __pthread_mutex_s"][::std::mem::align_of::<__pthread_mutex_s>() - 8usize];
-    ["Offset of field: __pthread_mutex_s::__lock"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __lock) - 0usize];
-    ["Offset of field: __pthread_mutex_s::__count"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __count) - 4usize];
-    ["Offset of field: __pthread_mutex_s::__owner"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __owner) - 8usize];
-    ["Offset of field: __pthread_mutex_s::__nusers"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __nusers) - 12usize];
-    ["Offset of field: __pthread_mutex_s::__kind"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __kind) - 16usize];
-    ["Offset of field: __pthread_mutex_s::__spins"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __spins) - 20usize];
-    ["Offset of field: __pthread_mutex_s::__elision"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __elision) - 22usize];
-    ["Offset of field: __pthread_mutex_s::__list"]
-        [::std::mem::offset_of!(__pthread_mutex_s, __list) - 24usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __pthread_rwlock_arch_t {
@@ -856,36 +742,6 @@ pub struct __pthread_rwlock_arch_t {
     pub __pad2: ::std::os::raw::c_ulong,
     pub __flags: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __pthread_rwlock_arch_t"][::std::mem::size_of::<__pthread_rwlock_arch_t>() - 56usize];
-    ["Alignment of __pthread_rwlock_arch_t"]
-        [::std::mem::align_of::<__pthread_rwlock_arch_t>() - 8usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__readers"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __readers) - 0usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__writers"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __writers) - 4usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__wrphase_futex"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __wrphase_futex) - 8usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__writers_futex"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __writers_futex) - 12usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__pad3"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __pad3) - 16usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__pad4"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __pad4) - 20usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__cur_writer"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __cur_writer) - 24usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__shared"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __shared) - 28usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__rwelision"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __rwelision) - 32usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__pad1"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __pad1) - 33usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__pad2"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __pad2) - 40usize];
-    ["Offset of field: __pthread_rwlock_arch_t::__flags"]
-        [::std::mem::offset_of!(__pthread_rwlock_arch_t, __flags) - 48usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct __pthread_cond_s {
@@ -897,25 +753,6 @@ pub struct __pthread_cond_s {
     pub __wrefs: ::std::os::raw::c_uint,
     pub __g_signals: [::std::os::raw::c_uint; 2usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __pthread_cond_s"][::std::mem::size_of::<__pthread_cond_s>() - 48usize];
-    ["Alignment of __pthread_cond_s"][::std::mem::align_of::<__pthread_cond_s>() - 8usize];
-    ["Offset of field: __pthread_cond_s::__wseq"]
-        [::std::mem::offset_of!(__pthread_cond_s, __wseq) - 0usize];
-    ["Offset of field: __pthread_cond_s::__g1_start"]
-        [::std::mem::offset_of!(__pthread_cond_s, __g1_start) - 8usize];
-    ["Offset of field: __pthread_cond_s::__g_refs"]
-        [::std::mem::offset_of!(__pthread_cond_s, __g_refs) - 16usize];
-    ["Offset of field: __pthread_cond_s::__g_size"]
-        [::std::mem::offset_of!(__pthread_cond_s, __g_size) - 24usize];
-    ["Offset of field: __pthread_cond_s::__g1_orig_size"]
-        [::std::mem::offset_of!(__pthread_cond_s, __g1_orig_size) - 32usize];
-    ["Offset of field: __pthread_cond_s::__wrefs"]
-        [::std::mem::offset_of!(__pthread_cond_s, __wrefs) - 36usize];
-    ["Offset of field: __pthread_cond_s::__g_signals"]
-        [::std::mem::offset_of!(__pthread_cond_s, __g_signals) - 40usize];
-};
 pub type __tss_t = ::std::os::raw::c_uint;
 pub type __thrd_t = ::std::os::raw::c_ulong;
 #[repr(C)]
@@ -923,12 +760,6 @@ pub type __thrd_t = ::std::os::raw::c_ulong;
 pub struct __once_flag {
     pub __data: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __once_flag"][::std::mem::size_of::<__once_flag>() - 4usize];
-    ["Alignment of __once_flag"][::std::mem::align_of::<__once_flag>() - 4usize];
-    ["Offset of field: __once_flag::__data"][::std::mem::offset_of!(__once_flag, __data) - 0usize];
-};
 pub type pthread_t = ::std::os::raw::c_ulong;
 #[repr(C)]
 #[derive(Copy, Clone)]
@@ -936,30 +767,12 @@ pub union pthread_mutexattr_t {
     pub __size: [::std::os::raw::c_char; 4usize],
     pub __align: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_mutexattr_t"][::std::mem::size_of::<pthread_mutexattr_t>() - 4usize];
-    ["Alignment of pthread_mutexattr_t"][::std::mem::align_of::<pthread_mutexattr_t>() - 4usize];
-    ["Offset of field: pthread_mutexattr_t::__size"]
-        [::std::mem::offset_of!(pthread_mutexattr_t, __size) - 0usize];
-    ["Offset of field: pthread_mutexattr_t::__align"]
-        [::std::mem::offset_of!(pthread_mutexattr_t, __align) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union pthread_condattr_t {
     pub __size: [::std::os::raw::c_char; 4usize],
     pub __align: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_condattr_t"][::std::mem::size_of::<pthread_condattr_t>() - 4usize];
-    ["Alignment of pthread_condattr_t"][::std::mem::align_of::<pthread_condattr_t>() - 4usize];
-    ["Offset of field: pthread_condattr_t::__size"]
-        [::std::mem::offset_of!(pthread_condattr_t, __size) - 0usize];
-    ["Offset of field: pthread_condattr_t::__align"]
-        [::std::mem::offset_of!(pthread_condattr_t, __align) - 0usize];
-};
 pub type pthread_key_t = ::std::os::raw::c_uint;
 pub type pthread_once_t = ::std::os::raw::c_int;
 #[repr(C)]
@@ -968,15 +781,6 @@ pub union pthread_attr_t {
     pub __size: [::std::os::raw::c_char; 56usize],
     pub __align: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_attr_t"][::std::mem::size_of::<pthread_attr_t>() - 56usize];
-    ["Alignment of pthread_attr_t"][::std::mem::align_of::<pthread_attr_t>() - 8usize];
-    ["Offset of field: pthread_attr_t::__size"]
-        [::std::mem::offset_of!(pthread_attr_t, __size) - 0usize];
-    ["Offset of field: pthread_attr_t::__align"]
-        [::std::mem::offset_of!(pthread_attr_t, __align) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union pthread_mutex_t {
@@ -984,17 +788,6 @@ pub union pthread_mutex_t {
     pub __size: [::std::os::raw::c_char; 40usize],
     pub __align: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_mutex_t"][::std::mem::size_of::<pthread_mutex_t>() - 40usize];
-    ["Alignment of pthread_mutex_t"][::std::mem::align_of::<pthread_mutex_t>() - 8usize];
-    ["Offset of field: pthread_mutex_t::__data"]
-        [::std::mem::offset_of!(pthread_mutex_t, __data) - 0usize];
-    ["Offset of field: pthread_mutex_t::__size"]
-        [::std::mem::offset_of!(pthread_mutex_t, __size) - 0usize];
-    ["Offset of field: pthread_mutex_t::__align"]
-        [::std::mem::offset_of!(pthread_mutex_t, __align) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union pthread_cond_t {
@@ -1002,17 +795,6 @@ pub union pthread_cond_t {
     pub __size: [::std::os::raw::c_char; 48usize],
     pub __align: ::std::os::raw::c_longlong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_cond_t"][::std::mem::size_of::<pthread_cond_t>() - 48usize];
-    ["Alignment of pthread_cond_t"][::std::mem::align_of::<pthread_cond_t>() - 8usize];
-    ["Offset of field: pthread_cond_t::__data"]
-        [::std::mem::offset_of!(pthread_cond_t, __data) - 0usize];
-    ["Offset of field: pthread_cond_t::__size"]
-        [::std::mem::offset_of!(pthread_cond_t, __size) - 0usize];
-    ["Offset of field: pthread_cond_t::__align"]
-        [::std::mem::offset_of!(pthread_cond_t, __align) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union pthread_rwlock_t {
@@ -1020,32 +802,12 @@ pub union pthread_rwlock_t {
     pub __size: [::std::os::raw::c_char; 56usize],
     pub __align: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_rwlock_t"][::std::mem::size_of::<pthread_rwlock_t>() - 56usize];
-    ["Alignment of pthread_rwlock_t"][::std::mem::align_of::<pthread_rwlock_t>() - 8usize];
-    ["Offset of field: pthread_rwlock_t::__data"]
-        [::std::mem::offset_of!(pthread_rwlock_t, __data) - 0usize];
-    ["Offset of field: pthread_rwlock_t::__size"]
-        [::std::mem::offset_of!(pthread_rwlock_t, __size) - 0usize];
-    ["Offset of field: pthread_rwlock_t::__align"]
-        [::std::mem::offset_of!(pthread_rwlock_t, __align) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union pthread_rwlockattr_t {
     pub __size: [::std::os::raw::c_char; 8usize],
     pub __align: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_rwlockattr_t"][::std::mem::size_of::<pthread_rwlockattr_t>() - 8usize];
-    ["Alignment of pthread_rwlockattr_t"][::std::mem::align_of::<pthread_rwlockattr_t>() - 8usize];
-    ["Offset of field: pthread_rwlockattr_t::__size"]
-        [::std::mem::offset_of!(pthread_rwlockattr_t, __size) - 0usize];
-    ["Offset of field: pthread_rwlockattr_t::__align"]
-        [::std::mem::offset_of!(pthread_rwlockattr_t, __align) - 0usize];
-};
 pub type pthread_spinlock_t = ::std::os::raw::c_int;
 #[repr(C)]
 #[derive(Copy, Clone)]
@@ -1053,31 +815,12 @@ pub union pthread_barrier_t {
     pub __size: [::std::os::raw::c_char; 32usize],
     pub __align: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_barrier_t"][::std::mem::size_of::<pthread_barrier_t>() - 32usize];
-    ["Alignment of pthread_barrier_t"][::std::mem::align_of::<pthread_barrier_t>() - 8usize];
-    ["Offset of field: pthread_barrier_t::__size"]
-        [::std::mem::offset_of!(pthread_barrier_t, __size) - 0usize];
-    ["Offset of field: pthread_barrier_t::__align"]
-        [::std::mem::offset_of!(pthread_barrier_t, __align) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union pthread_barrierattr_t {
     pub __size: [::std::os::raw::c_char; 4usize],
     pub __align: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of pthread_barrierattr_t"][::std::mem::size_of::<pthread_barrierattr_t>() - 4usize];
-    ["Alignment of pthread_barrierattr_t"]
-        [::std::mem::align_of::<pthread_barrierattr_t>() - 4usize];
-    ["Offset of field: pthread_barrierattr_t::__size"]
-        [::std::mem::offset_of!(pthread_barrierattr_t, __size) - 0usize];
-    ["Offset of field: pthread_barrierattr_t::__align"]
-        [::std::mem::offset_of!(pthread_barrierattr_t, __align) - 0usize];
-};
 extern "C" {
     pub fn random() -> ::std::os::raw::c_long;
 }
@@ -1105,22 +848,6 @@ pub struct random_data {
     pub rand_sep: ::std::os::raw::c_int,
     pub end_ptr: *mut i32,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of random_data"][::std::mem::size_of::<random_data>() - 48usize];
-    ["Alignment of random_data"][::std::mem::align_of::<random_data>() - 8usize];
-    ["Offset of field: random_data::fptr"][::std::mem::offset_of!(random_data, fptr) - 0usize];
-    ["Offset of field: random_data::rptr"][::std::mem::offset_of!(random_data, rptr) - 8usize];
-    ["Offset of field: random_data::state"][::std::mem::offset_of!(random_data, state) - 16usize];
-    ["Offset of field: random_data::rand_type"]
-        [::std::mem::offset_of!(random_data, rand_type) - 24usize];
-    ["Offset of field: random_data::rand_deg"]
-        [::std::mem::offset_of!(random_data, rand_deg) - 28usize];
-    ["Offset of field: random_data::rand_sep"]
-        [::std::mem::offset_of!(random_data, rand_sep) - 32usize];
-    ["Offset of field: random_data::end_ptr"]
-        [::std::mem::offset_of!(random_data, end_ptr) - 40usize];
-};
 extern "C" {
     pub fn random_r(__buf: *mut random_data, __result: *mut i32) -> ::std::os::raw::c_int;
 }
@@ -1189,18 +916,6 @@ pub struct drand48_data {
     pub __init: ::std::os::raw::c_ushort,
     pub __a: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of drand48_data"][::std::mem::size_of::<drand48_data>() - 24usize];
-    ["Alignment of drand48_data"][::std::mem::align_of::<drand48_data>() - 8usize];
-    ["Offset of field: drand48_data::__x"][::std::mem::offset_of!(drand48_data, __x) - 0usize];
-    ["Offset of field: drand48_data::__old_x"]
-        [::std::mem::offset_of!(drand48_data, __old_x) - 6usize];
-    ["Offset of field: drand48_data::__c"][::std::mem::offset_of!(drand48_data, __c) - 12usize];
-    ["Offset of field: drand48_data::__init"]
-        [::std::mem::offset_of!(drand48_data, __init) - 14usize];
-    ["Offset of field: drand48_data::__a"][::std::mem::offset_of!(drand48_data, __a) - 16usize];
-};
 extern "C" {
     pub fn drand48_r(__buffer: *mut drand48_data, __result: *mut f64) -> ::std::os::raw::c_int;
 }
@@ -1904,21 +1619,6 @@ pub struct __locale_struct {
     pub __ctype_toupper: *const ::std::os::raw::c_int,
     pub __names: [*const ::std::os::raw::c_char; 13usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of __locale_struct"][::std::mem::size_of::<__locale_struct>() - 232usize];
-    ["Alignment of __locale_struct"][::std::mem::align_of::<__locale_struct>() - 8usize];
-    ["Offset of field: __locale_struct::__locales"]
-        [::std::mem::offset_of!(__locale_struct, __locales) - 0usize];
-    ["Offset of field: __locale_struct::__ctype_b"]
-        [::std::mem::offset_of!(__locale_struct, __ctype_b) - 104usize];
-    ["Offset of field: __locale_struct::__ctype_tolower"]
-        [::std::mem::offset_of!(__locale_struct, __ctype_tolower) - 112usize];
-    ["Offset of field: __locale_struct::__ctype_toupper"]
-        [::std::mem::offset_of!(__locale_struct, __ctype_toupper) - 120usize];
-    ["Offset of field: __locale_struct::__names"]
-        [::std::mem::offset_of!(__locale_struct, __names) - 128usize];
-};
 pub type __locale_t = *mut __locale_struct;
 pub type locale_t = __locale_t;
 extern "C" {
@@ -2190,11 +1890,6 @@ pub struct hipDeviceArch_t {
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 3usize]>,
     pub __bindgen_padding_0: u8,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipDeviceArch_t"][::std::mem::size_of::<hipDeviceArch_t>() - 4usize];
-    ["Alignment of hipDeviceArch_t"][::std::mem::align_of::<hipDeviceArch_t>() - 4usize];
-};
 impl hipDeviceArch_t {
     #[inline]
     pub fn hasGlobalInt32Atomics(&self) -> ::std::os::raw::c_uint {
@@ -2487,12 +2182,6 @@ impl hipDeviceArch_t {
 pub struct hipUUID_t {
     pub bytes: [::std::os::raw::c_char; 16usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipUUID_t"][::std::mem::size_of::<hipUUID_t>() - 16usize];
-    ["Alignment of hipUUID_t"][::std::mem::align_of::<hipUUID_t>() - 1usize];
-    ["Offset of field: hipUUID_t::bytes"][::std::mem::offset_of!(hipUUID_t, bytes) - 0usize];
-};
 pub type hipUUID = hipUUID_t;
 #[doc = " hipDeviceProp\n"]
 #[repr(C)]
@@ -2713,244 +2402,6 @@ pub struct hipDeviceProp_tR0600 {
     #[doc = "< Revision of the GPU in this device"]
     pub asicRevision: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipDeviceProp_tR0600"][::std::mem::size_of::<hipDeviceProp_tR0600>() - 1472usize];
-    ["Alignment of hipDeviceProp_tR0600"][::std::mem::align_of::<hipDeviceProp_tR0600>() - 8usize];
-    ["Offset of field: hipDeviceProp_tR0600::name"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, name) - 0usize];
-    ["Offset of field: hipDeviceProp_tR0600::uuid"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, uuid) - 256usize];
-    ["Offset of field: hipDeviceProp_tR0600::luid"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, luid) - 272usize];
-    ["Offset of field: hipDeviceProp_tR0600::luidDeviceNodeMask"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, luidDeviceNodeMask) - 280usize];
-    ["Offset of field: hipDeviceProp_tR0600::totalGlobalMem"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, totalGlobalMem) - 288usize];
-    ["Offset of field: hipDeviceProp_tR0600::sharedMemPerBlock"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, sharedMemPerBlock) - 296usize];
-    ["Offset of field: hipDeviceProp_tR0600::regsPerBlock"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, regsPerBlock) - 304usize];
-    ["Offset of field: hipDeviceProp_tR0600::warpSize"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, warpSize) - 308usize];
-    ["Offset of field: hipDeviceProp_tR0600::memPitch"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, memPitch) - 312usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxThreadsPerBlock"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxThreadsPerBlock) - 320usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxThreadsDim"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxThreadsDim) - 324usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxGridSize"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxGridSize) - 336usize];
-    ["Offset of field: hipDeviceProp_tR0600::clockRate"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, clockRate) - 348usize];
-    ["Offset of field: hipDeviceProp_tR0600::totalConstMem"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, totalConstMem) - 352usize];
-    ["Offset of field: hipDeviceProp_tR0600::major"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, major) - 360usize];
-    ["Offset of field: hipDeviceProp_tR0600::minor"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, minor) - 364usize];
-    ["Offset of field: hipDeviceProp_tR0600::textureAlignment"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, textureAlignment) - 368usize];
-    ["Offset of field: hipDeviceProp_tR0600::texturePitchAlignment"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, texturePitchAlignment) - 376usize];
-    ["Offset of field: hipDeviceProp_tR0600::deviceOverlap"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, deviceOverlap) - 384usize];
-    ["Offset of field: hipDeviceProp_tR0600::multiProcessorCount"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, multiProcessorCount) - 388usize];
-    ["Offset of field: hipDeviceProp_tR0600::kernelExecTimeoutEnabled"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, kernelExecTimeoutEnabled) - 392usize];
-    ["Offset of field: hipDeviceProp_tR0600::integrated"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, integrated) - 396usize];
-    ["Offset of field: hipDeviceProp_tR0600::canMapHostMemory"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, canMapHostMemory) - 400usize];
-    ["Offset of field: hipDeviceProp_tR0600::computeMode"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, computeMode) - 404usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture1D"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture1D) - 408usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture1DMipmap"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture1DMipmap) - 412usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture1DLinear"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture1DLinear) - 416usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture2D"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture2D) - 420usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture2DMipmap"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture2DMipmap) - 428usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture2DLinear"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture2DLinear) - 436usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture2DGather"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture2DGather) - 448usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture3D"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture3D) - 456usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture3DAlt"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture3DAlt) - 468usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTextureCubemap"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTextureCubemap) - 480usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture1DLayered"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture1DLayered) - 484usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTexture2DLayered"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTexture2DLayered) - 492usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxTextureCubemapLayered"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxTextureCubemapLayered) - 504usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSurface1D"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxSurface1D) - 512usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSurface2D"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxSurface2D) - 516usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSurface3D"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxSurface3D) - 524usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSurface1DLayered"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxSurface1DLayered) - 536usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSurface2DLayered"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxSurface2DLayered) - 544usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSurfaceCubemap"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxSurfaceCubemap) - 556usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSurfaceCubemapLayered"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxSurfaceCubemapLayered) - 560usize];
-    ["Offset of field: hipDeviceProp_tR0600::surfaceAlignment"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, surfaceAlignment) - 568usize];
-    ["Offset of field: hipDeviceProp_tR0600::concurrentKernels"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, concurrentKernels) - 576usize];
-    ["Offset of field: hipDeviceProp_tR0600::ECCEnabled"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, ECCEnabled) - 580usize];
-    ["Offset of field: hipDeviceProp_tR0600::pciBusID"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, pciBusID) - 584usize];
-    ["Offset of field: hipDeviceProp_tR0600::pciDeviceID"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, pciDeviceID) - 588usize];
-    ["Offset of field: hipDeviceProp_tR0600::pciDomainID"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, pciDomainID) - 592usize];
-    ["Offset of field: hipDeviceProp_tR0600::tccDriver"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, tccDriver) - 596usize];
-    ["Offset of field: hipDeviceProp_tR0600::asyncEngineCount"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, asyncEngineCount) - 600usize];
-    ["Offset of field: hipDeviceProp_tR0600::unifiedAddressing"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, unifiedAddressing) - 604usize];
-    ["Offset of field: hipDeviceProp_tR0600::memoryClockRate"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, memoryClockRate) - 608usize];
-    ["Offset of field: hipDeviceProp_tR0600::memoryBusWidth"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, memoryBusWidth) - 612usize];
-    ["Offset of field: hipDeviceProp_tR0600::l2CacheSize"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, l2CacheSize) - 616usize];
-    ["Offset of field: hipDeviceProp_tR0600::persistingL2CacheMaxSize"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, persistingL2CacheMaxSize) - 620usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxThreadsPerMultiProcessor"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxThreadsPerMultiProcessor) - 624usize];
-    ["Offset of field: hipDeviceProp_tR0600::streamPrioritiesSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, streamPrioritiesSupported) - 628usize];
-    ["Offset of field: hipDeviceProp_tR0600::globalL1CacheSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, globalL1CacheSupported) - 632usize];
-    ["Offset of field: hipDeviceProp_tR0600::localL1CacheSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, localL1CacheSupported) - 636usize];
-    ["Offset of field: hipDeviceProp_tR0600::sharedMemPerMultiprocessor"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, sharedMemPerMultiprocessor) - 640usize];
-    ["Offset of field: hipDeviceProp_tR0600::regsPerMultiprocessor"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, regsPerMultiprocessor) - 648usize];
-    ["Offset of field: hipDeviceProp_tR0600::managedMemory"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, managedMemory) - 652usize];
-    ["Offset of field: hipDeviceProp_tR0600::isMultiGpuBoard"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, isMultiGpuBoard) - 656usize];
-    ["Offset of field: hipDeviceProp_tR0600::multiGpuBoardGroupID"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, multiGpuBoardGroupID) - 660usize];
-    ["Offset of field: hipDeviceProp_tR0600::hostNativeAtomicSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, hostNativeAtomicSupported) - 664usize];
-    ["Offset of field: hipDeviceProp_tR0600::singleToDoublePrecisionPerfRatio"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, singleToDoublePrecisionPerfRatio) - 668usize];
-    ["Offset of field: hipDeviceProp_tR0600::pageableMemoryAccess"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, pageableMemoryAccess) - 672usize];
-    ["Offset of field: hipDeviceProp_tR0600::concurrentManagedAccess"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, concurrentManagedAccess) - 676usize];
-    ["Offset of field: hipDeviceProp_tR0600::computePreemptionSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, computePreemptionSupported) - 680usize];
-    ["Offset of field: hipDeviceProp_tR0600::canUseHostPointerForRegisteredMem"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        canUseHostPointerForRegisteredMem
-    ) - 684usize];
-    ["Offset of field: hipDeviceProp_tR0600::cooperativeLaunch"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, cooperativeLaunch) - 688usize];
-    ["Offset of field: hipDeviceProp_tR0600::cooperativeMultiDeviceLaunch"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, cooperativeMultiDeviceLaunch) - 692usize];
-    ["Offset of field: hipDeviceProp_tR0600::sharedMemPerBlockOptin"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, sharedMemPerBlockOptin) - 696usize];
-    ["Offset of field: hipDeviceProp_tR0600::pageableMemoryAccessUsesHostPageTables"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        pageableMemoryAccessUsesHostPageTables
-    ) - 704usize];
-    ["Offset of field: hipDeviceProp_tR0600::directManagedMemAccessFromHost"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, directManagedMemAccessFromHost) - 708usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxBlocksPerMultiProcessor"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, maxBlocksPerMultiProcessor) - 712usize];
-    ["Offset of field: hipDeviceProp_tR0600::accessPolicyMaxWindowSize"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, accessPolicyMaxWindowSize) - 716usize];
-    ["Offset of field: hipDeviceProp_tR0600::reservedSharedMemPerBlock"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, reservedSharedMemPerBlock) - 720usize];
-    ["Offset of field: hipDeviceProp_tR0600::hostRegisterSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, hostRegisterSupported) - 728usize];
-    ["Offset of field: hipDeviceProp_tR0600::sparseHipArraySupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, sparseHipArraySupported) - 732usize];
-    ["Offset of field: hipDeviceProp_tR0600::hostRegisterReadOnlySupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, hostRegisterReadOnlySupported) - 736usize];
-    ["Offset of field: hipDeviceProp_tR0600::timelineSemaphoreInteropSupported"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        timelineSemaphoreInteropSupported
-    ) - 740usize];
-    ["Offset of field: hipDeviceProp_tR0600::memoryPoolsSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, memoryPoolsSupported) - 744usize];
-    ["Offset of field: hipDeviceProp_tR0600::gpuDirectRDMASupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, gpuDirectRDMASupported) - 748usize];
-    ["Offset of field: hipDeviceProp_tR0600::gpuDirectRDMAFlushWritesOptions"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, gpuDirectRDMAFlushWritesOptions) - 752usize];
-    ["Offset of field: hipDeviceProp_tR0600::gpuDirectRDMAWritesOrdering"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, gpuDirectRDMAWritesOrdering) - 756usize];
-    ["Offset of field: hipDeviceProp_tR0600::memoryPoolSupportedHandleTypes"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, memoryPoolSupportedHandleTypes) - 760usize];
-    ["Offset of field: hipDeviceProp_tR0600::deferredMappingHipArraySupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, deferredMappingHipArraySupported) - 764usize];
-    ["Offset of field: hipDeviceProp_tR0600::ipcEventSupported"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, ipcEventSupported) - 768usize];
-    ["Offset of field: hipDeviceProp_tR0600::clusterLaunch"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, clusterLaunch) - 772usize];
-    ["Offset of field: hipDeviceProp_tR0600::unifiedFunctionPointers"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, unifiedFunctionPointers) - 776usize];
-    ["Offset of field: hipDeviceProp_tR0600::reserved"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, reserved) - 780usize];
-    ["Offset of field: hipDeviceProp_tR0600::hipReserved"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, hipReserved) - 1032usize];
-    ["Offset of field: hipDeviceProp_tR0600::gcnArchName"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, gcnArchName) - 1160usize];
-    ["Offset of field: hipDeviceProp_tR0600::maxSharedMemoryPerMultiProcessor"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        maxSharedMemoryPerMultiProcessor
-    ) - 1416usize];
-    ["Offset of field: hipDeviceProp_tR0600::clockInstructionRate"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, clockInstructionRate) - 1424usize];
-    ["Offset of field: hipDeviceProp_tR0600::arch"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, arch) - 1428usize];
-    ["Offset of field: hipDeviceProp_tR0600::hdpMemFlushCntl"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, hdpMemFlushCntl) - 1432usize];
-    ["Offset of field: hipDeviceProp_tR0600::hdpRegFlushCntl"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, hdpRegFlushCntl) - 1440usize];
-    ["Offset of field: hipDeviceProp_tR0600::cooperativeMultiDeviceUnmatchedFunc"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        cooperativeMultiDeviceUnmatchedFunc
-    ) - 1448usize];
-    ["Offset of field: hipDeviceProp_tR0600::cooperativeMultiDeviceUnmatchedGridDim"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        cooperativeMultiDeviceUnmatchedGridDim
-    )
-        - 1452usize];
-    ["Offset of field: hipDeviceProp_tR0600::cooperativeMultiDeviceUnmatchedBlockDim"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        cooperativeMultiDeviceUnmatchedBlockDim
-    )
-        - 1456usize];
-    ["Offset of field: hipDeviceProp_tR0600::cooperativeMultiDeviceUnmatchedSharedMem"][::std::mem::offset_of!(
-        hipDeviceProp_tR0600,
-        cooperativeMultiDeviceUnmatchedSharedMem
-    )
-        - 1460usize];
-    ["Offset of field: hipDeviceProp_tR0600::isLargeBar"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, isLargeBar) - 1464usize];
-    ["Offset of field: hipDeviceProp_tR0600::asicRevision"]
-        [::std::mem::offset_of!(hipDeviceProp_tR0600, asicRevision) - 1468usize];
-};
 #[doc = "< Unregistered memory"]
 pub const hipMemoryType_hipMemoryTypeUnregistered: hipMemoryType = 0;
 #[doc = "< Memory is physically located on host"]
@@ -2976,24 +2427,6 @@ pub struct hipPointerAttribute_t {
     pub isManaged: ::std::os::raw::c_int,
     pub allocationFlags: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipPointerAttribute_t"][::std::mem::size_of::<hipPointerAttribute_t>() - 32usize];
-    ["Alignment of hipPointerAttribute_t"]
-        [::std::mem::align_of::<hipPointerAttribute_t>() - 8usize];
-    ["Offset of field: hipPointerAttribute_t::type_"]
-        [::std::mem::offset_of!(hipPointerAttribute_t, type_) - 0usize];
-    ["Offset of field: hipPointerAttribute_t::device"]
-        [::std::mem::offset_of!(hipPointerAttribute_t, device) - 4usize];
-    ["Offset of field: hipPointerAttribute_t::devicePointer"]
-        [::std::mem::offset_of!(hipPointerAttribute_t, devicePointer) - 8usize];
-    ["Offset of field: hipPointerAttribute_t::hostPointer"]
-        [::std::mem::offset_of!(hipPointerAttribute_t, hostPointer) - 16usize];
-    ["Offset of field: hipPointerAttribute_t::isManaged"]
-        [::std::mem::offset_of!(hipPointerAttribute_t, isManaged) - 24usize];
-    ["Offset of field: hipPointerAttribute_t::allocationFlags"]
-        [::std::mem::offset_of!(hipPointerAttribute_t, allocationFlags) - 28usize];
-};
 #[doc = "< Successful completion."]
 pub const hipError_t_hipSuccess: hipError_t = 0;
 #[doc = "< One or more of the parameters passed to the API call is NULL\n< or not in an acceptable range."]
@@ -3432,15 +2865,6 @@ pub struct max_align_t {
     pub __bindgen_padding_0: u64,
     pub __clang_max_align_nonce2: u128,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of max_align_t"][::std::mem::size_of::<max_align_t>() - 32usize];
-    ["Alignment of max_align_t"][::std::mem::align_of::<max_align_t>() - 16usize];
-    ["Offset of field: max_align_t::__clang_max_align_nonce1"]
-        [::std::mem::offset_of!(max_align_t, __clang_max_align_nonce1) - 0usize];
-    ["Offset of field: max_align_t::__clang_max_align_nonce2"]
-        [::std::mem::offset_of!(max_align_t, __clang_max_align_nonce2) - 16usize];
-};
 pub type hipDeviceptr_t = *mut ::std::os::raw::c_void;
 pub const hipChannelFormatKind_hipChannelFormatKindSigned: hipChannelFormatKind = 0;
 pub const hipChannelFormatKind_hipChannelFormatKindUnsigned: hipChannelFormatKind = 1;
@@ -3456,21 +2880,6 @@ pub struct hipChannelFormatDesc {
     pub w: ::std::os::raw::c_int,
     pub f: hipChannelFormatKind,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipChannelFormatDesc"][::std::mem::size_of::<hipChannelFormatDesc>() - 20usize];
-    ["Alignment of hipChannelFormatDesc"][::std::mem::align_of::<hipChannelFormatDesc>() - 4usize];
-    ["Offset of field: hipChannelFormatDesc::x"]
-        [::std::mem::offset_of!(hipChannelFormatDesc, x) - 0usize];
-    ["Offset of field: hipChannelFormatDesc::y"]
-        [::std::mem::offset_of!(hipChannelFormatDesc, y) - 4usize];
-    ["Offset of field: hipChannelFormatDesc::z"]
-        [::std::mem::offset_of!(hipChannelFormatDesc, z) - 8usize];
-    ["Offset of field: hipChannelFormatDesc::w"]
-        [::std::mem::offset_of!(hipChannelFormatDesc, w) - 12usize];
-    ["Offset of field: hipChannelFormatDesc::f"]
-        [::std::mem::offset_of!(hipChannelFormatDesc, f) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipArray {
@@ -3495,19 +2904,6 @@ pub struct HIP_ARRAY_DESCRIPTOR {
     pub Format: hipArray_Format,
     pub NumChannels: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_ARRAY_DESCRIPTOR"][::std::mem::size_of::<HIP_ARRAY_DESCRIPTOR>() - 24usize];
-    ["Alignment of HIP_ARRAY_DESCRIPTOR"][::std::mem::align_of::<HIP_ARRAY_DESCRIPTOR>() - 8usize];
-    ["Offset of field: HIP_ARRAY_DESCRIPTOR::Width"]
-        [::std::mem::offset_of!(HIP_ARRAY_DESCRIPTOR, Width) - 0usize];
-    ["Offset of field: HIP_ARRAY_DESCRIPTOR::Height"]
-        [::std::mem::offset_of!(HIP_ARRAY_DESCRIPTOR, Height) - 8usize];
-    ["Offset of field: HIP_ARRAY_DESCRIPTOR::Format"]
-        [::std::mem::offset_of!(HIP_ARRAY_DESCRIPTOR, Format) - 16usize];
-    ["Offset of field: HIP_ARRAY_DESCRIPTOR::NumChannels"]
-        [::std::mem::offset_of!(HIP_ARRAY_DESCRIPTOR, NumChannels) - 20usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HIP_ARRAY3D_DESCRIPTOR {
@@ -3518,24 +2914,6 @@ pub struct HIP_ARRAY3D_DESCRIPTOR {
     pub NumChannels: ::std::os::raw::c_uint,
     pub Flags: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_ARRAY3D_DESCRIPTOR"][::std::mem::size_of::<HIP_ARRAY3D_DESCRIPTOR>() - 40usize];
-    ["Alignment of HIP_ARRAY3D_DESCRIPTOR"]
-        [::std::mem::align_of::<HIP_ARRAY3D_DESCRIPTOR>() - 8usize];
-    ["Offset of field: HIP_ARRAY3D_DESCRIPTOR::Width"]
-        [::std::mem::offset_of!(HIP_ARRAY3D_DESCRIPTOR, Width) - 0usize];
-    ["Offset of field: HIP_ARRAY3D_DESCRIPTOR::Height"]
-        [::std::mem::offset_of!(HIP_ARRAY3D_DESCRIPTOR, Height) - 8usize];
-    ["Offset of field: HIP_ARRAY3D_DESCRIPTOR::Depth"]
-        [::std::mem::offset_of!(HIP_ARRAY3D_DESCRIPTOR, Depth) - 16usize];
-    ["Offset of field: HIP_ARRAY3D_DESCRIPTOR::Format"]
-        [::std::mem::offset_of!(HIP_ARRAY3D_DESCRIPTOR, Format) - 24usize];
-    ["Offset of field: HIP_ARRAY3D_DESCRIPTOR::NumChannels"]
-        [::std::mem::offset_of!(HIP_ARRAY3D_DESCRIPTOR, NumChannels) - 28usize];
-    ["Offset of field: HIP_ARRAY3D_DESCRIPTOR::Flags"]
-        [::std::mem::offset_of!(HIP_ARRAY3D_DESCRIPTOR, Flags) - 32usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hip_Memcpy2D {
@@ -3556,41 +2934,6 @@ pub struct hip_Memcpy2D {
     pub WidthInBytes: usize,
     pub Height: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hip_Memcpy2D"][::std::mem::size_of::<hip_Memcpy2D>() - 128usize];
-    ["Alignment of hip_Memcpy2D"][::std::mem::align_of::<hip_Memcpy2D>() - 8usize];
-    ["Offset of field: hip_Memcpy2D::srcXInBytes"]
-        [::std::mem::offset_of!(hip_Memcpy2D, srcXInBytes) - 0usize];
-    ["Offset of field: hip_Memcpy2D::srcY"][::std::mem::offset_of!(hip_Memcpy2D, srcY) - 8usize];
-    ["Offset of field: hip_Memcpy2D::srcMemoryType"]
-        [::std::mem::offset_of!(hip_Memcpy2D, srcMemoryType) - 16usize];
-    ["Offset of field: hip_Memcpy2D::srcHost"]
-        [::std::mem::offset_of!(hip_Memcpy2D, srcHost) - 24usize];
-    ["Offset of field: hip_Memcpy2D::srcDevice"]
-        [::std::mem::offset_of!(hip_Memcpy2D, srcDevice) - 32usize];
-    ["Offset of field: hip_Memcpy2D::srcArray"]
-        [::std::mem::offset_of!(hip_Memcpy2D, srcArray) - 40usize];
-    ["Offset of field: hip_Memcpy2D::srcPitch"]
-        [::std::mem::offset_of!(hip_Memcpy2D, srcPitch) - 48usize];
-    ["Offset of field: hip_Memcpy2D::dstXInBytes"]
-        [::std::mem::offset_of!(hip_Memcpy2D, dstXInBytes) - 56usize];
-    ["Offset of field: hip_Memcpy2D::dstY"][::std::mem::offset_of!(hip_Memcpy2D, dstY) - 64usize];
-    ["Offset of field: hip_Memcpy2D::dstMemoryType"]
-        [::std::mem::offset_of!(hip_Memcpy2D, dstMemoryType) - 72usize];
-    ["Offset of field: hip_Memcpy2D::dstHost"]
-        [::std::mem::offset_of!(hip_Memcpy2D, dstHost) - 80usize];
-    ["Offset of field: hip_Memcpy2D::dstDevice"]
-        [::std::mem::offset_of!(hip_Memcpy2D, dstDevice) - 88usize];
-    ["Offset of field: hip_Memcpy2D::dstArray"]
-        [::std::mem::offset_of!(hip_Memcpy2D, dstArray) - 96usize];
-    ["Offset of field: hip_Memcpy2D::dstPitch"]
-        [::std::mem::offset_of!(hip_Memcpy2D, dstPitch) - 104usize];
-    ["Offset of field: hip_Memcpy2D::WidthInBytes"]
-        [::std::mem::offset_of!(hip_Memcpy2D, WidthInBytes) - 112usize];
-    ["Offset of field: hip_Memcpy2D::Height"]
-        [::std::mem::offset_of!(hip_Memcpy2D, Height) - 120usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipMipmappedArray {
@@ -3606,33 +2949,6 @@ pub struct hipMipmappedArray {
     pub format: hipArray_Format,
     pub num_channels: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMipmappedArray"][::std::mem::size_of::<hipMipmappedArray>() - 64usize];
-    ["Alignment of hipMipmappedArray"][::std::mem::align_of::<hipMipmappedArray>() - 8usize];
-    ["Offset of field: hipMipmappedArray::data"]
-        [::std::mem::offset_of!(hipMipmappedArray, data) - 0usize];
-    ["Offset of field: hipMipmappedArray::desc"]
-        [::std::mem::offset_of!(hipMipmappedArray, desc) - 8usize];
-    ["Offset of field: hipMipmappedArray::type_"]
-        [::std::mem::offset_of!(hipMipmappedArray, type_) - 28usize];
-    ["Offset of field: hipMipmappedArray::width"]
-        [::std::mem::offset_of!(hipMipmappedArray, width) - 32usize];
-    ["Offset of field: hipMipmappedArray::height"]
-        [::std::mem::offset_of!(hipMipmappedArray, height) - 36usize];
-    ["Offset of field: hipMipmappedArray::depth"]
-        [::std::mem::offset_of!(hipMipmappedArray, depth) - 40usize];
-    ["Offset of field: hipMipmappedArray::min_mipmap_level"]
-        [::std::mem::offset_of!(hipMipmappedArray, min_mipmap_level) - 44usize];
-    ["Offset of field: hipMipmappedArray::max_mipmap_level"]
-        [::std::mem::offset_of!(hipMipmappedArray, max_mipmap_level) - 48usize];
-    ["Offset of field: hipMipmappedArray::flags"]
-        [::std::mem::offset_of!(hipMipmappedArray, flags) - 52usize];
-    ["Offset of field: hipMipmappedArray::format"]
-        [::std::mem::offset_of!(hipMipmappedArray, format) - 56usize];
-    ["Offset of field: hipMipmappedArray::num_channels"]
-        [::std::mem::offset_of!(hipMipmappedArray, num_channels) - 60usize];
-};
 pub type hipMipmappedArray_t = *mut hipMipmappedArray;
 pub type hipmipmappedArray = hipMipmappedArray_t;
 pub type hipMipmappedArray_const_t = *const hipMipmappedArray;
@@ -3691,31 +3007,6 @@ pub struct HIP_TEXTURE_DESC_st {
     pub borderColor: [f32; 4usize],
     pub reserved: [::std::os::raw::c_int; 12usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_TEXTURE_DESC_st"][::std::mem::size_of::<HIP_TEXTURE_DESC_st>() - 104usize];
-    ["Alignment of HIP_TEXTURE_DESC_st"][::std::mem::align_of::<HIP_TEXTURE_DESC_st>() - 4usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::addressMode"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, addressMode) - 0usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::filterMode"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, filterMode) - 12usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::flags"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, flags) - 16usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::maxAnisotropy"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, maxAnisotropy) - 20usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::mipmapFilterMode"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, mipmapFilterMode) - 24usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::mipmapLevelBias"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, mipmapLevelBias) - 28usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::minMipmapLevelClamp"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, minMipmapLevelClamp) - 32usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::maxMipmapLevelClamp"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, maxMipmapLevelClamp) - 36usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::borderColor"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, borderColor) - 40usize];
-    ["Offset of field: HIP_TEXTURE_DESC_st::reserved"]
-        [::std::mem::offset_of!(HIP_TEXTURE_DESC_st, reserved) - 56usize];
-};
 #[doc = " Texture descriptor"]
 pub type HIP_TEXTURE_DESC = HIP_TEXTURE_DESC_st;
 pub const hipResourceViewFormat_hipResViewFormatNone: hipResourceViewFormat = 0;
@@ -3870,29 +3161,11 @@ pub union hipResourceDesc__bindgen_ty_1 {
 pub struct hipResourceDesc__bindgen_ty_1__bindgen_ty_1 {
     pub array: hipArray_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipResourceDesc__bindgen_ty_1__bindgen_ty_1"]
-        [::std::mem::size_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_1>() - 8usize];
-    ["Alignment of hipResourceDesc__bindgen_ty_1__bindgen_ty_1"]
-        [::std::mem::align_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_1::array"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_1, array) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipResourceDesc__bindgen_ty_1__bindgen_ty_2 {
     pub mipmap: hipMipmappedArray_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipResourceDesc__bindgen_ty_1__bindgen_ty_2"]
-        [::std::mem::size_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_2>() - 8usize];
-    ["Alignment of hipResourceDesc__bindgen_ty_1__bindgen_ty_2"]
-        [::std::mem::align_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_2>() - 8usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_2::mipmap"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_2, mipmap) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipResourceDesc__bindgen_ty_1__bindgen_ty_3 {
@@ -3900,21 +3173,6 @@ pub struct hipResourceDesc__bindgen_ty_1__bindgen_ty_3 {
     pub desc: hipChannelFormatDesc,
     pub sizeInBytes: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipResourceDesc__bindgen_ty_1__bindgen_ty_3"]
-        [::std::mem::size_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_3>() - 40usize];
-    ["Alignment of hipResourceDesc__bindgen_ty_1__bindgen_ty_3"]
-        [::std::mem::align_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_3>() - 8usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_3::devPtr"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_3, devPtr) - 0usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_3::desc"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_3, desc) - 8usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_3::sizeInBytes"][::std::mem::offset_of!(
-        hipResourceDesc__bindgen_ty_1__bindgen_ty_3,
-        sizeInBytes
-    ) - 32usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipResourceDesc__bindgen_ty_1__bindgen_ty_4 {
@@ -3924,49 +3182,6 @@ pub struct hipResourceDesc__bindgen_ty_1__bindgen_ty_4 {
     pub height: usize,
     pub pitchInBytes: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipResourceDesc__bindgen_ty_1__bindgen_ty_4"]
-        [::std::mem::size_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_4>() - 56usize];
-    ["Alignment of hipResourceDesc__bindgen_ty_1__bindgen_ty_4"]
-        [::std::mem::align_of::<hipResourceDesc__bindgen_ty_1__bindgen_ty_4>() - 8usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_4::devPtr"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_4, devPtr) - 0usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_4::desc"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_4, desc) - 8usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_4::width"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_4, width) - 32usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_4::height"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1__bindgen_ty_4, height) - 40usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1__bindgen_ty_4::pitchInBytes"][::std::mem::offset_of!(
-        hipResourceDesc__bindgen_ty_1__bindgen_ty_4,
-        pitchInBytes
-    ) - 48usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipResourceDesc__bindgen_ty_1"]
-        [::std::mem::size_of::<hipResourceDesc__bindgen_ty_1>() - 56usize];
-    ["Alignment of hipResourceDesc__bindgen_ty_1"]
-        [::std::mem::align_of::<hipResourceDesc__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1::array"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1, array) - 0usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1::mipmap"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1, mipmap) - 0usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1::linear"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1, linear) - 0usize];
-    ["Offset of field: hipResourceDesc__bindgen_ty_1::pitch2D"]
-        [::std::mem::offset_of!(hipResourceDesc__bindgen_ty_1, pitch2D) - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipResourceDesc"][::std::mem::size_of::<hipResourceDesc>() - 64usize];
-    ["Alignment of hipResourceDesc"][::std::mem::align_of::<hipResourceDesc>() - 8usize];
-    ["Offset of field: hipResourceDesc::resType"]
-        [::std::mem::offset_of!(hipResourceDesc, resType) - 0usize];
-    ["Offset of field: hipResourceDesc::res"]
-        [::std::mem::offset_of!(hipResourceDesc, res) - 8usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct HIP_RESOURCE_DESC_st {
@@ -3991,33 +3206,12 @@ pub struct HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_1 {
     #[doc = "< HIP array"]
     pub hArray: hipArray_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_1"]
-        [::std::mem::size_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_1>() - 8usize];
-    ["Alignment of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_1"]
-        [::std::mem::align_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_1>() - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_1::hArray"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_1, hArray) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_2 {
     #[doc = "< HIP mipmapped array"]
     pub hMipmappedArray: hipMipmappedArray_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_2"]
-        [::std::mem::size_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_2>() - 8usize];
-    ["Alignment of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_2"]
-        [::std::mem::align_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_2>() - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_2::hMipmappedArray"][::std::mem::offset_of!(
-        HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_2,
-        hMipmappedArray
-    )
-        - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3 {
@@ -4030,25 +3224,6 @@ pub struct HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3 {
     #[doc = "< Size in bytes"]
     pub sizeInBytes: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3"]
-        [::std::mem::size_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3>() - 24usize];
-    ["Alignment of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3"]
-        [::std::mem::align_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3>() - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3::devPtr"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3, devPtr) - 0usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3::format"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3, format) - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3::numChannels"][::std::mem::offset_of!(
-        HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3,
-        numChannels
-    ) - 12usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3::sizeInBytes"][::std::mem::offset_of!(
-        HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_3,
-        sizeInBytes
-    ) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4 {
@@ -4065,76 +3240,11 @@ pub struct HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4 {
     #[doc = "< Pitch between two rows in bytes"]
     pub pitchInBytes: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4"]
-        [::std::mem::size_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4>() - 40usize];
-    ["Alignment of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4"]
-        [::std::mem::align_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4>() - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4::devPtr"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4, devPtr) - 0usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4::format"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4, format) - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4::numChannels"][::std::mem::offset_of!(
-        HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4,
-        numChannels
-    ) - 12usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4::width"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4, width) - 16usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4::height"][::std::mem::offset_of!(
-        HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4,
-        height
-    ) - 24usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4::pitchInBytes"][::std::mem::offset_of!(
-        HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_4,
-        pitchInBytes
-    )
-        - 32usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_5 {
     pub reserved: [::std::os::raw::c_int; 32usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_5"]
-        [::std::mem::size_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_5>() - 128usize];
-    ["Alignment of HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_5"]
-        [::std::mem::align_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_5>() - 4usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_5::reserved"][::std::mem::offset_of!(
-        HIP_RESOURCE_DESC_st__bindgen_ty_1__bindgen_ty_5,
-        reserved
-    ) - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_DESC_st__bindgen_ty_1"]
-        [::std::mem::size_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1>() - 128usize];
-    ["Alignment of HIP_RESOURCE_DESC_st__bindgen_ty_1"]
-        [::std::mem::align_of::<HIP_RESOURCE_DESC_st__bindgen_ty_1>() - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1::array"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1, array) - 0usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1::mipmap"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1, mipmap) - 0usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1::linear"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1, linear) - 0usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1::pitch2D"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1, pitch2D) - 0usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st__bindgen_ty_1::reserved"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st__bindgen_ty_1, reserved) - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_DESC_st"][::std::mem::size_of::<HIP_RESOURCE_DESC_st>() - 144usize];
-    ["Alignment of HIP_RESOURCE_DESC_st"][::std::mem::align_of::<HIP_RESOURCE_DESC_st>() - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st::resType"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st, resType) - 0usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st::res"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st, res) - 8usize];
-    ["Offset of field: HIP_RESOURCE_DESC_st::flags"]
-        [::std::mem::offset_of!(HIP_RESOURCE_DESC_st, flags) - 136usize];
-};
 pub type HIP_RESOURCE_DESC = HIP_RESOURCE_DESC_st;
 #[doc = " hip resource view descriptor"]
 #[repr(C)]
@@ -4149,27 +3259,6 @@ pub struct hipResourceViewDesc {
     pub firstLayer: ::std::os::raw::c_uint,
     pub lastLayer: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipResourceViewDesc"][::std::mem::size_of::<hipResourceViewDesc>() - 48usize];
-    ["Alignment of hipResourceViewDesc"][::std::mem::align_of::<hipResourceViewDesc>() - 8usize];
-    ["Offset of field: hipResourceViewDesc::format"]
-        [::std::mem::offset_of!(hipResourceViewDesc, format) - 0usize];
-    ["Offset of field: hipResourceViewDesc::width"]
-        [::std::mem::offset_of!(hipResourceViewDesc, width) - 8usize];
-    ["Offset of field: hipResourceViewDesc::height"]
-        [::std::mem::offset_of!(hipResourceViewDesc, height) - 16usize];
-    ["Offset of field: hipResourceViewDesc::depth"]
-        [::std::mem::offset_of!(hipResourceViewDesc, depth) - 24usize];
-    ["Offset of field: hipResourceViewDesc::firstMipmapLevel"]
-        [::std::mem::offset_of!(hipResourceViewDesc, firstMipmapLevel) - 32usize];
-    ["Offset of field: hipResourceViewDesc::lastMipmapLevel"]
-        [::std::mem::offset_of!(hipResourceViewDesc, lastMipmapLevel) - 36usize];
-    ["Offset of field: hipResourceViewDesc::firstLayer"]
-        [::std::mem::offset_of!(hipResourceViewDesc, firstLayer) - 40usize];
-    ["Offset of field: hipResourceViewDesc::lastLayer"]
-        [::std::mem::offset_of!(hipResourceViewDesc, lastLayer) - 44usize];
-};
 #[doc = " Resource view descriptor"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -4192,31 +3281,6 @@ pub struct HIP_RESOURCE_VIEW_DESC_st {
     pub lastLayer: ::std::os::raw::c_uint,
     pub reserved: [::std::os::raw::c_uint; 16usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_RESOURCE_VIEW_DESC_st"]
-        [::std::mem::size_of::<HIP_RESOURCE_VIEW_DESC_st>() - 112usize];
-    ["Alignment of HIP_RESOURCE_VIEW_DESC_st"]
-        [::std::mem::align_of::<HIP_RESOURCE_VIEW_DESC_st>() - 8usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::format"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, format) - 0usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::width"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, width) - 8usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::height"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, height) - 16usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::depth"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, depth) - 24usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::firstMipmapLevel"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, firstMipmapLevel) - 32usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::lastMipmapLevel"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, lastMipmapLevel) - 36usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::firstLayer"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, firstLayer) - 40usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::lastLayer"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, lastLayer) - 44usize];
-    ["Offset of field: HIP_RESOURCE_VIEW_DESC_st::reserved"]
-        [::std::mem::offset_of!(HIP_RESOURCE_VIEW_DESC_st, reserved) - 48usize];
-};
 #[doc = " Resource view descriptor"]
 pub type HIP_RESOURCE_VIEW_DESC = HIP_RESOURCE_VIEW_DESC_st;
 #[doc = "< Host-to-Host Copy"]
@@ -4240,18 +3304,6 @@ pub struct hipPitchedPtr {
     pub xsize: usize,
     pub ysize: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipPitchedPtr"][::std::mem::size_of::<hipPitchedPtr>() - 32usize];
-    ["Alignment of hipPitchedPtr"][::std::mem::align_of::<hipPitchedPtr>() - 8usize];
-    ["Offset of field: hipPitchedPtr::ptr"][::std::mem::offset_of!(hipPitchedPtr, ptr) - 0usize];
-    ["Offset of field: hipPitchedPtr::pitch"]
-        [::std::mem::offset_of!(hipPitchedPtr, pitch) - 8usize];
-    ["Offset of field: hipPitchedPtr::xsize"]
-        [::std::mem::offset_of!(hipPitchedPtr, xsize) - 16usize];
-    ["Offset of field: hipPitchedPtr::ysize"]
-        [::std::mem::offset_of!(hipPitchedPtr, ysize) - 24usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipExtent {
@@ -4259,14 +3311,6 @@ pub struct hipExtent {
     pub height: usize,
     pub depth: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExtent"][::std::mem::size_of::<hipExtent>() - 24usize];
-    ["Alignment of hipExtent"][::std::mem::align_of::<hipExtent>() - 8usize];
-    ["Offset of field: hipExtent::width"][::std::mem::offset_of!(hipExtent, width) - 0usize];
-    ["Offset of field: hipExtent::height"][::std::mem::offset_of!(hipExtent, height) - 8usize];
-    ["Offset of field: hipExtent::depth"][::std::mem::offset_of!(hipExtent, depth) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipPos {
@@ -4274,14 +3318,6 @@ pub struct hipPos {
     pub y: usize,
     pub z: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipPos"][::std::mem::size_of::<hipPos>() - 24usize];
-    ["Alignment of hipPos"][::std::mem::align_of::<hipPos>() - 8usize];
-    ["Offset of field: hipPos::x"][::std::mem::offset_of!(hipPos, x) - 0usize];
-    ["Offset of field: hipPos::y"][::std::mem::offset_of!(hipPos, y) - 8usize];
-    ["Offset of field: hipPos::z"][::std::mem::offset_of!(hipPos, z) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipMemcpy3DParms {
@@ -4294,27 +3330,6 @@ pub struct hipMemcpy3DParms {
     pub extent: hipExtent,
     pub kind: hipMemcpyKind,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemcpy3DParms"][::std::mem::size_of::<hipMemcpy3DParms>() - 160usize];
-    ["Alignment of hipMemcpy3DParms"][::std::mem::align_of::<hipMemcpy3DParms>() - 8usize];
-    ["Offset of field: hipMemcpy3DParms::srcArray"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, srcArray) - 0usize];
-    ["Offset of field: hipMemcpy3DParms::srcPos"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, srcPos) - 8usize];
-    ["Offset of field: hipMemcpy3DParms::srcPtr"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, srcPtr) - 32usize];
-    ["Offset of field: hipMemcpy3DParms::dstArray"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, dstArray) - 64usize];
-    ["Offset of field: hipMemcpy3DParms::dstPos"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, dstPos) - 72usize];
-    ["Offset of field: hipMemcpy3DParms::dstPtr"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, dstPtr) - 96usize];
-    ["Offset of field: hipMemcpy3DParms::extent"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, extent) - 128usize];
-    ["Offset of field: hipMemcpy3DParms::kind"]
-        [::std::mem::offset_of!(hipMemcpy3DParms, kind) - 152usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HIP_MEMCPY3D {
@@ -4342,53 +3357,6 @@ pub struct HIP_MEMCPY3D {
     pub Height: usize,
     pub Depth: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_MEMCPY3D"][::std::mem::size_of::<HIP_MEMCPY3D>() - 184usize];
-    ["Alignment of HIP_MEMCPY3D"][::std::mem::align_of::<HIP_MEMCPY3D>() - 8usize];
-    ["Offset of field: HIP_MEMCPY3D::srcXInBytes"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcXInBytes) - 0usize];
-    ["Offset of field: HIP_MEMCPY3D::srcY"][::std::mem::offset_of!(HIP_MEMCPY3D, srcY) - 8usize];
-    ["Offset of field: HIP_MEMCPY3D::srcZ"][::std::mem::offset_of!(HIP_MEMCPY3D, srcZ) - 16usize];
-    ["Offset of field: HIP_MEMCPY3D::srcLOD"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcLOD) - 24usize];
-    ["Offset of field: HIP_MEMCPY3D::srcMemoryType"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcMemoryType) - 32usize];
-    ["Offset of field: HIP_MEMCPY3D::srcHost"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcHost) - 40usize];
-    ["Offset of field: HIP_MEMCPY3D::srcDevice"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcDevice) - 48usize];
-    ["Offset of field: HIP_MEMCPY3D::srcArray"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcArray) - 56usize];
-    ["Offset of field: HIP_MEMCPY3D::srcPitch"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcPitch) - 64usize];
-    ["Offset of field: HIP_MEMCPY3D::srcHeight"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, srcHeight) - 72usize];
-    ["Offset of field: HIP_MEMCPY3D::dstXInBytes"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstXInBytes) - 80usize];
-    ["Offset of field: HIP_MEMCPY3D::dstY"][::std::mem::offset_of!(HIP_MEMCPY3D, dstY) - 88usize];
-    ["Offset of field: HIP_MEMCPY3D::dstZ"][::std::mem::offset_of!(HIP_MEMCPY3D, dstZ) - 96usize];
-    ["Offset of field: HIP_MEMCPY3D::dstLOD"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstLOD) - 104usize];
-    ["Offset of field: HIP_MEMCPY3D::dstMemoryType"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstMemoryType) - 112usize];
-    ["Offset of field: HIP_MEMCPY3D::dstHost"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstHost) - 120usize];
-    ["Offset of field: HIP_MEMCPY3D::dstDevice"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstDevice) - 128usize];
-    ["Offset of field: HIP_MEMCPY3D::dstArray"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstArray) - 136usize];
-    ["Offset of field: HIP_MEMCPY3D::dstPitch"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstPitch) - 144usize];
-    ["Offset of field: HIP_MEMCPY3D::dstHeight"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, dstHeight) - 152usize];
-    ["Offset of field: HIP_MEMCPY3D::WidthInBytes"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, WidthInBytes) - 160usize];
-    ["Offset of field: HIP_MEMCPY3D::Height"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, Height) - 168usize];
-    ["Offset of field: HIP_MEMCPY3D::Depth"]
-        [::std::mem::offset_of!(HIP_MEMCPY3D, Depth) - 176usize];
-};
 pub const hipFunction_attribute_HIP_FUNC_ATTRIBUTE_MAX_THREADS_PER_BLOCK: hipFunction_attribute = 0;
 pub const hipFunction_attribute_HIP_FUNC_ATTRIBUTE_SHARED_SIZE_BYTES: hipFunction_attribute = 1;
 pub const hipFunction_attribute_HIP_FUNC_ATTRIBUTE_CONST_SIZE_BYTES: hipFunction_attribute = 2;
@@ -4446,25 +3414,12 @@ pub type hipPointer_attribute = ::std::os::raw::c_uint;
 pub struct uchar1 {
     pub x: ::std::os::raw::c_uchar,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uchar1"][::std::mem::size_of::<uchar1>() - 1usize];
-    ["Alignment of uchar1"][::std::mem::align_of::<uchar1>() - 1usize];
-    ["Offset of field: uchar1::x"][::std::mem::offset_of!(uchar1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct uchar2 {
     pub x: ::std::os::raw::c_uchar,
     pub y: ::std::os::raw::c_uchar,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uchar2"][::std::mem::size_of::<uchar2>() - 2usize];
-    ["Alignment of uchar2"][::std::mem::align_of::<uchar2>() - 1usize];
-    ["Offset of field: uchar2::x"][::std::mem::offset_of!(uchar2, x) - 0usize];
-    ["Offset of field: uchar2::y"][::std::mem::offset_of!(uchar2, y) - 1usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct uchar3 {
@@ -4472,14 +3427,6 @@ pub struct uchar3 {
     pub y: ::std::os::raw::c_uchar,
     pub z: ::std::os::raw::c_uchar,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uchar3"][::std::mem::size_of::<uchar3>() - 3usize];
-    ["Alignment of uchar3"][::std::mem::align_of::<uchar3>() - 1usize];
-    ["Offset of field: uchar3::x"][::std::mem::offset_of!(uchar3, x) - 0usize];
-    ["Offset of field: uchar3::y"][::std::mem::offset_of!(uchar3, y) - 1usize];
-    ["Offset of field: uchar3::z"][::std::mem::offset_of!(uchar3, z) - 2usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct uchar4 {
@@ -4488,39 +3435,17 @@ pub struct uchar4 {
     pub z: ::std::os::raw::c_uchar,
     pub w: ::std::os::raw::c_uchar,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uchar4"][::std::mem::size_of::<uchar4>() - 4usize];
-    ["Alignment of uchar4"][::std::mem::align_of::<uchar4>() - 1usize];
-    ["Offset of field: uchar4::x"][::std::mem::offset_of!(uchar4, x) - 0usize];
-    ["Offset of field: uchar4::y"][::std::mem::offset_of!(uchar4, y) - 1usize];
-    ["Offset of field: uchar4::z"][::std::mem::offset_of!(uchar4, z) - 2usize];
-    ["Offset of field: uchar4::w"][::std::mem::offset_of!(uchar4, w) - 3usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct char1 {
     pub x: ::std::os::raw::c_char,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of char1"][::std::mem::size_of::<char1>() - 1usize];
-    ["Alignment of char1"][::std::mem::align_of::<char1>() - 1usize];
-    ["Offset of field: char1::x"][::std::mem::offset_of!(char1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct char2 {
     pub x: ::std::os::raw::c_char,
     pub y: ::std::os::raw::c_char,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of char2"][::std::mem::size_of::<char2>() - 2usize];
-    ["Alignment of char2"][::std::mem::align_of::<char2>() - 1usize];
-    ["Offset of field: char2::x"][::std::mem::offset_of!(char2, x) - 0usize];
-    ["Offset of field: char2::y"][::std::mem::offset_of!(char2, y) - 1usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct char3 {
@@ -4528,14 +3453,6 @@ pub struct char3 {
     pub y: ::std::os::raw::c_char,
     pub z: ::std::os::raw::c_char,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of char3"][::std::mem::size_of::<char3>() - 3usize];
-    ["Alignment of char3"][::std::mem::align_of::<char3>() - 1usize];
-    ["Offset of field: char3::x"][::std::mem::offset_of!(char3, x) - 0usize];
-    ["Offset of field: char3::y"][::std::mem::offset_of!(char3, y) - 1usize];
-    ["Offset of field: char3::z"][::std::mem::offset_of!(char3, z) - 2usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct char4 {
@@ -4544,39 +3461,17 @@ pub struct char4 {
     pub z: ::std::os::raw::c_char,
     pub w: ::std::os::raw::c_char,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of char4"][::std::mem::size_of::<char4>() - 4usize];
-    ["Alignment of char4"][::std::mem::align_of::<char4>() - 1usize];
-    ["Offset of field: char4::x"][::std::mem::offset_of!(char4, x) - 0usize];
-    ["Offset of field: char4::y"][::std::mem::offset_of!(char4, y) - 1usize];
-    ["Offset of field: char4::z"][::std::mem::offset_of!(char4, z) - 2usize];
-    ["Offset of field: char4::w"][::std::mem::offset_of!(char4, w) - 3usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ushort1 {
     pub x: ::std::os::raw::c_ushort,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ushort1"][::std::mem::size_of::<ushort1>() - 2usize];
-    ["Alignment of ushort1"][::std::mem::align_of::<ushort1>() - 2usize];
-    ["Offset of field: ushort1::x"][::std::mem::offset_of!(ushort1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ushort2 {
     pub x: ::std::os::raw::c_ushort,
     pub y: ::std::os::raw::c_ushort,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ushort2"][::std::mem::size_of::<ushort2>() - 4usize];
-    ["Alignment of ushort2"][::std::mem::align_of::<ushort2>() - 2usize];
-    ["Offset of field: ushort2::x"][::std::mem::offset_of!(ushort2, x) - 0usize];
-    ["Offset of field: ushort2::y"][::std::mem::offset_of!(ushort2, y) - 2usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ushort3 {
@@ -4584,14 +3479,6 @@ pub struct ushort3 {
     pub y: ::std::os::raw::c_ushort,
     pub z: ::std::os::raw::c_ushort,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ushort3"][::std::mem::size_of::<ushort3>() - 6usize];
-    ["Alignment of ushort3"][::std::mem::align_of::<ushort3>() - 2usize];
-    ["Offset of field: ushort3::x"][::std::mem::offset_of!(ushort3, x) - 0usize];
-    ["Offset of field: ushort3::y"][::std::mem::offset_of!(ushort3, y) - 2usize];
-    ["Offset of field: ushort3::z"][::std::mem::offset_of!(ushort3, z) - 4usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ushort4 {
@@ -4600,39 +3487,17 @@ pub struct ushort4 {
     pub z: ::std::os::raw::c_ushort,
     pub w: ::std::os::raw::c_ushort,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ushort4"][::std::mem::size_of::<ushort4>() - 8usize];
-    ["Alignment of ushort4"][::std::mem::align_of::<ushort4>() - 2usize];
-    ["Offset of field: ushort4::x"][::std::mem::offset_of!(ushort4, x) - 0usize];
-    ["Offset of field: ushort4::y"][::std::mem::offset_of!(ushort4, y) - 2usize];
-    ["Offset of field: ushort4::z"][::std::mem::offset_of!(ushort4, z) - 4usize];
-    ["Offset of field: ushort4::w"][::std::mem::offset_of!(ushort4, w) - 6usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct short1 {
     pub x: ::std::os::raw::c_short,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of short1"][::std::mem::size_of::<short1>() - 2usize];
-    ["Alignment of short1"][::std::mem::align_of::<short1>() - 2usize];
-    ["Offset of field: short1::x"][::std::mem::offset_of!(short1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct short2 {
     pub x: ::std::os::raw::c_short,
     pub y: ::std::os::raw::c_short,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of short2"][::std::mem::size_of::<short2>() - 4usize];
-    ["Alignment of short2"][::std::mem::align_of::<short2>() - 2usize];
-    ["Offset of field: short2::x"][::std::mem::offset_of!(short2, x) - 0usize];
-    ["Offset of field: short2::y"][::std::mem::offset_of!(short2, y) - 2usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct short3 {
@@ -4640,14 +3505,6 @@ pub struct short3 {
     pub y: ::std::os::raw::c_short,
     pub z: ::std::os::raw::c_short,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of short3"][::std::mem::size_of::<short3>() - 6usize];
-    ["Alignment of short3"][::std::mem::align_of::<short3>() - 2usize];
-    ["Offset of field: short3::x"][::std::mem::offset_of!(short3, x) - 0usize];
-    ["Offset of field: short3::y"][::std::mem::offset_of!(short3, y) - 2usize];
-    ["Offset of field: short3::z"][::std::mem::offset_of!(short3, z) - 4usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct short4 {
@@ -4656,39 +3513,17 @@ pub struct short4 {
     pub z: ::std::os::raw::c_short,
     pub w: ::std::os::raw::c_short,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of short4"][::std::mem::size_of::<short4>() - 8usize];
-    ["Alignment of short4"][::std::mem::align_of::<short4>() - 2usize];
-    ["Offset of field: short4::x"][::std::mem::offset_of!(short4, x) - 0usize];
-    ["Offset of field: short4::y"][::std::mem::offset_of!(short4, y) - 2usize];
-    ["Offset of field: short4::z"][::std::mem::offset_of!(short4, z) - 4usize];
-    ["Offset of field: short4::w"][::std::mem::offset_of!(short4, w) - 6usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct uint1 {
     pub x: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uint1"][::std::mem::size_of::<uint1>() - 4usize];
-    ["Alignment of uint1"][::std::mem::align_of::<uint1>() - 4usize];
-    ["Offset of field: uint1::x"][::std::mem::offset_of!(uint1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct uint2 {
     pub x: ::std::os::raw::c_uint,
     pub y: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uint2"][::std::mem::size_of::<uint2>() - 8usize];
-    ["Alignment of uint2"][::std::mem::align_of::<uint2>() - 4usize];
-    ["Offset of field: uint2::x"][::std::mem::offset_of!(uint2, x) - 0usize];
-    ["Offset of field: uint2::y"][::std::mem::offset_of!(uint2, y) - 4usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct uint3 {
@@ -4696,14 +3531,6 @@ pub struct uint3 {
     pub y: ::std::os::raw::c_uint,
     pub z: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uint3"][::std::mem::size_of::<uint3>() - 12usize];
-    ["Alignment of uint3"][::std::mem::align_of::<uint3>() - 4usize];
-    ["Offset of field: uint3::x"][::std::mem::offset_of!(uint3, x) - 0usize];
-    ["Offset of field: uint3::y"][::std::mem::offset_of!(uint3, y) - 4usize];
-    ["Offset of field: uint3::z"][::std::mem::offset_of!(uint3, z) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct uint4 {
@@ -4712,39 +3539,17 @@ pub struct uint4 {
     pub z: ::std::os::raw::c_uint,
     pub w: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of uint4"][::std::mem::size_of::<uint4>() - 16usize];
-    ["Alignment of uint4"][::std::mem::align_of::<uint4>() - 4usize];
-    ["Offset of field: uint4::x"][::std::mem::offset_of!(uint4, x) - 0usize];
-    ["Offset of field: uint4::y"][::std::mem::offset_of!(uint4, y) - 4usize];
-    ["Offset of field: uint4::z"][::std::mem::offset_of!(uint4, z) - 8usize];
-    ["Offset of field: uint4::w"][::std::mem::offset_of!(uint4, w) - 12usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct int1 {
     pub x: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of int1"][::std::mem::size_of::<int1>() - 4usize];
-    ["Alignment of int1"][::std::mem::align_of::<int1>() - 4usize];
-    ["Offset of field: int1::x"][::std::mem::offset_of!(int1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct int2 {
     pub x: ::std::os::raw::c_int,
     pub y: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of int2"][::std::mem::size_of::<int2>() - 8usize];
-    ["Alignment of int2"][::std::mem::align_of::<int2>() - 4usize];
-    ["Offset of field: int2::x"][::std::mem::offset_of!(int2, x) - 0usize];
-    ["Offset of field: int2::y"][::std::mem::offset_of!(int2, y) - 4usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct int3 {
@@ -4752,14 +3557,6 @@ pub struct int3 {
     pub y: ::std::os::raw::c_int,
     pub z: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of int3"][::std::mem::size_of::<int3>() - 12usize];
-    ["Alignment of int3"][::std::mem::align_of::<int3>() - 4usize];
-    ["Offset of field: int3::x"][::std::mem::offset_of!(int3, x) - 0usize];
-    ["Offset of field: int3::y"][::std::mem::offset_of!(int3, y) - 4usize];
-    ["Offset of field: int3::z"][::std::mem::offset_of!(int3, z) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct int4 {
@@ -4768,39 +3565,17 @@ pub struct int4 {
     pub z: ::std::os::raw::c_int,
     pub w: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of int4"][::std::mem::size_of::<int4>() - 16usize];
-    ["Alignment of int4"][::std::mem::align_of::<int4>() - 4usize];
-    ["Offset of field: int4::x"][::std::mem::offset_of!(int4, x) - 0usize];
-    ["Offset of field: int4::y"][::std::mem::offset_of!(int4, y) - 4usize];
-    ["Offset of field: int4::z"][::std::mem::offset_of!(int4, z) - 8usize];
-    ["Offset of field: int4::w"][::std::mem::offset_of!(int4, w) - 12usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulong1 {
     pub x: ::std::os::raw::c_ulong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulong1"][::std::mem::size_of::<ulong1>() - 8usize];
-    ["Alignment of ulong1"][::std::mem::align_of::<ulong1>() - 8usize];
-    ["Offset of field: ulong1::x"][::std::mem::offset_of!(ulong1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulong2 {
     pub x: ::std::os::raw::c_ulong,
     pub y: ::std::os::raw::c_ulong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulong2"][::std::mem::size_of::<ulong2>() - 16usize];
-    ["Alignment of ulong2"][::std::mem::align_of::<ulong2>() - 8usize];
-    ["Offset of field: ulong2::x"][::std::mem::offset_of!(ulong2, x) - 0usize];
-    ["Offset of field: ulong2::y"][::std::mem::offset_of!(ulong2, y) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulong3 {
@@ -4808,14 +3583,6 @@ pub struct ulong3 {
     pub y: ::std::os::raw::c_ulong,
     pub z: ::std::os::raw::c_ulong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulong3"][::std::mem::size_of::<ulong3>() - 24usize];
-    ["Alignment of ulong3"][::std::mem::align_of::<ulong3>() - 8usize];
-    ["Offset of field: ulong3::x"][::std::mem::offset_of!(ulong3, x) - 0usize];
-    ["Offset of field: ulong3::y"][::std::mem::offset_of!(ulong3, y) - 8usize];
-    ["Offset of field: ulong3::z"][::std::mem::offset_of!(ulong3, z) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulong4 {
@@ -4824,39 +3591,17 @@ pub struct ulong4 {
     pub z: ::std::os::raw::c_ulong,
     pub w: ::std::os::raw::c_ulong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulong4"][::std::mem::size_of::<ulong4>() - 32usize];
-    ["Alignment of ulong4"][::std::mem::align_of::<ulong4>() - 8usize];
-    ["Offset of field: ulong4::x"][::std::mem::offset_of!(ulong4, x) - 0usize];
-    ["Offset of field: ulong4::y"][::std::mem::offset_of!(ulong4, y) - 8usize];
-    ["Offset of field: ulong4::z"][::std::mem::offset_of!(ulong4, z) - 16usize];
-    ["Offset of field: ulong4::w"][::std::mem::offset_of!(ulong4, w) - 24usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct long1 {
     pub x: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of long1"][::std::mem::size_of::<long1>() - 8usize];
-    ["Alignment of long1"][::std::mem::align_of::<long1>() - 8usize];
-    ["Offset of field: long1::x"][::std::mem::offset_of!(long1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct long2 {
     pub x: ::std::os::raw::c_long,
     pub y: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of long2"][::std::mem::size_of::<long2>() - 16usize];
-    ["Alignment of long2"][::std::mem::align_of::<long2>() - 8usize];
-    ["Offset of field: long2::x"][::std::mem::offset_of!(long2, x) - 0usize];
-    ["Offset of field: long2::y"][::std::mem::offset_of!(long2, y) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct long3 {
@@ -4864,14 +3609,6 @@ pub struct long3 {
     pub y: ::std::os::raw::c_long,
     pub z: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of long3"][::std::mem::size_of::<long3>() - 24usize];
-    ["Alignment of long3"][::std::mem::align_of::<long3>() - 8usize];
-    ["Offset of field: long3::x"][::std::mem::offset_of!(long3, x) - 0usize];
-    ["Offset of field: long3::y"][::std::mem::offset_of!(long3, y) - 8usize];
-    ["Offset of field: long3::z"][::std::mem::offset_of!(long3, z) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct long4 {
@@ -4880,39 +3617,17 @@ pub struct long4 {
     pub z: ::std::os::raw::c_long,
     pub w: ::std::os::raw::c_long,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of long4"][::std::mem::size_of::<long4>() - 32usize];
-    ["Alignment of long4"][::std::mem::align_of::<long4>() - 8usize];
-    ["Offset of field: long4::x"][::std::mem::offset_of!(long4, x) - 0usize];
-    ["Offset of field: long4::y"][::std::mem::offset_of!(long4, y) - 8usize];
-    ["Offset of field: long4::z"][::std::mem::offset_of!(long4, z) - 16usize];
-    ["Offset of field: long4::w"][::std::mem::offset_of!(long4, w) - 24usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulonglong1 {
     pub x: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulonglong1"][::std::mem::size_of::<ulonglong1>() - 8usize];
-    ["Alignment of ulonglong1"][::std::mem::align_of::<ulonglong1>() - 8usize];
-    ["Offset of field: ulonglong1::x"][::std::mem::offset_of!(ulonglong1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulonglong2 {
     pub x: ::std::os::raw::c_ulonglong,
     pub y: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulonglong2"][::std::mem::size_of::<ulonglong2>() - 16usize];
-    ["Alignment of ulonglong2"][::std::mem::align_of::<ulonglong2>() - 8usize];
-    ["Offset of field: ulonglong2::x"][::std::mem::offset_of!(ulonglong2, x) - 0usize];
-    ["Offset of field: ulonglong2::y"][::std::mem::offset_of!(ulonglong2, y) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulonglong3 {
@@ -4920,14 +3635,6 @@ pub struct ulonglong3 {
     pub y: ::std::os::raw::c_ulonglong,
     pub z: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulonglong3"][::std::mem::size_of::<ulonglong3>() - 24usize];
-    ["Alignment of ulonglong3"][::std::mem::align_of::<ulonglong3>() - 8usize];
-    ["Offset of field: ulonglong3::x"][::std::mem::offset_of!(ulonglong3, x) - 0usize];
-    ["Offset of field: ulonglong3::y"][::std::mem::offset_of!(ulonglong3, y) - 8usize];
-    ["Offset of field: ulonglong3::z"][::std::mem::offset_of!(ulonglong3, z) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ulonglong4 {
@@ -4936,39 +3643,17 @@ pub struct ulonglong4 {
     pub z: ::std::os::raw::c_ulonglong,
     pub w: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of ulonglong4"][::std::mem::size_of::<ulonglong4>() - 32usize];
-    ["Alignment of ulonglong4"][::std::mem::align_of::<ulonglong4>() - 8usize];
-    ["Offset of field: ulonglong4::x"][::std::mem::offset_of!(ulonglong4, x) - 0usize];
-    ["Offset of field: ulonglong4::y"][::std::mem::offset_of!(ulonglong4, y) - 8usize];
-    ["Offset of field: ulonglong4::z"][::std::mem::offset_of!(ulonglong4, z) - 16usize];
-    ["Offset of field: ulonglong4::w"][::std::mem::offset_of!(ulonglong4, w) - 24usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct longlong1 {
     pub x: ::std::os::raw::c_longlong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of longlong1"][::std::mem::size_of::<longlong1>() - 8usize];
-    ["Alignment of longlong1"][::std::mem::align_of::<longlong1>() - 8usize];
-    ["Offset of field: longlong1::x"][::std::mem::offset_of!(longlong1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct longlong2 {
     pub x: ::std::os::raw::c_longlong,
     pub y: ::std::os::raw::c_longlong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of longlong2"][::std::mem::size_of::<longlong2>() - 16usize];
-    ["Alignment of longlong2"][::std::mem::align_of::<longlong2>() - 8usize];
-    ["Offset of field: longlong2::x"][::std::mem::offset_of!(longlong2, x) - 0usize];
-    ["Offset of field: longlong2::y"][::std::mem::offset_of!(longlong2, y) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct longlong3 {
@@ -4976,14 +3661,6 @@ pub struct longlong3 {
     pub y: ::std::os::raw::c_longlong,
     pub z: ::std::os::raw::c_longlong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of longlong3"][::std::mem::size_of::<longlong3>() - 24usize];
-    ["Alignment of longlong3"][::std::mem::align_of::<longlong3>() - 8usize];
-    ["Offset of field: longlong3::x"][::std::mem::offset_of!(longlong3, x) - 0usize];
-    ["Offset of field: longlong3::y"][::std::mem::offset_of!(longlong3, y) - 8usize];
-    ["Offset of field: longlong3::z"][::std::mem::offset_of!(longlong3, z) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct longlong4 {
@@ -4992,39 +3669,17 @@ pub struct longlong4 {
     pub z: ::std::os::raw::c_longlong,
     pub w: ::std::os::raw::c_longlong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of longlong4"][::std::mem::size_of::<longlong4>() - 32usize];
-    ["Alignment of longlong4"][::std::mem::align_of::<longlong4>() - 8usize];
-    ["Offset of field: longlong4::x"][::std::mem::offset_of!(longlong4, x) - 0usize];
-    ["Offset of field: longlong4::y"][::std::mem::offset_of!(longlong4, y) - 8usize];
-    ["Offset of field: longlong4::z"][::std::mem::offset_of!(longlong4, z) - 16usize];
-    ["Offset of field: longlong4::w"][::std::mem::offset_of!(longlong4, w) - 24usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct float1 {
     pub x: f32,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of float1"][::std::mem::size_of::<float1>() - 4usize];
-    ["Alignment of float1"][::std::mem::align_of::<float1>() - 4usize];
-    ["Offset of field: float1::x"][::std::mem::offset_of!(float1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct float2 {
     pub x: f32,
     pub y: f32,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of float2"][::std::mem::size_of::<float2>() - 8usize];
-    ["Alignment of float2"][::std::mem::align_of::<float2>() - 4usize];
-    ["Offset of field: float2::x"][::std::mem::offset_of!(float2, x) - 0usize];
-    ["Offset of field: float2::y"][::std::mem::offset_of!(float2, y) - 4usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct float3 {
@@ -5032,14 +3687,6 @@ pub struct float3 {
     pub y: f32,
     pub z: f32,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of float3"][::std::mem::size_of::<float3>() - 12usize];
-    ["Alignment of float3"][::std::mem::align_of::<float3>() - 4usize];
-    ["Offset of field: float3::x"][::std::mem::offset_of!(float3, x) - 0usize];
-    ["Offset of field: float3::y"][::std::mem::offset_of!(float3, y) - 4usize];
-    ["Offset of field: float3::z"][::std::mem::offset_of!(float3, z) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct float4 {
@@ -5048,39 +3695,17 @@ pub struct float4 {
     pub z: f32,
     pub w: f32,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of float4"][::std::mem::size_of::<float4>() - 16usize];
-    ["Alignment of float4"][::std::mem::align_of::<float4>() - 4usize];
-    ["Offset of field: float4::x"][::std::mem::offset_of!(float4, x) - 0usize];
-    ["Offset of field: float4::y"][::std::mem::offset_of!(float4, y) - 4usize];
-    ["Offset of field: float4::z"][::std::mem::offset_of!(float4, z) - 8usize];
-    ["Offset of field: float4::w"][::std::mem::offset_of!(float4, w) - 12usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct double1 {
     pub x: f64,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of double1"][::std::mem::size_of::<double1>() - 8usize];
-    ["Alignment of double1"][::std::mem::align_of::<double1>() - 8usize];
-    ["Offset of field: double1::x"][::std::mem::offset_of!(double1, x) - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct double2 {
     pub x: f64,
     pub y: f64,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of double2"][::std::mem::size_of::<double2>() - 16usize];
-    ["Alignment of double2"][::std::mem::align_of::<double2>() - 8usize];
-    ["Offset of field: double2::x"][::std::mem::offset_of!(double2, x) - 0usize];
-    ["Offset of field: double2::y"][::std::mem::offset_of!(double2, y) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct double3 {
@@ -5088,14 +3713,6 @@ pub struct double3 {
     pub y: f64,
     pub z: f64,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of double3"][::std::mem::size_of::<double3>() - 24usize];
-    ["Alignment of double3"][::std::mem::align_of::<double3>() - 8usize];
-    ["Offset of field: double3::x"][::std::mem::offset_of!(double3, x) - 0usize];
-    ["Offset of field: double3::y"][::std::mem::offset_of!(double3, y) - 8usize];
-    ["Offset of field: double3::z"][::std::mem::offset_of!(double3, z) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct double4 {
@@ -5104,15 +3721,6 @@ pub struct double4 {
     pub z: f64,
     pub w: f64,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of double4"][::std::mem::size_of::<double4>() - 32usize];
-    ["Alignment of double4"][::std::mem::align_of::<double4>() - 8usize];
-    ["Offset of field: double4::x"][::std::mem::offset_of!(double4, x) - 0usize];
-    ["Offset of field: double4::y"][::std::mem::offset_of!(double4, y) - 8usize];
-    ["Offset of field: double4::z"][::std::mem::offset_of!(double4, z) - 16usize];
-    ["Offset of field: double4::w"][::std::mem::offset_of!(double4, w) - 24usize];
-};
 extern "C" {
     pub fn hipCreateChannelDesc(
         x: ::std::os::raw::c_int,
@@ -5162,39 +3770,6 @@ pub struct textureReference {
     pub numChannels: ::std::os::raw::c_int,
     pub format: hipArray_Format,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of textureReference"][::std::mem::size_of::<textureReference>() - 88usize];
-    ["Alignment of textureReference"][::std::mem::align_of::<textureReference>() - 8usize];
-    ["Offset of field: textureReference::normalized"]
-        [::std::mem::offset_of!(textureReference, normalized) - 0usize];
-    ["Offset of field: textureReference::readMode"]
-        [::std::mem::offset_of!(textureReference, readMode) - 4usize];
-    ["Offset of field: textureReference::filterMode"]
-        [::std::mem::offset_of!(textureReference, filterMode) - 8usize];
-    ["Offset of field: textureReference::addressMode"]
-        [::std::mem::offset_of!(textureReference, addressMode) - 12usize];
-    ["Offset of field: textureReference::channelDesc"]
-        [::std::mem::offset_of!(textureReference, channelDesc) - 24usize];
-    ["Offset of field: textureReference::sRGB"]
-        [::std::mem::offset_of!(textureReference, sRGB) - 44usize];
-    ["Offset of field: textureReference::maxAnisotropy"]
-        [::std::mem::offset_of!(textureReference, maxAnisotropy) - 48usize];
-    ["Offset of field: textureReference::mipmapFilterMode"]
-        [::std::mem::offset_of!(textureReference, mipmapFilterMode) - 52usize];
-    ["Offset of field: textureReference::mipmapLevelBias"]
-        [::std::mem::offset_of!(textureReference, mipmapLevelBias) - 56usize];
-    ["Offset of field: textureReference::minMipmapLevelClamp"]
-        [::std::mem::offset_of!(textureReference, minMipmapLevelClamp) - 60usize];
-    ["Offset of field: textureReference::maxMipmapLevelClamp"]
-        [::std::mem::offset_of!(textureReference, maxMipmapLevelClamp) - 64usize];
-    ["Offset of field: textureReference::textureObject"]
-        [::std::mem::offset_of!(textureReference, textureObject) - 72usize];
-    ["Offset of field: textureReference::numChannels"]
-        [::std::mem::offset_of!(textureReference, numChannels) - 80usize];
-    ["Offset of field: textureReference::format"]
-        [::std::mem::offset_of!(textureReference, format) - 84usize];
-};
 #[doc = " hip texture descriptor"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5211,33 +3786,6 @@ pub struct hipTextureDesc {
     pub minMipmapLevelClamp: f32,
     pub maxMipmapLevelClamp: f32,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipTextureDesc"][::std::mem::size_of::<hipTextureDesc>() - 64usize];
-    ["Alignment of hipTextureDesc"][::std::mem::align_of::<hipTextureDesc>() - 4usize];
-    ["Offset of field: hipTextureDesc::addressMode"]
-        [::std::mem::offset_of!(hipTextureDesc, addressMode) - 0usize];
-    ["Offset of field: hipTextureDesc::filterMode"]
-        [::std::mem::offset_of!(hipTextureDesc, filterMode) - 12usize];
-    ["Offset of field: hipTextureDesc::readMode"]
-        [::std::mem::offset_of!(hipTextureDesc, readMode) - 16usize];
-    ["Offset of field: hipTextureDesc::sRGB"]
-        [::std::mem::offset_of!(hipTextureDesc, sRGB) - 20usize];
-    ["Offset of field: hipTextureDesc::borderColor"]
-        [::std::mem::offset_of!(hipTextureDesc, borderColor) - 24usize];
-    ["Offset of field: hipTextureDesc::normalizedCoords"]
-        [::std::mem::offset_of!(hipTextureDesc, normalizedCoords) - 40usize];
-    ["Offset of field: hipTextureDesc::maxAnisotropy"]
-        [::std::mem::offset_of!(hipTextureDesc, maxAnisotropy) - 44usize];
-    ["Offset of field: hipTextureDesc::mipmapFilterMode"]
-        [::std::mem::offset_of!(hipTextureDesc, mipmapFilterMode) - 48usize];
-    ["Offset of field: hipTextureDesc::mipmapLevelBias"]
-        [::std::mem::offset_of!(hipTextureDesc, mipmapLevelBias) - 52usize];
-    ["Offset of field: hipTextureDesc::minMipmapLevelClamp"]
-        [::std::mem::offset_of!(hipTextureDesc, minMipmapLevelClamp) - 56usize];
-    ["Offset of field: hipTextureDesc::maxMipmapLevelClamp"]
-        [::std::mem::offset_of!(hipTextureDesc, maxMipmapLevelClamp) - 60usize];
-};
 #[doc = " An opaque value that represents a hip surface object"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5251,13 +3799,6 @@ pub type hipSurfaceObject_t = *mut __hip_surface;
 pub struct surfaceReference {
     pub surfaceObject: hipSurfaceObject_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of surfaceReference"][::std::mem::size_of::<surfaceReference>() - 8usize];
-    ["Alignment of surfaceReference"][::std::mem::align_of::<surfaceReference>() - 8usize];
-    ["Offset of field: surfaceReference::surfaceObject"]
-        [::std::mem::offset_of!(surfaceReference, surfaceObject) - 0usize];
-};
 pub const hipSurfaceBoundaryMode_hipBoundaryModeZero: hipSurfaceBoundaryMode = 0;
 pub const hipSurfaceBoundaryMode_hipBoundaryModeTrap: hipSurfaceBoundaryMode = 1;
 pub const hipSurfaceBoundaryMode_hipBoundaryModeClamp: hipSurfaceBoundaryMode = 2;
@@ -5286,26 +3827,12 @@ pub type hipStream_t = *mut ihipStream_t;
 pub struct hipIpcMemHandle_st {
     pub reserved: [::std::os::raw::c_char; 64usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipIpcMemHandle_st"][::std::mem::size_of::<hipIpcMemHandle_st>() - 64usize];
-    ["Alignment of hipIpcMemHandle_st"][::std::mem::align_of::<hipIpcMemHandle_st>() - 1usize];
-    ["Offset of field: hipIpcMemHandle_st::reserved"]
-        [::std::mem::offset_of!(hipIpcMemHandle_st, reserved) - 0usize];
-};
 pub type hipIpcMemHandle_t = hipIpcMemHandle_st;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipIpcEventHandle_st {
     pub reserved: [::std::os::raw::c_char; 64usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipIpcEventHandle_st"][::std::mem::size_of::<hipIpcEventHandle_st>() - 64usize];
-    ["Alignment of hipIpcEventHandle_st"][::std::mem::align_of::<hipIpcEventHandle_st>() - 1usize];
-    ["Offset of field: hipIpcEventHandle_st::reserved"]
-        [::std::mem::offset_of!(hipIpcEventHandle_st, reserved) - 0usize];
-};
 pub type hipIpcEventHandle_t = hipIpcEventHandle_st;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5340,31 +3867,6 @@ pub struct hipFuncAttributes {
     pub ptxVersion: ::std::os::raw::c_int,
     pub sharedSizeBytes: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipFuncAttributes"][::std::mem::size_of::<hipFuncAttributes>() - 56usize];
-    ["Alignment of hipFuncAttributes"][::std::mem::align_of::<hipFuncAttributes>() - 8usize];
-    ["Offset of field: hipFuncAttributes::binaryVersion"]
-        [::std::mem::offset_of!(hipFuncAttributes, binaryVersion) - 0usize];
-    ["Offset of field: hipFuncAttributes::cacheModeCA"]
-        [::std::mem::offset_of!(hipFuncAttributes, cacheModeCA) - 4usize];
-    ["Offset of field: hipFuncAttributes::constSizeBytes"]
-        [::std::mem::offset_of!(hipFuncAttributes, constSizeBytes) - 8usize];
-    ["Offset of field: hipFuncAttributes::localSizeBytes"]
-        [::std::mem::offset_of!(hipFuncAttributes, localSizeBytes) - 16usize];
-    ["Offset of field: hipFuncAttributes::maxDynamicSharedSizeBytes"]
-        [::std::mem::offset_of!(hipFuncAttributes, maxDynamicSharedSizeBytes) - 24usize];
-    ["Offset of field: hipFuncAttributes::maxThreadsPerBlock"]
-        [::std::mem::offset_of!(hipFuncAttributes, maxThreadsPerBlock) - 28usize];
-    ["Offset of field: hipFuncAttributes::numRegs"]
-        [::std::mem::offset_of!(hipFuncAttributes, numRegs) - 32usize];
-    ["Offset of field: hipFuncAttributes::preferredShmemCarveout"]
-        [::std::mem::offset_of!(hipFuncAttributes, preferredShmemCarveout) - 36usize];
-    ["Offset of field: hipFuncAttributes::ptxVersion"]
-        [::std::mem::offset_of!(hipFuncAttributes, ptxVersion) - 40usize];
-    ["Offset of field: hipFuncAttributes::sharedSizeBytes"]
-        [::std::mem::offset_of!(hipFuncAttributes, sharedSizeBytes) - 48usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ihipEvent_t {
@@ -5453,14 +3955,6 @@ pub struct hipMemLocation {
     #[doc = "< Identifier for the provided location type @p hipMemLocationType"]
     pub id: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemLocation"][::std::mem::size_of::<hipMemLocation>() - 8usize];
-    ["Alignment of hipMemLocation"][::std::mem::align_of::<hipMemLocation>() - 4usize];
-    ["Offset of field: hipMemLocation::type_"]
-        [::std::mem::offset_of!(hipMemLocation, type_) - 0usize];
-    ["Offset of field: hipMemLocation::id"][::std::mem::offset_of!(hipMemLocation, id) - 4usize];
-};
 #[doc = "< Default, make the address range not accessible"]
 pub const hipMemAccessFlags_hipMemAccessFlagsProtNone: hipMemAccessFlags = 0;
 #[doc = "< Set the address range read accessible"]
@@ -5478,15 +3972,6 @@ pub struct hipMemAccessDesc {
     #[doc = "< Accessibility flags to set"]
     pub flags: hipMemAccessFlags,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemAccessDesc"][::std::mem::size_of::<hipMemAccessDesc>() - 12usize];
-    ["Alignment of hipMemAccessDesc"][::std::mem::align_of::<hipMemAccessDesc>() - 4usize];
-    ["Offset of field: hipMemAccessDesc::location"]
-        [::std::mem::offset_of!(hipMemAccessDesc, location) - 0usize];
-    ["Offset of field: hipMemAccessDesc::flags"]
-        [::std::mem::offset_of!(hipMemAccessDesc, flags) - 8usize];
-};
 pub const hipMemAllocationType_hipMemAllocationTypeInvalid: hipMemAllocationType = 0;
 #[doc = " This allocation type is 'pinned', i.e. cannot migrate from its current\n location while the application is actively using it"]
 pub const hipMemAllocationType_hipMemAllocationTypePinned: hipMemAllocationType = 1;
@@ -5522,37 +4007,12 @@ pub struct hipMemPoolProps {
     #[doc = "< Reserved for future use, must be 0"]
     pub reserved: [::std::os::raw::c_uchar; 56usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemPoolProps"][::std::mem::size_of::<hipMemPoolProps>() - 88usize];
-    ["Alignment of hipMemPoolProps"][::std::mem::align_of::<hipMemPoolProps>() - 8usize];
-    ["Offset of field: hipMemPoolProps::allocType"]
-        [::std::mem::offset_of!(hipMemPoolProps, allocType) - 0usize];
-    ["Offset of field: hipMemPoolProps::handleTypes"]
-        [::std::mem::offset_of!(hipMemPoolProps, handleTypes) - 4usize];
-    ["Offset of field: hipMemPoolProps::location"]
-        [::std::mem::offset_of!(hipMemPoolProps, location) - 8usize];
-    ["Offset of field: hipMemPoolProps::win32SecurityAttributes"]
-        [::std::mem::offset_of!(hipMemPoolProps, win32SecurityAttributes) - 16usize];
-    ["Offset of field: hipMemPoolProps::maxSize"]
-        [::std::mem::offset_of!(hipMemPoolProps, maxSize) - 24usize];
-    ["Offset of field: hipMemPoolProps::reserved"]
-        [::std::mem::offset_of!(hipMemPoolProps, reserved) - 32usize];
-};
 #[doc = " Opaque data structure for exporting a pool allocation"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipMemPoolPtrExportData {
     pub reserved: [::std::os::raw::c_uchar; 64usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemPoolPtrExportData"][::std::mem::size_of::<hipMemPoolPtrExportData>() - 64usize];
-    ["Alignment of hipMemPoolPtrExportData"]
-        [::std::mem::align_of::<hipMemPoolPtrExportData>() - 1usize];
-    ["Offset of field: hipMemPoolPtrExportData::reserved"]
-        [::std::mem::offset_of!(hipMemPoolPtrExportData, reserved) - 0usize];
-};
 pub const hipJitOption_hipJitOptionMaxRegisters: hipJitOption = 0;
 pub const hipJitOption_hipJitOptionThreadsPerBlock: hipJitOption = 1;
 pub const hipJitOption_hipJitOptionWallTime: hipJitOption = 2;
@@ -5607,14 +4067,6 @@ pub struct dim3 {
     #[doc = "< z"]
     pub z: u32,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of dim3"][::std::mem::size_of::<dim3>() - 12usize];
-    ["Alignment of dim3"][::std::mem::align_of::<dim3>() - 4usize];
-    ["Offset of field: dim3::x"][::std::mem::offset_of!(dim3, x) - 0usize];
-    ["Offset of field: dim3::y"][::std::mem::offset_of!(dim3, y) - 4usize];
-    ["Offset of field: dim3::z"][::std::mem::offset_of!(dim3, z) - 8usize];
-};
 #[doc = " struct hipLaunchParams_t"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5632,23 +4084,6 @@ pub struct hipLaunchParams_t {
     #[doc = "< Stream identifier"]
     pub stream: hipStream_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipLaunchParams_t"][::std::mem::size_of::<hipLaunchParams_t>() - 56usize];
-    ["Alignment of hipLaunchParams_t"][::std::mem::align_of::<hipLaunchParams_t>() - 8usize];
-    ["Offset of field: hipLaunchParams_t::func"]
-        [::std::mem::offset_of!(hipLaunchParams_t, func) - 0usize];
-    ["Offset of field: hipLaunchParams_t::gridDim"]
-        [::std::mem::offset_of!(hipLaunchParams_t, gridDim) - 8usize];
-    ["Offset of field: hipLaunchParams_t::blockDim"]
-        [::std::mem::offset_of!(hipLaunchParams_t, blockDim) - 20usize];
-    ["Offset of field: hipLaunchParams_t::args"]
-        [::std::mem::offset_of!(hipLaunchParams_t, args) - 32usize];
-    ["Offset of field: hipLaunchParams_t::sharedMem"]
-        [::std::mem::offset_of!(hipLaunchParams_t, sharedMem) - 40usize];
-    ["Offset of field: hipLaunchParams_t::stream"]
-        [::std::mem::offset_of!(hipLaunchParams_t, stream) - 48usize];
-};
 #[doc = " struct hipLaunchParams_t"]
 pub type hipLaunchParams = hipLaunchParams_t;
 #[doc = " struct hipFunctionLaunchParams_t"]
@@ -5676,33 +4111,6 @@ pub struct hipFunctionLaunchParams_t {
     #[doc = "< Kernel parameters"]
     pub kernelParams: *mut *mut ::std::os::raw::c_void,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipFunctionLaunchParams_t"]
-        [::std::mem::size_of::<hipFunctionLaunchParams_t>() - 56usize];
-    ["Alignment of hipFunctionLaunchParams_t"]
-        [::std::mem::align_of::<hipFunctionLaunchParams_t>() - 8usize];
-    ["Offset of field: hipFunctionLaunchParams_t::function"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, function) - 0usize];
-    ["Offset of field: hipFunctionLaunchParams_t::gridDimX"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, gridDimX) - 8usize];
-    ["Offset of field: hipFunctionLaunchParams_t::gridDimY"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, gridDimY) - 12usize];
-    ["Offset of field: hipFunctionLaunchParams_t::gridDimZ"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, gridDimZ) - 16usize];
-    ["Offset of field: hipFunctionLaunchParams_t::blockDimX"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, blockDimX) - 20usize];
-    ["Offset of field: hipFunctionLaunchParams_t::blockDimY"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, blockDimY) - 24usize];
-    ["Offset of field: hipFunctionLaunchParams_t::blockDimZ"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, blockDimZ) - 28usize];
-    ["Offset of field: hipFunctionLaunchParams_t::sharedMemBytes"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, sharedMemBytes) - 32usize];
-    ["Offset of field: hipFunctionLaunchParams_t::hStream"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, hStream) - 40usize];
-    ["Offset of field: hipFunctionLaunchParams_t::kernelParams"]
-        [::std::mem::offset_of!(hipFunctionLaunchParams_t, kernelParams) - 48usize];
-};
 #[doc = " struct hipFunctionLaunchParams_t"]
 pub type hipFunctionLaunchParams = hipFunctionLaunchParams_t;
 pub const hipExternalMemoryHandleType_enum_hipExternalMemoryHandleTypeOpaqueFd:
@@ -5745,57 +4153,6 @@ pub struct hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1 {
     pub handle: *mut ::std::os::raw::c_void,
     pub name: *const ::std::os::raw::c_void,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1"][::std::mem::size_of::<
-        hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1,
-    >() - 16usize];
-    ["Alignment of hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1"][::std::mem::align_of::<
-        hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1,
-    >() - 8usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1::handle"][::std::mem::offset_of!(
-        hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1,
-        handle
-    )
-        - 0usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1::name"][::std::mem::offset_of!(
-        hipExternalMemoryHandleDesc_st__bindgen_ty_1__bindgen_ty_1,
-        name
-    )
-        - 8usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalMemoryHandleDesc_st__bindgen_ty_1"]
-        [::std::mem::size_of::<hipExternalMemoryHandleDesc_st__bindgen_ty_1>() - 16usize];
-    ["Alignment of hipExternalMemoryHandleDesc_st__bindgen_ty_1"]
-        [::std::mem::align_of::<hipExternalMemoryHandleDesc_st__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st__bindgen_ty_1::fd"]
-        [::std::mem::offset_of!(hipExternalMemoryHandleDesc_st__bindgen_ty_1, fd) - 0usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st__bindgen_ty_1::win32"]
-        [::std::mem::offset_of!(hipExternalMemoryHandleDesc_st__bindgen_ty_1, win32) - 0usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st__bindgen_ty_1::nvSciBufObject"][::std::mem::offset_of!(
-        hipExternalMemoryHandleDesc_st__bindgen_ty_1,
-        nvSciBufObject
-    ) - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalMemoryHandleDesc_st"]
-        [::std::mem::size_of::<hipExternalMemoryHandleDesc_st>() - 104usize];
-    ["Alignment of hipExternalMemoryHandleDesc_st"]
-        [::std::mem::align_of::<hipExternalMemoryHandleDesc_st>() - 8usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st::type_"]
-        [::std::mem::offset_of!(hipExternalMemoryHandleDesc_st, type_) - 0usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st::handle"]
-        [::std::mem::offset_of!(hipExternalMemoryHandleDesc_st, handle) - 8usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st::size"]
-        [::std::mem::offset_of!(hipExternalMemoryHandleDesc_st, size) - 24usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st::flags"]
-        [::std::mem::offset_of!(hipExternalMemoryHandleDesc_st, flags) - 32usize];
-    ["Offset of field: hipExternalMemoryHandleDesc_st::reserved"]
-        [::std::mem::offset_of!(hipExternalMemoryHandleDesc_st, reserved) - 36usize];
-};
 pub type hipExternalMemoryHandleDesc = hipExternalMemoryHandleDesc_st;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5805,21 +4162,6 @@ pub struct hipExternalMemoryBufferDesc_st {
     pub flags: ::std::os::raw::c_uint,
     pub reserved: [::std::os::raw::c_uint; 16usize],
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalMemoryBufferDesc_st"]
-        [::std::mem::size_of::<hipExternalMemoryBufferDesc_st>() - 88usize];
-    ["Alignment of hipExternalMemoryBufferDesc_st"]
-        [::std::mem::align_of::<hipExternalMemoryBufferDesc_st>() - 8usize];
-    ["Offset of field: hipExternalMemoryBufferDesc_st::offset"]
-        [::std::mem::offset_of!(hipExternalMemoryBufferDesc_st, offset) - 0usize];
-    ["Offset of field: hipExternalMemoryBufferDesc_st::size"]
-        [::std::mem::offset_of!(hipExternalMemoryBufferDesc_st, size) - 8usize];
-    ["Offset of field: hipExternalMemoryBufferDesc_st::flags"]
-        [::std::mem::offset_of!(hipExternalMemoryBufferDesc_st, flags) - 16usize];
-    ["Offset of field: hipExternalMemoryBufferDesc_st::reserved"]
-        [::std::mem::offset_of!(hipExternalMemoryBufferDesc_st, reserved) - 20usize];
-};
 pub type hipExternalMemoryBufferDesc = hipExternalMemoryBufferDesc_st;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -5830,23 +4172,6 @@ pub struct hipExternalMemoryMipmappedArrayDesc_st {
     pub flags: ::std::os::raw::c_uint,
     pub numLevels: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalMemoryMipmappedArrayDesc_st"]
-        [::std::mem::size_of::<hipExternalMemoryMipmappedArrayDesc_st>() - 64usize];
-    ["Alignment of hipExternalMemoryMipmappedArrayDesc_st"]
-        [::std::mem::align_of::<hipExternalMemoryMipmappedArrayDesc_st>() - 8usize];
-    ["Offset of field: hipExternalMemoryMipmappedArrayDesc_st::offset"]
-        [::std::mem::offset_of!(hipExternalMemoryMipmappedArrayDesc_st, offset) - 0usize];
-    ["Offset of field: hipExternalMemoryMipmappedArrayDesc_st::formatDesc"]
-        [::std::mem::offset_of!(hipExternalMemoryMipmappedArrayDesc_st, formatDesc) - 8usize];
-    ["Offset of field: hipExternalMemoryMipmappedArrayDesc_st::extent"]
-        [::std::mem::offset_of!(hipExternalMemoryMipmappedArrayDesc_st, extent) - 32usize];
-    ["Offset of field: hipExternalMemoryMipmappedArrayDesc_st::flags"]
-        [::std::mem::offset_of!(hipExternalMemoryMipmappedArrayDesc_st, flags) - 56usize];
-    ["Offset of field: hipExternalMemoryMipmappedArrayDesc_st::numLevels"]
-        [::std::mem::offset_of!(hipExternalMemoryMipmappedArrayDesc_st, numLevels) - 60usize];
-};
 pub type hipExternalMemoryMipmappedArrayDesc = hipExternalMemoryMipmappedArrayDesc_st;
 pub type hipExternalMemory_t = *mut ::std::os::raw::c_void;
 pub const hipExternalSemaphoreHandleType_enum_hipExternalSemaphoreHandleTypeOpaqueFd:
@@ -5891,55 +4216,6 @@ pub struct hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1 {
     pub handle: *mut ::std::os::raw::c_void,
     pub name: *const ::std::os::raw::c_void,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1"][::std::mem::size_of::<
-        hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1,
-    >() - 16usize];
-    ["Alignment of hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1"]
-        [::std::mem::align_of::<hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1>()
-            - 8usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1::handle"][::std::mem::offset_of!(
-        hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1,
-        handle
-    )
-        - 0usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1::name"][::std::mem::offset_of!(
-        hipExternalSemaphoreHandleDesc_st__bindgen_ty_1__bindgen_ty_1,
-        name
-    )
-        - 8usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreHandleDesc_st__bindgen_ty_1"]
-        [::std::mem::size_of::<hipExternalSemaphoreHandleDesc_st__bindgen_ty_1>() - 16usize];
-    ["Alignment of hipExternalSemaphoreHandleDesc_st__bindgen_ty_1"]
-        [::std::mem::align_of::<hipExternalSemaphoreHandleDesc_st__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st__bindgen_ty_1::fd"]
-        [::std::mem::offset_of!(hipExternalSemaphoreHandleDesc_st__bindgen_ty_1, fd) - 0usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st__bindgen_ty_1::win32"]
-        [::std::mem::offset_of!(hipExternalSemaphoreHandleDesc_st__bindgen_ty_1, win32) - 0usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st__bindgen_ty_1::NvSciSyncObj"][::std::mem::offset_of!(
-        hipExternalSemaphoreHandleDesc_st__bindgen_ty_1,
-        NvSciSyncObj
-    ) - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreHandleDesc_st"]
-        [::std::mem::size_of::<hipExternalSemaphoreHandleDesc_st>() - 96usize];
-    ["Alignment of hipExternalSemaphoreHandleDesc_st"]
-        [::std::mem::align_of::<hipExternalSemaphoreHandleDesc_st>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st::type_"]
-        [::std::mem::offset_of!(hipExternalSemaphoreHandleDesc_st, type_) - 0usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st::handle"]
-        [::std::mem::offset_of!(hipExternalSemaphoreHandleDesc_st, handle) - 8usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st::flags"]
-        [::std::mem::offset_of!(hipExternalSemaphoreHandleDesc_st, flags) - 24usize];
-    ["Offset of field: hipExternalSemaphoreHandleDesc_st::reserved"]
-        [::std::mem::offset_of!(hipExternalSemaphoreHandleDesc_st, reserved) - 28usize];
-};
 pub type hipExternalSemaphoreHandleDesc = hipExternalSemaphoreHandleDesc_st;
 pub type hipExternalSemaphore_t = *mut ::std::os::raw::c_void;
 #[repr(C)]
@@ -5962,94 +4238,17 @@ pub struct hipExternalSemaphoreSignalParams_st__bindgen_ty_1 {
 pub struct hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_1 {
     pub value: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_1"][::std::mem::size_of::<
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_1,
-    >() - 8usize];
-    ["Alignment of hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_1"]
-        [::std::mem::align_of::<hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_1>()
-            - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_1::value"][::std::mem::offset_of!(
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_1,
-        value
-    )
-        - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2 {
     pub fence: *mut ::std::os::raw::c_void,
     pub reserved: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2"][::std::mem::size_of::<
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2,
-    >() - 8usize];
-    ["Alignment of hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2"]
-        [::std::mem::align_of::<hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2>()
-            - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2::fence"][::std::mem::offset_of!(
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2,
-        fence
-    )
-        - 0usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2::reserved"] [:: std :: mem :: offset_of ! (hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_2 , reserved) - 0usize] ;
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_3 {
     pub key: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_3"][::std::mem::size_of::<
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_3,
-    >() - 8usize];
-    ["Alignment of hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_3"]
-        [::std::mem::align_of::<hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_3>()
-            - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_3::key"][::std::mem::offset_of!(
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1__bindgen_ty_3,
-        key
-    )
-        - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreSignalParams_st__bindgen_ty_1"]
-        [::std::mem::size_of::<hipExternalSemaphoreSignalParams_st__bindgen_ty_1>() - 72usize];
-    ["Alignment of hipExternalSemaphoreSignalParams_st__bindgen_ty_1"]
-        [::std::mem::align_of::<hipExternalSemaphoreSignalParams_st__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1::fence"]
-        [::std::mem::offset_of!(hipExternalSemaphoreSignalParams_st__bindgen_ty_1, fence) - 0usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1::nvSciSync"][::std::mem::offset_of!(
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1,
-        nvSciSync
-    ) - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1::keyedMutex"][::std::mem::offset_of!(
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1,
-        keyedMutex
-    ) - 16usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st__bindgen_ty_1::reserved"][::std::mem::offset_of!(
-        hipExternalSemaphoreSignalParams_st__bindgen_ty_1,
-        reserved
-    ) - 24usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreSignalParams_st"]
-        [::std::mem::size_of::<hipExternalSemaphoreSignalParams_st>() - 144usize];
-    ["Alignment of hipExternalSemaphoreSignalParams_st"]
-        [::std::mem::align_of::<hipExternalSemaphoreSignalParams_st>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st::params"]
-        [::std::mem::offset_of!(hipExternalSemaphoreSignalParams_st, params) - 0usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st::flags"]
-        [::std::mem::offset_of!(hipExternalSemaphoreSignalParams_st, flags) - 72usize];
-    ["Offset of field: hipExternalSemaphoreSignalParams_st::reserved"]
-        [::std::mem::offset_of!(hipExternalSemaphoreSignalParams_st, reserved) - 76usize];
-};
 pub type hipExternalSemaphoreSignalParams = hipExternalSemaphoreSignalParams_st;
 #[doc = " External semaphore wait parameters, compatible with driver type"]
 #[repr(C)]
@@ -6072,104 +4271,18 @@ pub struct hipExternalSemaphoreWaitParams_st__bindgen_ty_1 {
 pub struct hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_1 {
     pub value: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_1"][::std::mem::size_of::<
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_1,
-    >() - 8usize];
-    ["Alignment of hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_1"]
-        [::std::mem::align_of::<hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_1>()
-            - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_1::value"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_1,
-        value
-    )
-        - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2 {
     pub fence: *mut ::std::os::raw::c_void,
     pub reserved: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2"][::std::mem::size_of::<
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2,
-    >() - 8usize];
-    ["Alignment of hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2"]
-        [::std::mem::align_of::<hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2>()
-            - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2::fence"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2,
-        fence
-    )
-        - 0usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2::reserved"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_2,
-        reserved
-    )
-        - 0usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3 {
     pub key: ::std::os::raw::c_ulonglong,
     pub timeoutMs: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3"][::std::mem::size_of::<
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3,
-    >() - 16usize];
-    ["Alignment of hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3"]
-        [::std::mem::align_of::<hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3>()
-            - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3::key"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3,
-        key
-    )
-        - 0usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3::timeoutMs"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1__bindgen_ty_3,
-        timeoutMs
-    )
-        - 8usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreWaitParams_st__bindgen_ty_1"]
-        [::std::mem::size_of::<hipExternalSemaphoreWaitParams_st__bindgen_ty_1>() - 72usize];
-    ["Alignment of hipExternalSemaphoreWaitParams_st__bindgen_ty_1"]
-        [::std::mem::align_of::<hipExternalSemaphoreWaitParams_st__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1::fence"]
-        [::std::mem::offset_of!(hipExternalSemaphoreWaitParams_st__bindgen_ty_1, fence) - 0usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1::nvSciSync"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1,
-        nvSciSync
-    ) - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1::keyedMutex"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1,
-        keyedMutex
-    ) - 16usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st__bindgen_ty_1::reserved"][::std::mem::offset_of!(
-        hipExternalSemaphoreWaitParams_st__bindgen_ty_1,
-        reserved
-    ) - 32usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreWaitParams_st"]
-        [::std::mem::size_of::<hipExternalSemaphoreWaitParams_st>() - 144usize];
-    ["Alignment of hipExternalSemaphoreWaitParams_st"]
-        [::std::mem::align_of::<hipExternalSemaphoreWaitParams_st>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st::params"]
-        [::std::mem::offset_of!(hipExternalSemaphoreWaitParams_st, params) - 0usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st::flags"]
-        [::std::mem::offset_of!(hipExternalSemaphoreWaitParams_st, flags) - 72usize];
-    ["Offset of field: hipExternalSemaphoreWaitParams_st::reserved"]
-        [::std::mem::offset_of!(hipExternalSemaphoreWaitParams_st, reserved) - 76usize];
-};
 #[doc = " External semaphore wait parameters, compatible with driver type"]
 pub type hipExternalSemaphoreWaitParams = hipExternalSemaphoreWaitParams_st;
 extern "C" {
@@ -6262,15 +4375,6 @@ pub struct hipHostNodeParams {
     pub fn_: hipHostFn_t,
     pub userData: *mut ::std::os::raw::c_void,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipHostNodeParams"][::std::mem::size_of::<hipHostNodeParams>() - 16usize];
-    ["Alignment of hipHostNodeParams"][::std::mem::align_of::<hipHostNodeParams>() - 8usize];
-    ["Offset of field: hipHostNodeParams::fn_"]
-        [::std::mem::offset_of!(hipHostNodeParams, fn_) - 0usize];
-    ["Offset of field: hipHostNodeParams::userData"]
-        [::std::mem::offset_of!(hipHostNodeParams, userData) - 8usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipKernelNodeParams {
@@ -6281,23 +4385,6 @@ pub struct hipKernelNodeParams {
     pub kernelParams: *mut *mut ::std::os::raw::c_void,
     pub sharedMemBytes: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipKernelNodeParams"][::std::mem::size_of::<hipKernelNodeParams>() - 64usize];
-    ["Alignment of hipKernelNodeParams"][::std::mem::align_of::<hipKernelNodeParams>() - 8usize];
-    ["Offset of field: hipKernelNodeParams::blockDim"]
-        [::std::mem::offset_of!(hipKernelNodeParams, blockDim) - 0usize];
-    ["Offset of field: hipKernelNodeParams::extra"]
-        [::std::mem::offset_of!(hipKernelNodeParams, extra) - 16usize];
-    ["Offset of field: hipKernelNodeParams::func"]
-        [::std::mem::offset_of!(hipKernelNodeParams, func) - 24usize];
-    ["Offset of field: hipKernelNodeParams::gridDim"]
-        [::std::mem::offset_of!(hipKernelNodeParams, gridDim) - 32usize];
-    ["Offset of field: hipKernelNodeParams::kernelParams"]
-        [::std::mem::offset_of!(hipKernelNodeParams, kernelParams) - 48usize];
-    ["Offset of field: hipKernelNodeParams::sharedMemBytes"]
-        [::std::mem::offset_of!(hipKernelNodeParams, sharedMemBytes) - 56usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipMemsetParams {
@@ -6308,23 +4395,6 @@ pub struct hipMemsetParams {
     pub value: ::std::os::raw::c_uint,
     pub width: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemsetParams"][::std::mem::size_of::<hipMemsetParams>() - 48usize];
-    ["Alignment of hipMemsetParams"][::std::mem::align_of::<hipMemsetParams>() - 8usize];
-    ["Offset of field: hipMemsetParams::dst"]
-        [::std::mem::offset_of!(hipMemsetParams, dst) - 0usize];
-    ["Offset of field: hipMemsetParams::elementSize"]
-        [::std::mem::offset_of!(hipMemsetParams, elementSize) - 8usize];
-    ["Offset of field: hipMemsetParams::height"]
-        [::std::mem::offset_of!(hipMemsetParams, height) - 16usize];
-    ["Offset of field: hipMemsetParams::pitch"]
-        [::std::mem::offset_of!(hipMemsetParams, pitch) - 24usize];
-    ["Offset of field: hipMemsetParams::value"]
-        [::std::mem::offset_of!(hipMemsetParams, value) - 32usize];
-    ["Offset of field: hipMemsetParams::width"]
-        [::std::mem::offset_of!(hipMemsetParams, width) - 40usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipMemAllocNodeParams {
@@ -6339,22 +4409,6 @@ pub struct hipMemAllocNodeParams {
     #[doc = "< Returned device address of the allocation"]
     pub dptr: *mut ::std::os::raw::c_void,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemAllocNodeParams"][::std::mem::size_of::<hipMemAllocNodeParams>() - 120usize];
-    ["Alignment of hipMemAllocNodeParams"]
-        [::std::mem::align_of::<hipMemAllocNodeParams>() - 8usize];
-    ["Offset of field: hipMemAllocNodeParams::poolProps"]
-        [::std::mem::offset_of!(hipMemAllocNodeParams, poolProps) - 0usize];
-    ["Offset of field: hipMemAllocNodeParams::accessDescs"]
-        [::std::mem::offset_of!(hipMemAllocNodeParams, accessDescs) - 88usize];
-    ["Offset of field: hipMemAllocNodeParams::accessDescCount"]
-        [::std::mem::offset_of!(hipMemAllocNodeParams, accessDescCount) - 96usize];
-    ["Offset of field: hipMemAllocNodeParams::bytesize"]
-        [::std::mem::offset_of!(hipMemAllocNodeParams, bytesize) - 104usize];
-    ["Offset of field: hipMemAllocNodeParams::dptr"]
-        [::std::mem::offset_of!(hipMemAllocNodeParams, dptr) - 112usize];
-};
 pub const hipAccessProperty_hipAccessPropertyNormal: hipAccessProperty = 0;
 pub const hipAccessProperty_hipAccessPropertyStreaming: hipAccessProperty = 1;
 pub const hipAccessProperty_hipAccessPropertyPersisting: hipAccessProperty = 2;
@@ -6368,22 +4422,6 @@ pub struct hipAccessPolicyWindow {
     pub missProp: hipAccessProperty,
     pub num_bytes: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipAccessPolicyWindow"][::std::mem::size_of::<hipAccessPolicyWindow>() - 32usize];
-    ["Alignment of hipAccessPolicyWindow"]
-        [::std::mem::align_of::<hipAccessPolicyWindow>() - 8usize];
-    ["Offset of field: hipAccessPolicyWindow::base_ptr"]
-        [::std::mem::offset_of!(hipAccessPolicyWindow, base_ptr) - 0usize];
-    ["Offset of field: hipAccessPolicyWindow::hitProp"]
-        [::std::mem::offset_of!(hipAccessPolicyWindow, hitProp) - 8usize];
-    ["Offset of field: hipAccessPolicyWindow::hitRatio"]
-        [::std::mem::offset_of!(hipAccessPolicyWindow, hitRatio) - 12usize];
-    ["Offset of field: hipAccessPolicyWindow::missProp"]
-        [::std::mem::offset_of!(hipAccessPolicyWindow, missProp) - 16usize];
-    ["Offset of field: hipAccessPolicyWindow::num_bytes"]
-        [::std::mem::offset_of!(hipAccessPolicyWindow, num_bytes) - 24usize];
-};
 #[doc = "< Valid for Streams, graph nodes, launches"]
 pub const hipLaunchAttributeID_hipLaunchAttributeAccessPolicyWindow: hipLaunchAttributeID = 1;
 #[doc = "< Valid for graph nodes, launches"]
@@ -6403,18 +4441,6 @@ pub union hipLaunchAttributeValue {
     #[doc = "< Value of launch attribute :: hipLaunchAttributePriority. Execution\npriority of kernel."]
     pub priority: ::std::os::raw::c_int,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipLaunchAttributeValue"][::std::mem::size_of::<hipLaunchAttributeValue>() - 32usize];
-    ["Alignment of hipLaunchAttributeValue"]
-        [::std::mem::align_of::<hipLaunchAttributeValue>() - 8usize];
-    ["Offset of field: hipLaunchAttributeValue::accessPolicyWindow"]
-        [::std::mem::offset_of!(hipLaunchAttributeValue, accessPolicyWindow) - 0usize];
-    ["Offset of field: hipLaunchAttributeValue::cooperative"]
-        [::std::mem::offset_of!(hipLaunchAttributeValue, cooperative) - 0usize];
-    ["Offset of field: hipLaunchAttributeValue::priority"]
-        [::std::mem::offset_of!(hipLaunchAttributeValue, priority) - 0usize];
-};
 #[doc = " Memset node params"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6432,24 +4458,6 @@ pub struct HIP_MEMSET_NODE_PARAMS {
     #[doc = "< Number of rows"]
     pub height: usize,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of HIP_MEMSET_NODE_PARAMS"][::std::mem::size_of::<HIP_MEMSET_NODE_PARAMS>() - 40usize];
-    ["Alignment of HIP_MEMSET_NODE_PARAMS"]
-        [::std::mem::align_of::<HIP_MEMSET_NODE_PARAMS>() - 8usize];
-    ["Offset of field: HIP_MEMSET_NODE_PARAMS::dst"]
-        [::std::mem::offset_of!(HIP_MEMSET_NODE_PARAMS, dst) - 0usize];
-    ["Offset of field: HIP_MEMSET_NODE_PARAMS::pitch"]
-        [::std::mem::offset_of!(HIP_MEMSET_NODE_PARAMS, pitch) - 8usize];
-    ["Offset of field: HIP_MEMSET_NODE_PARAMS::value"]
-        [::std::mem::offset_of!(HIP_MEMSET_NODE_PARAMS, value) - 16usize];
-    ["Offset of field: HIP_MEMSET_NODE_PARAMS::elementSize"]
-        [::std::mem::offset_of!(HIP_MEMSET_NODE_PARAMS, elementSize) - 20usize];
-    ["Offset of field: HIP_MEMSET_NODE_PARAMS::width"]
-        [::std::mem::offset_of!(HIP_MEMSET_NODE_PARAMS, width) - 24usize];
-    ["Offset of field: HIP_MEMSET_NODE_PARAMS::height"]
-        [::std::mem::offset_of!(HIP_MEMSET_NODE_PARAMS, height) - 32usize];
-};
 #[doc = "< The update succeeded"]
 pub const hipGraphExecUpdateResult_hipGraphExecUpdateSuccess: hipGraphExecUpdateResult = 0;
 #[doc = "< The update failed for an unexpected reason which is described\n< in the return value of the function"]
@@ -6557,21 +4565,6 @@ pub struct hipGraphInstantiateParams {
     #[doc = "< Upload stream"]
     pub uploadStream: hipStream_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipGraphInstantiateParams"]
-        [::std::mem::size_of::<hipGraphInstantiateParams>() - 32usize];
-    ["Alignment of hipGraphInstantiateParams"]
-        [::std::mem::align_of::<hipGraphInstantiateParams>() - 8usize];
-    ["Offset of field: hipGraphInstantiateParams::errNode_out"]
-        [::std::mem::offset_of!(hipGraphInstantiateParams, errNode_out) - 0usize];
-    ["Offset of field: hipGraphInstantiateParams::flags"]
-        [::std::mem::offset_of!(hipGraphInstantiateParams, flags) - 8usize];
-    ["Offset of field: hipGraphInstantiateParams::result_out"]
-        [::std::mem::offset_of!(hipGraphInstantiateParams, result_out) - 16usize];
-    ["Offset of field: hipGraphInstantiateParams::uploadStream"]
-        [::std::mem::offset_of!(hipGraphInstantiateParams, uploadStream) - 24usize];
-};
 #[doc = " Memory allocation properties"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6596,34 +4589,6 @@ pub struct hipMemAllocationProp__bindgen_ty_1 {
     #[doc = "< Usage"]
     pub usage: ::std::os::raw::c_ushort,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemAllocationProp__bindgen_ty_1"]
-        [::std::mem::size_of::<hipMemAllocationProp__bindgen_ty_1>() - 4usize];
-    ["Alignment of hipMemAllocationProp__bindgen_ty_1"]
-        [::std::mem::align_of::<hipMemAllocationProp__bindgen_ty_1>() - 2usize];
-    ["Offset of field: hipMemAllocationProp__bindgen_ty_1::compressionType"]
-        [::std::mem::offset_of!(hipMemAllocationProp__bindgen_ty_1, compressionType) - 0usize];
-    ["Offset of field: hipMemAllocationProp__bindgen_ty_1::gpuDirectRDMACapable"]
-        [::std::mem::offset_of!(hipMemAllocationProp__bindgen_ty_1, gpuDirectRDMACapable) - 1usize];
-    ["Offset of field: hipMemAllocationProp__bindgen_ty_1::usage"]
-        [::std::mem::offset_of!(hipMemAllocationProp__bindgen_ty_1, usage) - 2usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemAllocationProp"][::std::mem::size_of::<hipMemAllocationProp>() - 32usize];
-    ["Alignment of hipMemAllocationProp"][::std::mem::align_of::<hipMemAllocationProp>() - 8usize];
-    ["Offset of field: hipMemAllocationProp::type_"]
-        [::std::mem::offset_of!(hipMemAllocationProp, type_) - 0usize];
-    ["Offset of field: hipMemAllocationProp::requestedHandleType"]
-        [::std::mem::offset_of!(hipMemAllocationProp, requestedHandleType) - 4usize];
-    ["Offset of field: hipMemAllocationProp::location"]
-        [::std::mem::offset_of!(hipMemAllocationProp, location) - 8usize];
-    ["Offset of field: hipMemAllocationProp::win32HandleMetaData"]
-        [::std::mem::offset_of!(hipMemAllocationProp, win32HandleMetaData) - 16usize];
-    ["Offset of field: hipMemAllocationProp::allocFlags"]
-        [::std::mem::offset_of!(hipMemAllocationProp, allocFlags) - 24usize];
-};
 #[doc = " External semaphore signal node parameters"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6632,19 +4597,6 @@ pub struct hipExternalSemaphoreSignalNodeParams {
     pub paramsArray: *const hipExternalSemaphoreSignalParams,
     pub numExtSems: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreSignalNodeParams"]
-        [::std::mem::size_of::<hipExternalSemaphoreSignalNodeParams>() - 24usize];
-    ["Alignment of hipExternalSemaphoreSignalNodeParams"]
-        [::std::mem::align_of::<hipExternalSemaphoreSignalNodeParams>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalNodeParams::extSemArray"]
-        [::std::mem::offset_of!(hipExternalSemaphoreSignalNodeParams, extSemArray) - 0usize];
-    ["Offset of field: hipExternalSemaphoreSignalNodeParams::paramsArray"]
-        [::std::mem::offset_of!(hipExternalSemaphoreSignalNodeParams, paramsArray) - 8usize];
-    ["Offset of field: hipExternalSemaphoreSignalNodeParams::numExtSems"]
-        [::std::mem::offset_of!(hipExternalSemaphoreSignalNodeParams, numExtSems) - 16usize];
-};
 #[doc = " External semaphore wait node parameters"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6653,19 +4605,6 @@ pub struct hipExternalSemaphoreWaitNodeParams {
     pub paramsArray: *const hipExternalSemaphoreWaitParams,
     pub numExtSems: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipExternalSemaphoreWaitNodeParams"]
-        [::std::mem::size_of::<hipExternalSemaphoreWaitNodeParams>() - 24usize];
-    ["Alignment of hipExternalSemaphoreWaitNodeParams"]
-        [::std::mem::align_of::<hipExternalSemaphoreWaitNodeParams>() - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitNodeParams::extSemArray"]
-        [::std::mem::offset_of!(hipExternalSemaphoreWaitNodeParams, extSemArray) - 0usize];
-    ["Offset of field: hipExternalSemaphoreWaitNodeParams::paramsArray"]
-        [::std::mem::offset_of!(hipExternalSemaphoreWaitNodeParams, paramsArray) - 8usize];
-    ["Offset of field: hipExternalSemaphoreWaitNodeParams::numExtSems"]
-        [::std::mem::offset_of!(hipExternalSemaphoreWaitNodeParams, numExtSems) - 16usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct ihipMemGenericAllocationHandle {
@@ -6729,17 +4668,6 @@ pub union hipArrayMapInfo__bindgen_ty_1 {
     pub mipmap: hipMipmappedArray,
     pub array: hipArray_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipArrayMapInfo__bindgen_ty_1"]
-        [::std::mem::size_of::<hipArrayMapInfo__bindgen_ty_1>() - 64usize];
-    ["Alignment of hipArrayMapInfo__bindgen_ty_1"]
-        [::std::mem::align_of::<hipArrayMapInfo__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_1::mipmap"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_1, mipmap) - 0usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_1::array"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_1, array) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union hipArrayMapInfo__bindgen_ty_2 {
@@ -6766,35 +4694,6 @@ pub struct hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1 {
     #[doc = "< Depth in elements"]
     pub extentDepth: ::std::os::raw::c_uint,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1"]
-        [::std::mem::size_of::<hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1>() - 32usize];
-    ["Alignment of hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1"]
-        [::std::mem::align_of::<hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1>() - 4usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::level"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1, level) - 0usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::layer"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1, layer) - 4usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::offsetX"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1, offsetX) - 8usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::offsetY"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1, offsetY) - 12usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::offsetZ"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1, offsetZ) - 16usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::extentWidth"][::std::mem::offset_of!(
-        hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1,
-        extentWidth
-    ) - 20usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::extentHeight"][::std::mem::offset_of!(
-        hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1,
-        extentHeight
-    ) - 24usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1::extentDepth"][::std::mem::offset_of!(
-        hipArrayMapInfo__bindgen_ty_2__bindgen_ty_1,
-        extentDepth
-    ) - 28usize];
-};
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2 {
@@ -6805,71 +4704,11 @@ pub struct hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2 {
     #[doc = "< Extent in bytes"]
     pub size: ::std::os::raw::c_ulonglong,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2"]
-        [::std::mem::size_of::<hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2>() - 24usize];
-    ["Alignment of hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2"]
-        [::std::mem::align_of::<hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2>() - 8usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2::layer"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2, layer) - 0usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2::offset"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2, offset) - 8usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2::size"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2__bindgen_ty_2, size) - 16usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipArrayMapInfo__bindgen_ty_2"]
-        [::std::mem::size_of::<hipArrayMapInfo__bindgen_ty_2>() - 32usize];
-    ["Alignment of hipArrayMapInfo__bindgen_ty_2"]
-        [::std::mem::align_of::<hipArrayMapInfo__bindgen_ty_2>() - 8usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2::sparseLevel"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2, sparseLevel) - 0usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_2::miptail"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_2, miptail) - 0usize];
-};
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union hipArrayMapInfo__bindgen_ty_3 {
     pub memHandle: hipMemGenericAllocationHandle_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipArrayMapInfo__bindgen_ty_3"]
-        [::std::mem::size_of::<hipArrayMapInfo__bindgen_ty_3>() - 8usize];
-    ["Alignment of hipArrayMapInfo__bindgen_ty_3"]
-        [::std::mem::align_of::<hipArrayMapInfo__bindgen_ty_3>() - 8usize];
-    ["Offset of field: hipArrayMapInfo__bindgen_ty_3::memHandle"]
-        [::std::mem::offset_of!(hipArrayMapInfo__bindgen_ty_3, memHandle) - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipArrayMapInfo"][::std::mem::size_of::<hipArrayMapInfo>() - 152usize];
-    ["Alignment of hipArrayMapInfo"][::std::mem::align_of::<hipArrayMapInfo>() - 8usize];
-    ["Offset of field: hipArrayMapInfo::resourceType"]
-        [::std::mem::offset_of!(hipArrayMapInfo, resourceType) - 0usize];
-    ["Offset of field: hipArrayMapInfo::resource"]
-        [::std::mem::offset_of!(hipArrayMapInfo, resource) - 8usize];
-    ["Offset of field: hipArrayMapInfo::subresourceType"]
-        [::std::mem::offset_of!(hipArrayMapInfo, subresourceType) - 72usize];
-    ["Offset of field: hipArrayMapInfo::subresource"]
-        [::std::mem::offset_of!(hipArrayMapInfo, subresource) - 80usize];
-    ["Offset of field: hipArrayMapInfo::memOperationType"]
-        [::std::mem::offset_of!(hipArrayMapInfo, memOperationType) - 112usize];
-    ["Offset of field: hipArrayMapInfo::memHandleType"]
-        [::std::mem::offset_of!(hipArrayMapInfo, memHandleType) - 116usize];
-    ["Offset of field: hipArrayMapInfo::memHandle"]
-        [::std::mem::offset_of!(hipArrayMapInfo, memHandle) - 120usize];
-    ["Offset of field: hipArrayMapInfo::offset"]
-        [::std::mem::offset_of!(hipArrayMapInfo, offset) - 128usize];
-    ["Offset of field: hipArrayMapInfo::deviceBitMask"]
-        [::std::mem::offset_of!(hipArrayMapInfo, deviceBitMask) - 136usize];
-    ["Offset of field: hipArrayMapInfo::flags"]
-        [::std::mem::offset_of!(hipArrayMapInfo, flags) - 140usize];
-    ["Offset of field: hipArrayMapInfo::reserved"]
-        [::std::mem::offset_of!(hipArrayMapInfo, reserved) - 144usize];
-};
 #[doc = " Memcpy node params"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6881,17 +4720,6 @@ pub struct hipMemcpyNodeParams {
     #[doc = "< Params set for the memory copy."]
     pub copyParams: hipMemcpy3DParms,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemcpyNodeParams"][::std::mem::size_of::<hipMemcpyNodeParams>() - 176usize];
-    ["Alignment of hipMemcpyNodeParams"][::std::mem::align_of::<hipMemcpyNodeParams>() - 8usize];
-    ["Offset of field: hipMemcpyNodeParams::flags"]
-        [::std::mem::offset_of!(hipMemcpyNodeParams, flags) - 0usize];
-    ["Offset of field: hipMemcpyNodeParams::reserved"]
-        [::std::mem::offset_of!(hipMemcpyNodeParams, reserved) - 4usize];
-    ["Offset of field: hipMemcpyNodeParams::copyParams"]
-        [::std::mem::offset_of!(hipMemcpyNodeParams, copyParams) - 16usize];
-};
 #[doc = " Child graph node params"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6899,14 +4727,6 @@ pub struct hipChildGraphNodeParams {
     #[doc = "< Either the child graph to clone into the node, or\n< a handle to the graph possesed by the node used during query"]
     pub graph: hipGraph_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipChildGraphNodeParams"][::std::mem::size_of::<hipChildGraphNodeParams>() - 8usize];
-    ["Alignment of hipChildGraphNodeParams"]
-        [::std::mem::align_of::<hipChildGraphNodeParams>() - 8usize];
-    ["Offset of field: hipChildGraphNodeParams::graph"]
-        [::std::mem::offset_of!(hipChildGraphNodeParams, graph) - 0usize];
-};
 #[doc = " Event record node params"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6914,14 +4734,6 @@ pub struct hipEventWaitNodeParams {
     #[doc = "< Event to wait on"]
     pub event: hipEvent_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipEventWaitNodeParams"][::std::mem::size_of::<hipEventWaitNodeParams>() - 8usize];
-    ["Alignment of hipEventWaitNodeParams"]
-        [::std::mem::align_of::<hipEventWaitNodeParams>() - 8usize];
-    ["Offset of field: hipEventWaitNodeParams::event"]
-        [::std::mem::offset_of!(hipEventWaitNodeParams, event) - 0usize];
-};
 #[doc = " Event record node params"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6929,15 +4741,6 @@ pub struct hipEventRecordNodeParams {
     #[doc = "< The event to be recorded when node executes"]
     pub event: hipEvent_t,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipEventRecordNodeParams"]
-        [::std::mem::size_of::<hipEventRecordNodeParams>() - 8usize];
-    ["Alignment of hipEventRecordNodeParams"]
-        [::std::mem::align_of::<hipEventRecordNodeParams>() - 8usize];
-    ["Offset of field: hipEventRecordNodeParams::event"]
-        [::std::mem::offset_of!(hipEventRecordNodeParams, event) - 0usize];
-};
 #[doc = " Memory free node params"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -6945,13 +4748,6 @@ pub struct hipMemFreeNodeParams {
     #[doc = "< the pointer to be freed"]
     pub dptr: *mut ::std::os::raw::c_void,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipMemFreeNodeParams"][::std::mem::size_of::<hipMemFreeNodeParams>() - 8usize];
-    ["Alignment of hipMemFreeNodeParams"][::std::mem::align_of::<hipMemFreeNodeParams>() - 8usize];
-    ["Offset of field: hipMemFreeNodeParams::dptr"]
-        [::std::mem::offset_of!(hipMemFreeNodeParams, dptr) - 0usize];
-};
 #[doc = " Params for different graph nodes"]
 #[repr(C)]
 #[derive(Copy, Clone)]
@@ -6977,48 +4773,6 @@ pub union hipGraphNodeParams__bindgen_ty_1 {
     pub alloc: hipMemAllocNodeParams,
     pub free: hipMemFreeNodeParams,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipGraphNodeParams__bindgen_ty_1"]
-        [::std::mem::size_of::<hipGraphNodeParams__bindgen_ty_1>() - 232usize];
-    ["Alignment of hipGraphNodeParams__bindgen_ty_1"]
-        [::std::mem::align_of::<hipGraphNodeParams__bindgen_ty_1>() - 8usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::reserved1"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, reserved1) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::kernel"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, kernel) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::memcpy"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, memcpy) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::memset"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, memset) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::host"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, host) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::graph"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, graph) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::eventWait"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, eventWait) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::eventRecord"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, eventRecord) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::extSemSignal"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, extSemSignal) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::extSemWait"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, extSemWait) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::alloc"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, alloc) - 0usize];
-    ["Offset of field: hipGraphNodeParams__bindgen_ty_1::free"]
-        [::std::mem::offset_of!(hipGraphNodeParams__bindgen_ty_1, free) - 0usize];
-};
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipGraphNodeParams"][::std::mem::size_of::<hipGraphNodeParams>() - 256usize];
-    ["Alignment of hipGraphNodeParams"][::std::mem::align_of::<hipGraphNodeParams>() - 8usize];
-    ["Offset of field: hipGraphNodeParams::type_"]
-        [::std::mem::offset_of!(hipGraphNodeParams, type_) - 0usize];
-    ["Offset of field: hipGraphNodeParams::reserved0"]
-        [::std::mem::offset_of!(hipGraphNodeParams, reserved0) - 4usize];
-    ["Offset of field: hipGraphNodeParams::reserved2"]
-        [::std::mem::offset_of!(hipGraphNodeParams, reserved2) - 248usize];
-};
 pub const hipGraphDependencyType_hipGraphDependencyTypeDefault: hipGraphDependencyType = 0;
 pub const hipGraphDependencyType_hipGraphDependencyTypeProgrammatic: hipGraphDependencyType = 1;
 pub type hipGraphDependencyType = ::std::os::raw::c_uint;
@@ -7034,19 +4788,6 @@ pub struct hipGraphEdgeData {
     #[doc = "< This should be populated with a value from hipGraphDependencyType"]
     pub type_: ::std::os::raw::c_uchar,
 }
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of hipGraphEdgeData"][::std::mem::size_of::<hipGraphEdgeData>() - 8usize];
-    ["Alignment of hipGraphEdgeData"][::std::mem::align_of::<hipGraphEdgeData>() - 1usize];
-    ["Offset of field: hipGraphEdgeData::from_port"]
-        [::std::mem::offset_of!(hipGraphEdgeData, from_port) - 0usize];
-    ["Offset of field: hipGraphEdgeData::reserved"]
-        [::std::mem::offset_of!(hipGraphEdgeData, reserved) - 1usize];
-    ["Offset of field: hipGraphEdgeData::to_port"]
-        [::std::mem::offset_of!(hipGraphEdgeData, to_port) - 6usize];
-    ["Offset of field: hipGraphEdgeData::type_"]
-        [::std::mem::offset_of!(hipGraphEdgeData, type_) - 7usize];
-};
 extern "C" {
     #[doc = " @}\n/\n/**\n  @defgroup API HIP API\n  @{\n\n  Defines the HIP API.  See the individual sections for more information.\n/\n/**\n  @defgroup Driver Initialization and Version\n  @{\n  This section describes the initializtion and version functions of HIP runtime API.\n\n/\n/**\n @brief Explicitly initializes the HIP runtime.\n\n @param [in] flags  Initialization flag, should be zero.\n\n Most HIP APIs implicitly initialize the HIP runtime.\n This API provides control over the timing of the initialization.\n\n @returns #hipSuccess, #hipErrorInvalidValue"]
     pub fn hipInit(flags: ::std::os::raw::c_uint) -> hipError_t;
