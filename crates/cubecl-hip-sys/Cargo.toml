@@ -12,7 +12,7 @@ version.workspace = true
 rust-version = "1.81"
 
 [features]
-default = ["rocm_622"]
+default = ["rocm_624"]
 rocm_622 = []
 rocm_624 = []
 
