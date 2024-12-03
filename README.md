@@ -44,6 +44,7 @@ Here is the table of currently available bindings:
 | Version | Feature  | Crates         |
 |:--------|:---------|:---------------|
 | 6.2.2   | rocm_622 | cubecl-hip-sys |
+| 6.2.4   | rocm_624 | cubecl-hip-sys |
 
 Here is a table of the libraries covered by each crate:
 

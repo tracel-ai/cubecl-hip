@@ -4,7 +4,7 @@ env:
   TYPOS_LINK: "https://github.com/crate-ci/typos/releases/download"
   TYPOS_VERSION: "1.23.4"
   CUBECL_ROCM_PATH: "/opt/rocm"
-  ROCM_VERSION_FEATURE: "rocm_622"
+  ROCM_VERSION_FEATURE: "rocm_624"
 
 on:
   push:
