@@ -62,18 +62,23 @@ Here is a table of the libraries covered by each crate:
 |:---------------|:-----------------|
 | cubecl-hip-sys | hiprtc, amdhip64 |
 
-
 ## Running tests
 
 To run tests you need to first meet the expectations for both `Prerequisites` and `Usage`
 sections.
 
-Then execute the following xtask command and provide the feature that corresponds to your
-ROCm installation. For instance for the version `6.2.4`:
+Then execute the following xtask command. If you want to test against a different version of
+ROCm than the default one, use the `-v <version>`, for instance `-v 6.2.2`:
 
 ```sh
-cargo xtask test --no-default-features --features rocm_622
+# test default ROCm bindings
+cargo xtask test
+# test a specific version
+cargo xtask test -v rocm_622
 ```
+
+Important: always make sure that ROCm environment variable (see Usage) points to a version that matches the
+tested version.
 
 ## Generate bindings for a given version of ROCm
 
@@ -97,6 +102,11 @@ rocm_624 = []
 ```
 
 4) Replace the default feature in the `Cargo.toml` file be the latest one, in this case `rocm_624`.
+
+```toml
+[features]
+default = ["rocm_624"]
+```
 
 5) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
 conditionally to the new feature you just declared as well as the re-exports:

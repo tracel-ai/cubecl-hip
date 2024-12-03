@@ -6,10 +6,12 @@ extern crate log;
 use std::time::Instant;
 use tracel_xtask::prelude::*;
 
-#[macros::base_commands(Build, Bump, Check, Compile, Doc, Fix, Publish, Test, Validate)]
+#[macros::base_commands(Build, Bump, Check, Compile, Doc, Fix, Publish, Validate)]
 enum Command {
     /// Generate bindings.
     Bindgen(commands::bindgen::BindgenCmdArgs),
+    /// Test bindings.
+    Test(commands::test::CubeClHipTestCmdArgs),
 }
 
 fn main() -> anyhow::Result<()> {

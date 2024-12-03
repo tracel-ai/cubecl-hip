@@ -4,7 +4,6 @@ env:
   TYPOS_LINK: "https://github.com/crate-ci/typos/releases/download"
   TYPOS_VERSION: "1.23.4"
   CUBECL_ROCM_PATH: "/opt/rocm"
-  ROCM_VERSION_FEATURE: "rocm_624"
 
 on:
   push:
@@ -50,13 +49,13 @@ jobs:
       - name: Lint
         run: cargo xtask check lint
       # --------------------------------------------------------------------------------
-      - name: Unit Tests
+      - name: Unit Tests (default ROCm version)
         shell: bash
-        run: cargo xtask test --features ${{ env.ROCM_VERSION_FEATURE }} unit
+        run: cargo xtask test unit
       # --------------------------------------------------------------------------------
-      - name: Integration Tests
+      - name: Integration Tests (default ROCm version)
         shell: bash
-        run: cargo xtask test  --features ${{ env.ROCM_VERSION_FEATURE }} integration
+        run: cargo xtask test integration
       # --------------------------------------------------------------------------------
       - name: Documentation Tests
         shell: bash
