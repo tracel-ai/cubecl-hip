@@ -17,6 +17,7 @@ fn main() -> anyhow::Result<()> {
     let args = init_xtask::<Command>()?;
     match args.command {
         Command::Bindgen(cmd_args) => commands::bindgen::handle_command(cmd_args),
+        Command::Test(cmd_args) => commands::test::handle_command(cmd_args),
         _ => dispatch_base_commands(args),
     }?;
     let duration = start.elapsed();
