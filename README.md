@@ -73,8 +73,8 @@ ROCm than the default one, use the `-v <version>`, for instance `-v 6.2.2`:
 ```sh
 # test default ROCm bindings
 cargo xtask test
-# test a specific version
-cargo xtask test -v rocm_622
+# test a specific version that is not the default
+cargo xtask test -v 6.2.2
 ```
 
 Important: always make sure that ROCm environment variable (see Usage) points to a version that matches the
