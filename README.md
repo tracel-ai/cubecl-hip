@@ -72,7 +72,7 @@ Then execute the following xtask command and provide the feature that correspond
 ROCm installation. For instance for the version `6.2.4`:
 
 ```sh
-cargo xtask test --features rocm_622
+cargo xtask test --no-default-features --features rocm_622
 ```
 
 ## Generate bindings for a given version of ROCm
