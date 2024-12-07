@@ -64,10 +64,10 @@ fn check_version(rocm_path: impl AsRef<Path>) -> std::io::Result<bool> {
 }
 
 fn main() {
-    println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-env-changed=CUBECL_ROCM_PATH");
-    println!("cargo:rerun-if-env-changed=ROCM_PATH");
-    println!("cargo:rerun-if-env-changed=HIP_PATH");
+    println!("cargo::rerun-if-changed=build.rs");
+    println!("cargo::rerun-if-env-changed=CUBECL_ROCM_PATH");
+    println!("cargo::rerun-if-env-changed=ROCM_PATH");
+    println!("cargo::rerun-if-env-changed=HIP_PATH");
 
     let mut paths: Vec<_> = ["CUBECL_ROCM_PATH", "ROCM_PATH", "HIP_PATH"]
         .into_iter()
@@ -87,9 +87,9 @@ fn main() {
     let rocm_path = rocm_path_candidates.find(|path| check_version(path).unwrap_or_default());
 
     if let Some(valid_rocm_path) = rocm_path {
-        println!("cargo:rustc-link-lib=dylib=hiprtc");
-        println!("cargo:rustc-link-lib=dylib=amdhip64");
-        println!("cargo:rustc-link-search=native={}/lib", valid_rocm_path);
+        println!("cargo::rustc-link-lib=dylib=hiprtc");
+        println!("cargo::rustc-link-lib=dylib=amdhip64");
+        println!("cargo::rustc-link-search=native={}/lib", valid_rocm_path);
     } else if have_candidates {
         panic!(
             "None of the found ROCm installations match crate version {}",
