@@ -51,10 +51,10 @@ installation base directory, it is often `/opt/rocm`.
 
 Here is the table of currently available bindings:
 
-| Version | Feature  | Crates         |
-|:--------|:---------|:---------------|
-| 6.2.2   | rocm_622 | cubecl-hip-sys |
-| 6.2.4   | rocm_624 | cubecl-hip-sys |
+| ROCm Version | Feature     | Crates         | Latest create version |
+|:-------------|:------------|:---------------|:----------------------|
+| 6.2.2        | rocm__6_2_2 | cubecl-hip-sys | 6.2.2002              |
+| 6.2.4        | rocm__6_2_4 | cubecl-hip-sys | 6.2.4001              |
 
 Here is a table of the libraries covered by each crate:
 
@@ -93,28 +93,28 @@ cargo xtask bindgen -c cubecl-hip-sys -v 6.2.4
 ```
 
 3) Declare a new feature in the `Cargo.toml` of the corresponding crate `cubecl-hip-sys` with
-the format `rocm_<version>` where `<version>` is the ROCm version without any separator. For
+the format `rocm__<version>` where `<version>` is the ROCm version with `_` separator. For
 instance for the version `6.2.4`:
 
 ```toml
 [features]
-rocm_624 = []
+rocm__6_2_4 = []
 ```
 
-4) Replace the default feature in the `Cargo.toml` file be the latest one, in this case `rocm_624`.
+4) Replace the default feature in the `Cargo.toml` file be the latest one, in this case `rocm__6_2_4`.
 
 ```toml
 [features]
-default = ["rocm_624"]
+default = ["rocm__6_2_4"]
 ```
 
 5) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
 conditionally to the new feature you just declared as well as the re-exports:
 
 ```rs
-#[cfg(feature = "rocm_624")]
+#[cfg(feature = "rocm__6_2_4")]
 mod bindings_624;
-#[cfg(feature = "rocm_624")]
+#[cfg(feature = "rocm__6_2_4")]
 pub use bindings_624::*;
 ```
 
