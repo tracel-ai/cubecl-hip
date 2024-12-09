@@ -7,32 +7,42 @@ fn get_system_hip_version(rocm_path: impl AsRef<Path>) -> std::io::Result<(u8, u
     let version_file = std::fs::read_to_string(version_path)?;
     let version_lines = version_file.lines().collect::<Vec<_>>();
 
-    let major_line = version_lines
+    let system_major = version_lines
         .iter()
-        .find_map(|line| line.strip_prefix("#define HIP_VERSION_MAJOR "));
-    let minor_line = version_lines
-        .iter()
-        .find_map(|line| line.strip_prefix("#define HIP_VERSION_MINOR "));
-    let patch_line = version_lines
-        .iter()
-        .find_map(|line| line.strip_prefix("#define HIP_VERSION_PATCH "));
-
-    let system_major = major_line
+        .find_map(|line| line.strip_prefix("#define HIP_VERSION_MAJOR "))
         .expect("Invalid hip_version.h file structure: Major version line not found")
         .parse::<u8>()
         .expect("Invalid hip_version.h file structure: Couldn't parse major version");
-    let system_minor = minor_line
+    let system_minor = version_lines
+        .iter()
+        .find_map(|line| line.strip_prefix("#define HIP_VERSION_MINOR "))
         .expect("Invalid hip_version.h file structure: Minor version line not found")
         .parse::<u8>()
         .expect("Invalid hip_version.h file structure: Couldn't parse minor version");
-    // This should be divided by 10000, because the rest are magic numbers
-    let system_patch = patch_line
+    let system_patch = version_lines
+        .iter()
+        .find_map(|line| line.strip_prefix("#define HIP_VERSION_PATCH "))
         .expect("Invalid hip_version.h file structure: Patch version line not found")
         .parse::<u32>()
-        .expect("Invalid hip_version.h file structure: Couldn't parse patch version")
-        / 10000;
+        .expect("Invalid hip_version.h file structure: Couldn't parse patch version");
+    let release_patch = hip_header_patch_number_to_release_patch_number(system_patch);
+    if release_patch.is_none() {
+        println!("cargo::warning=Unknown release version for patch version {system_patch}. This patch does not correspond to an official release patch.");
+    }
 
-    Ok((system_major, system_minor, system_patch))
+    Ok((system_major, system_minor, release_patch.unwrap_or(system_patch)))
+}
+
+/// The official patch number of a ROCm release is not the same of the patch number
+/// in the header files. In the header files the patch number seems to be a monotonic
+/// build number.
+/// This function maps the header patch number to their official release number.
+fn hip_header_patch_number_to_release_patch_number(number: u32) -> Option<u32> {
+    match number {
+        41134 => Some(4), // 6.2.4 (actually corresponds to most of 6.2.x versions for some reasons, we set to the last patch version)
+        42131 => Some(0), // 6.3.0
+        _ => None,
+    }
 }
 
 /// Checks if the version inside `rocm_path` matches crate version
