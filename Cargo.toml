@@ -11,7 +11,7 @@ members = [
 
 [workspace.package]
 edition = "2021"
-version = "6.2.2002"
+version = "6.2.2003"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 

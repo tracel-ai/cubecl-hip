@@ -53,7 +53,7 @@ Here is the table of currently available bindings:
 
 | ROCm Version | Feature     | Crates         | Latest create version |
 |:-------------|:------------|:---------------|:----------------------|
-| 6.2.2        | rocm__6_2_2 | cubecl-hip-sys | 6.2.2002              |
+| 6.2.2        | rocm__6_2_2 | cubecl-hip-sys | 6.2.2003              |
 | 6.2.4        | rocm__6_2_4 | cubecl-hip-sys | 6.2.4001              |
 
 Here is a table of the libraries covered by each crate:
