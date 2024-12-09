@@ -40,12 +40,14 @@ fn get_system_hip_version(rocm_path: impl AsRef<Path>) -> std::io::Result<(u8, u
 }
 
 /// The official patch number of a ROCm release is not the same of the patch number
-/// in the header files. In the header files the patch number seems to be a monotonic
-/// build number.
-/// This function maps the header patch number to their official release number.
+/// in the header files. In the header files the patch number is a monotonic build
+/// that changes only when there are actual changes in the HIP libraries.
+/// This function maps the header patch number to their official latest release number.
+/// For instance if both version 6.2.2 and 6.2.4 have the same patch version in their
+/// header file then this function will return 4.
 fn hip_header_patch_number_to_release_patch_number(number: u32) -> Option<u32> {
     match number {
-        41134 => Some(4), // 6.2.4 (actually corresponds to most of 6.2.x versions for some reasons, we set to the last patch version)
+        41134 => Some(4), // 6.2.4
         42131 => Some(0), // 6.3.0
         _ => None,
     }
