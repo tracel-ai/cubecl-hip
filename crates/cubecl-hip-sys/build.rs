@@ -43,7 +43,7 @@ fn get_system_hip_version(rocm_path: impl AsRef<Path>) -> std::io::Result<(u8, u
 /// in the header files. In the header files the patch number is a monotonic build
 /// that changes only when there are actual changes in the HIP libraries.
 /// This function maps the header patch number to their official latest release number.
-/// For instance if both version 6.2.2 and 6.2.4 have the same patch version in their
+/// For instance if both versions 6.2.2 and 6.2.4 have the same patch version in their
 /// header file then this function will return 4.
 fn hip_header_patch_number_to_release_patch_number(number: u32) -> Option<u32> {
     match number {
@@ -74,7 +74,7 @@ fn get_rocm_feature_version() -> io::Result<(u8, u8, u32)> {
 
     Err(io::Error::new(
         io::ErrorKind::NotFound,
-        "No valid ROCm feature version found. One 'rocm__<version>' feature must be set. For insance for ROCm 6.2.2 the feature is rocm__6_2_2.",
+        "No valid ROCm feature version found. One 'rocm__<version>' feature must be set. For instance for ROCm 6.2.2 the feature is rocm__6_2_2.",
     ))
 }
 
