@@ -58,7 +58,6 @@ fn get_rocm_feature_version() -> io::Result<(u8, u8, u32)> {
     for (key, value) in env::vars() {
         if key.starts_with(ROCM_FEATURE_PREFIX) && value == "1" {
             if let Some(version) = key.strip_prefix(ROCM_FEATURE_PREFIX) {
-                // Parse the version using `_` as the delimiter
                 let parts: Vec<&str> = version.split('_').collect();
                 if parts.len() == 3 {
                     if let (Ok(major), Ok(minor), Ok(patch)) = (
@@ -75,7 +74,7 @@ fn get_rocm_feature_version() -> io::Result<(u8, u8, u32)> {
 
     Err(io::Error::new(
         io::ErrorKind::NotFound,
-        "No valid ROCm feature version found. One 'rocm_<version>' feature must be set.",
+        "No valid ROCm feature version found. One 'rocm__<version>' feature must be set. For insance for ROCm 6.2.2 the feature is rocm__6_2_2.",
     ))
 }
 
