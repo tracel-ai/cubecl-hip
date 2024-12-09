@@ -1,5 +1,5 @@
-use std::{env, io};
 use std::path::Path;
+use std::{env, io};
 
 const ROCM_FEATURE_PREFIX: &str = "CARGO_FEATURE_ROCM__";
 
@@ -32,7 +32,11 @@ fn get_system_hip_version(rocm_path: impl AsRef<Path>) -> std::io::Result<(u8, u
         println!("cargo::warning=Unknown release version for patch version {system_patch}. This patch does not correspond to an official release patch.");
     }
 
-    Ok((system_major, system_minor, release_patch.unwrap_or(system_patch)))
+    Ok((
+        system_major,
+        system_minor,
+        release_patch.unwrap_or(system_patch),
+    ))
 }
 
 /// The official patch number of a ROCm release is not the same of the patch number
@@ -79,12 +83,15 @@ fn ensure_single_rocm_feature_set() {
 
     for (key, value) in env::vars() {
         if key.starts_with(ROCM_FEATURE_PREFIX) && value == "1" {
-            enabled_features.push(format!("rocm__{}", key.strip_prefix(ROCM_FEATURE_PREFIX).unwrap()));
+            enabled_features.push(format!(
+                "rocm__{}",
+                key.strip_prefix(ROCM_FEATURE_PREFIX).unwrap()
+            ));
         }
     }
 
     match enabled_features.len() {
-        1 => {},
+        1 => {}
         0 => panic!("No ROCm version features are enabled. One ROCm version feature must be set."),
         _ => panic!(
             "Multiple ROCm version features are enabled: {:?}. Only one can be set.",
