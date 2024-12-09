@@ -24,12 +24,13 @@ pub(crate) fn handle_command(args: BindgenCmdArgs) -> anyhow::Result<()> {
 
 fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> anyhow::Result<()> {
     let include_path = get_include_path(installation_path, version)?;
+    let hip_version = build_script::get_hip_system_version(include_path.clone())?;
     let members = get_workspace_members(WorkspaceMemberType::Crate);
     for member in members {
         if member.name == "all" || crates.contains(&member.name) {
             group_info!("Generate bindings: {}", member.name);
             let header_path = get_wrapper_file_path(&member)?;
-            let bindings_path = get_bindings_file_path(&member, version)?;
+            let bindings_path = get_bindings_file_path(&member, &hip_version)?;
             // Generate bindings using bindgen
             let bindings = bindgen::Builder::default()
                 .header(header_path)
@@ -49,8 +50,8 @@ fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> any
     Ok(())
 }
 
-fn get_rocm_path(installation_path: &str, version: &str) -> anyhow::Result<PathBuf> {
-    let path = Path::new(installation_path).join(format!("rocm-{}", version));
+fn get_rocm_path(installation_path: &str, rocm_version: &str) -> anyhow::Result<PathBuf> {
+    let path = Path::new(installation_path).join(format!("rocm-{}", rocm_version));
     if path.exists() {
         Ok(path)
     } else {
@@ -61,8 +62,8 @@ fn get_rocm_path(installation_path: &str, version: &str) -> anyhow::Result<PathB
     }
 }
 
-fn get_include_path(installation_path: &str, version: &str) -> anyhow::Result<String> {
-    let path = get_rocm_path(installation_path, version)?.join("include");
+fn get_include_path(installation_path: &str, rocm_version: &str) -> anyhow::Result<String> {
+    let path = get_rocm_path(installation_path, rocm_version)?.join("include");
     if path.exists() {
         Ok(path.to_string_lossy().into_owned())
     } else {
@@ -85,9 +86,9 @@ fn get_output_path(member: &WorkspaceMember) -> anyhow::Result<PathBuf> {
     }
 }
 
-fn get_bindings_file_path(member: &WorkspaceMember, version: &str) -> anyhow::Result<String> {
+fn get_bindings_file_path(member: &WorkspaceMember, version: &build_script::Version) -> anyhow::Result<String> {
     let out_path = get_output_path(member)?;
-    let path = out_path.join(format!("bindings_{}.rs", version.replace('.', "")));
+    let path = out_path.join(format!("bindings_{}.rs", version.patch));
     Ok(path.to_string_lossy().into_owned())
 }
 
