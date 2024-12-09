@@ -12,9 +12,9 @@ version.workspace = true
 rust-version = "1.81"
 
 [features]
-default = ["rocm_624"]
-rocm_622 = []
-rocm_624 = []
+default = ["rocm__6_2_2"]
+rocm__6_2_2 = []
+rocm__6_2_4 = []
 
 [dependencies]
 libc = { workspace = true }
