@@ -12,7 +12,7 @@ version.workspace = true
 rust-version = "1.81"
 
 [features]
-default = ["rocm__6_2_4"]
+default = ["rocm__6_3_0"]
 
 # ROCm versions
 rocm__6_2_2 = [ "hip_41134" ]
