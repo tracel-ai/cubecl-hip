@@ -51,11 +51,11 @@ installation base directory, it is often `/opt/rocm`.
 
 Here is the table of currently available bindings:
 
-| ROCm Version | Feature     | Crates         | Latest create version |
-|:-------------|:------------|:---------------|:----------------------|
-| 6.2.2        | rocm__6_2_2 | cubecl-hip-sys | 6.2.2003              |
-| 6.2.4        | rocm__6_2_4 | cubecl-hip-sys | 6.2.4001              |
-| 6.3.0        | rocm__6_3_0 | cubecl-hip-sys | 6.3.0000              |
+| ROCm Version | Feature     | Crates         |
+|:-------------|:------------|:---------------|
+| 6.2.2        | rocm__6_2_2 | cubecl-hip-sys |
+| 6.2.4        | rocm__6_2_4 | cubecl-hip-sys |
+| 6.3.0        | rocm__6_3_0 | cubecl-hip-sys |
 
 Here is a table of the libraries covered by each crate:
 
