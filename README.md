@@ -55,6 +55,7 @@ Here is the table of currently available bindings:
 |:-------------|:------------|:---------------|:----------------------|
 | 6.2.2        | rocm__6_2_2 | cubecl-hip-sys | 6.2.2003              |
 | 6.2.4        | rocm__6_2_4 | cubecl-hip-sys | 6.2.4001              |
+| 6.3.0        | rocm__6_3_0 | cubecl-hip-sys | 6.3.0000              |
 
 Here is a table of the libraries covered by each crate:
 
@@ -86,44 +87,56 @@ tested version.
 and `Usage` sections.
 
 2) Generate the bindings using the dedicated xtask command `bindgen`. For instance, to generate
-the bindings for the crate `cubecl-hip-sys` and the ROCm version `6.2.4`:
+the bindings for the crate `cubecl-hip-sys` and the ROCm version `6.3.0`:
 
 ```sh
-cargo xtask bindgen -c cubecl-hip-sys -v 6.2.4
+cargo xtask bindgen -c cubecl-hip-sys -v 6.3.0
 ```
 
-3) Declare a new feature in the `Cargo.toml` of the corresponding crate `cubecl-hip-sys` with
-the format `rocm__<version>` where `<version>` is the ROCm version with `_` separator. For
-instance for the version `6.2.4`:
+3) If the HIP bindings patch version has changed, declare a new `hip` feature in the `Cargo.toml`
+of the corresponding crate `cubecl-hip-sys` with the format `hip_<patch_version>`. For instance
+the version `6.3.0` has a new HIP patch version which is `42131`. Is the patch version did not
+change then skip this step.
 
 ```toml
 [features]
-rocm__6_2_4 = []
+hip_42131 = []
 ```
 
-4) Replace the default feature in the `Cargo.toml` file be the latest one, in this case `rocm__6_2_4`.
+4) Declare a new `rocm` feature in the `Cargo.toml` of the corresponding crate `cubecl-hip-sys`
+with the format `rocm__<version>` where `<version>` is the ROCm version with `_` separator and
+add a dependency on its corresponding HIP bindings patch version. Note that sometimes the HIP
+bindings are not changed between two version of ROCm, in this case reuse the already existing
+hip feature.
 
 ```toml
 [features]
-default = ["rocm__6_2_4"]
+rocm__6_3_0 = [ "hip_42131" ]
+```
+
+4) Replace the default feature in the `Cargo.toml` file be the latest one, in this case `rocm__6_3_0`.
+
+```toml
+[features]
+default = ["rocm__6_3_0"]
 ```
 
 5) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
 conditionally to the new feature you just declared as well as the re-exports:
 
 ```rs
-#[cfg(feature = "rocm__6_2_4")]
-mod bindings_624;
-#[cfg(feature = "rocm__6_2_4")]
-pub use bindings_624::*;
+#[cfg(feature = "hip_42131")]
+mod bindings_42131;
+#[cfg(feature = "hip_42131")]
+pub use bindings_42131::*;
 ```
 
-6) Run the tests as explain in the previous section. Use the new feature you just created.
-Currently there is no test selection mechanism in place given a ROCm version. If there are
-errors you can use conditional attributes for now.
+6) Run the tests as explain in the previous section using the new feature you just created.
 
 7) Open a pull request with the modifications, do not forget to add the new generated bindings
 file in the `crates/cubecl-hip-sys/src/bindings/` directory.
+
+8) Note that the CI runner might need to be updated by an administrator to install the new version of ROCm.
 
 [1]: https://rocmdocs.amd.com/projects/install-on-linux/en/latest/install/detailed-install.html
 [2]: https://crates.io/crates/cubecl-hip-sys
