@@ -1,5 +1,5 @@
-use std::path::Path;
 use std::fmt;
+use std::path::Path;
 
 pub struct Version {
     pub major: u8,
@@ -41,7 +41,11 @@ pub fn get_rocm_system_version(rocm_path: impl AsRef<Path>) -> std::io::Result<V
         .parse::<u32>()
         .expect("Invalid rocm_version.h file structure: Couldn't parse patch version.");
 
-    Ok(Version { major, minor, patch })
+    Ok(Version {
+        major,
+        minor,
+        patch,
+    })
 }
 
 /// Reads the HIP header inside the rocm folder that contains the HIP specific version
@@ -72,5 +76,9 @@ pub fn get_hip_system_version(rocm_path: impl AsRef<Path>) -> std::io::Result<Ve
         .parse::<u32>()
         .expect("Invalid hip_version.h file structure: Couldn't parse patch version.");
 
-    Ok(Version { major, minor, patch })
+    Ok(Version {
+        major,
+        minor,
+        patch,
+    })
 }

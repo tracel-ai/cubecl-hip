@@ -33,8 +33,11 @@ fn check_rocm_version(rocm_path: impl AsRef<Path>) -> std::io::Result<bool> {
     let rocm_system_version = get_rocm_system_version(rocm_path)?;
     let rocm_feature_version = get_rocm_feature_version();
 
-    if rocm_system_version.major  == rocm_feature_version.major {
-        let mismatches = match (rocm_system_version.minor == rocm_feature_version.minor, rocm_system_version.patch == rocm_feature_version.patch) {
+    if rocm_system_version.major == rocm_feature_version.major {
+        let mismatches = match (
+            rocm_system_version.minor == rocm_feature_version.minor,
+            rocm_system_version.patch == rocm_feature_version.patch,
+        ) {
             // Perfect match, don't need a warning
             (true, true) => return Ok(true),
             (true, false) => "Patch",
@@ -59,7 +62,11 @@ fn get_rocm_feature_version() -> Version {
                         parts[1].parse::<u8>(),
                         parts[2].parse::<u32>(),
                     ) {
-                        return Version {major, minor, patch};
+                        return Version {
+                            major,
+                            minor,
+                            patch,
+                        };
                     }
                 }
             }
@@ -85,7 +92,6 @@ fn get_hip_feature_patch_version() -> u32 {
 }
 
 fn main() {
-
     println!("cargo::rerun-if-changed=build.rs");
     println!("cargo::rerun-if-env-changed=CUBECL_ROCM_PATH");
     println!("cargo::rerun-if-env-changed=ROCM_PATH");
@@ -110,11 +116,14 @@ fn main() {
 
     if let Some(valid_rocm_path) = rocm_path {
         ensure_single_rocm_hip_feature_set();
-        // verify HIP compatbility
-        let Version {patch: hip_system_patch_version, ..} = get_hip_system_version(valid_rocm_path).unwrap();
+        // verify HIP compatibility
+        let Version {
+            patch: hip_system_patch_version,
+            ..
+        } = get_hip_system_version(valid_rocm_path).unwrap();
         let hip_feature_patch_version = get_hip_feature_patch_version();
         if hip_system_patch_version != hip_feature_patch_version {
-            panic!("Imcompatible HIP bindings found. Expected to find HIP patch version {hip_feature_patch_version}, but found HIP patch version {hip_system_patch_version}.");
+            panic!("Incompatible HIP bindings found. Expected to find HIP patch version {hip_feature_patch_version}, but found HIP patch version {hip_system_patch_version}.");
         }
 
         println!("cargo::rustc-link-lib=dylib=hiprtc");
@@ -127,4 +136,3 @@ fn main() {
         panic!("HIP headers not found in any of the directories set in CUBECL_ROCM_PATH, ROCM_PATH or HIP_PATH environment variable.");
     }
 }
-

@@ -23,14 +23,20 @@ pub(crate) fn handle_command(args: BindgenCmdArgs) -> anyhow::Result<()> {
 }
 
 fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> anyhow::Result<()> {
+    let rocm_path = get_rocm_path(installation_path, version)?
+        .to_string_lossy()
+        .into_owned();
     let include_path = get_include_path(installation_path, version)?;
-    let hip_version = build_script::get_hip_system_version(include_path.clone())?;
+    println!("rocm path: {rocm_path}");
+    let hip_version = build_script::get_hip_system_version(rocm_path.clone())?;
+    println!("hip version: {hip_version}");
     let members = get_workspace_members(WorkspaceMemberType::Crate);
     for member in members {
         if member.name == "all" || crates.contains(&member.name) {
             group_info!("Generate bindings: {}", member.name);
             let header_path = get_wrapper_file_path(&member)?;
             let bindings_path = get_bindings_file_path(&member, &hip_version)?;
+            println!("bindings path: {bindings_path}");
             // Generate bindings using bindgen
             let bindings = bindgen::Builder::default()
                 .header(header_path)
@@ -86,7 +92,10 @@ fn get_output_path(member: &WorkspaceMember) -> anyhow::Result<PathBuf> {
     }
 }
 
-fn get_bindings_file_path(member: &WorkspaceMember, version: &build_script::Version) -> anyhow::Result<String> {
+fn get_bindings_file_path(
+    member: &WorkspaceMember,
+    version: &build_script::Version,
+) -> anyhow::Result<String> {
     let out_path = get_output_path(member)?;
     let path = out_path.join(format!("bindings_{}.rs", version.patch));
     Ok(path.to_string_lossy().into_owned())
