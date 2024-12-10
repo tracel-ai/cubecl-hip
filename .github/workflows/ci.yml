@@ -13,7 +13,7 @@ on:
 
 jobs:
   checks:
-    runs-on: ubuntu-24.04
+    runs-on: amd-rx7600
     steps:
       - name: Setup Rust
         uses: tracel-ai/github-actions/setup-rust@v1.8
