@@ -1,5 +1,6 @@
 use std::path::{Path, PathBuf};
 
+use cubecl_hip_sys::build_script;
 use tracel_xtask::{
     prelude::*,
     utils::workspace::{get_workspace_members, WorkspaceMember, WorkspaceMemberType},

@@ -1,9 +1,0 @@
-[package]
-authors = ["Tracel Technologies Inc."]
-name = "build-script"
-edition.workspace = true
-license.workspace = true
-readme.workspace = true
-version.workspace = true
-rust-version = "1.81"
-

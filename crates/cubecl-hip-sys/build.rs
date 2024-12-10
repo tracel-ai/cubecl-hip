@@ -3,7 +3,7 @@ use std::env;
 const ROCM_FEATURE_PREFIX: &str = "CARGO_FEATURE_ROCM__";
 const ROCM_HIP_FEATURE_PREFIX: &str = "CARGO_FEATURE_HIP_";
 
-include!("../build-script/src/lib.rs");
+include!("src/build_script.rs");
 
 /// Make sure that at least one and only one hip feature is set
 fn ensure_single_rocm_hip_feature_set() {

@@ -6,6 +6,8 @@
 #![allow(non_upper_case_globals)]
 #![allow(unused_variables)]
 
+pub mod build_script;
+
 #[cfg(target_os = "linux")]
 mod bindings;
 #[cfg(target_os = "linux")]

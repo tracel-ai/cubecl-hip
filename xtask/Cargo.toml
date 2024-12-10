@@ -4,7 +4,7 @@ version = "1.0.0"
 edition = "2021"
 
 [dependencies]
-build-script = { path = "../crates/build-script" }
+cubecl-hip-sys = { path = "../crates/cubecl-hip-sys" }
 bindgen = { workspace = true }
 strum = { workspace = true }
 log = { workspace = true }
