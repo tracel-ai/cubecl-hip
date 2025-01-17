@@ -5,14 +5,37 @@ const ROCM_HIP_FEATURE_PREFIX: &str = "CARGO_FEATURE_HIP_";
 
 include!("src/build_script.rs");
 
+/// Make sure that at least one and only one rocm version feature is set
+fn ensure_single_rocm_version_feature_set() {
+    let mut enabled_features = Vec::new();
+
+    for (key, value) in env::vars() {
+        if key.starts_with(ROCM_FEATURE_PREFIX) && value == "1" {
+            enabled_features.push(format!(
+                "rocm__{}",
+                key.strip_prefix(ROCM_FEATURE_PREFIX).unwrap()
+            ));
+        }
+    }
+
+    match enabled_features.len() {
+        1 => {}
+        0 => panic!("No ROCm version feature is enabled. One ROCm version feature must be set."),
+        _ => panic!(
+            "Multiple ROCm version features are enabled: {:?}. Only one can be set.",
+            enabled_features
+        ),
+    }
+}
+
 /// Make sure that at least one and only one hip feature is set
-fn ensure_single_rocm_hip_feature_set() {
+fn ensure_single_hip_feature_set() {
     let mut enabled_features = Vec::new();
 
     for (key, value) in env::vars() {
         if key.starts_with(ROCM_HIP_FEATURE_PREFIX) && value == "1" {
             enabled_features.push(format!(
-                "rocm__{}",
+                "hip_{}",
                 key.strip_prefix(ROCM_HIP_FEATURE_PREFIX).unwrap()
             ));
         }
@@ -115,7 +138,8 @@ fn main() {
     let rocm_path = rocm_path_candidates.find(|path| check_rocm_version(path).unwrap_or_default());
 
     if let Some(valid_rocm_path) = rocm_path {
-        ensure_single_rocm_hip_feature_set();
+        ensure_single_rocm_version_feature_set();
+        ensure_single_hip_feature_set();
         // verify HIP compatibility
         let Version {
             patch: hip_system_patch_version,
