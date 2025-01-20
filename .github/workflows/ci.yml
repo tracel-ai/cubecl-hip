@@ -15,13 +15,16 @@ jobs:
   checks:
     runs-on: amd-rx7600
     steps:
-      - name: Setup Rust
-        uses: tracel-ai/github-actions/setup-rust@v1.8
+      # --------------------------------------------------------------------------------
+      # We don't use our github-action because it seems that the cache does not work well
+      # with our AMD runner.
+      # cargo-audit is not found for example whereas it is correctly installed.
+      - name: install rust
+        uses: dtolnay/rust-toolchain@master
         with:
-          rust-toolchain: stable
-          cache-key: stable-linux
-          linux-pre-cleanup: false
-    # --------------------------------------------------------------------------------
+          components: rustfmt, clippy
+          toolchain: stable
+      # --------------------------------------------------------------------------------
       - name: Audit
         run: cargo xtask check audit
       # --------------------------------------------------------------------------------
@@ -39,12 +42,12 @@ jobs:
   tests:
     runs-on: amd-rx7600
     steps:
-      - name: Setup Rust
-        uses: tracel-ai/github-actions/setup-rust@v1.8
+      # --------------------------------------------------------------------------------
+      - name: install rust
+        uses: dtolnay/rust-toolchain@master
         with:
-          rust-toolchain: stable
-          cache-key: stable-linux
-          linux-pre-cleanup: false
+          components: rustfmt, clippy
+          toolchain: stable
       # --------------------------------------------------------------------------------
       - name: Lint
         run: cargo xtask check lint
