@@ -4,10 +4,6 @@ env:
   TYPOS_LINK: "https://github.com/crate-ci/typos/releases/download"
   TYPOS_VERSION: "1.23.4"
   CUBECL_ROCM_PATH: "/opt/rocm"
-  # Change ROCm version and HIP bindings version here
-  # The combination must match what is declared in crates/cubecl-hip-sys/Cargo.toml
-  CARGO_FEATURE_ROCM__6_3_1: "1"
-  CARGO_FEATURE_HIP_42133: "1"
 
 on:
   push:
