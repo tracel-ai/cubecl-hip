@@ -19,6 +19,8 @@ jobs:
       # We don't use our github-action because it seems that the cache does not work well
       # with our AMD runner.
       # cargo-audit is not found for example whereas it is correctly installed.
+      - name: checkout
+        uses: actions/checkout@v4
       - name: install rust
         uses: dtolnay/rust-toolchain@master
         with:
@@ -43,6 +45,8 @@ jobs:
     runs-on: amd-rx7600
     steps:
       # --------------------------------------------------------------------------------
+      - name: checkout
+        uses: actions/checkout@v4
       - name: install rust
         uses: dtolnay/rust-toolchain@master
         with:
