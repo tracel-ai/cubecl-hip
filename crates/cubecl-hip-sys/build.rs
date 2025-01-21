@@ -21,7 +21,6 @@ fn is_rocm_feature_set() -> bool {
     !enabled_features.is_empty()
 }
 
-
 /// Make sure that at least one and only one rocm version feature is set
 fn ensure_single_rocm_version_feature_set() {
     let mut enabled_features = Vec::new();
@@ -111,8 +110,14 @@ fn set_default_rocm_version(rocm_path: impl AsRef<Path>) -> std::io::Result<()> 
     let default_hip_feature = format!("hip_{}", hip_system_patch.patch);
     println!("cargo:rustc-cfg=feature=\"{}\"", default_rocm_feature);
     println!("cargo:rustc-cfg=feature=\"{}\"", default_hip_feature);
-    env::set_var(format!("{ROCM_FEATURE_PREFIX}{}", rocm_system_version).replace(".", "_"), "1");
-    env::set_var(format!("{ROCM_HIP_FEATURE_PREFIX}{}", hip_system_patch.patch), "1");
+    env::set_var(
+        format!("{ROCM_FEATURE_PREFIX}{}", rocm_system_version).replace(".", "_"),
+        "1",
+    );
+    env::set_var(
+        format!("{ROCM_HIP_FEATURE_PREFIX}{}", hip_system_patch.patch),
+        "1",
+    );
     Ok(())
 }
 
