@@ -43,7 +43,12 @@ If a fix is required and the default ROCm version remains `6.2.4`, the `cubecl-h
 
 Add the crate [cubecl-hip-sys][2] to the `Cargo.toml` of your project and enable the feature
 corresponding to the version of ROCm you have installed.
-If you no feature corresponds to your ROCm installation then read the next section to learn
+
+```toml
+cubecl-hip-sys = { version = "6.3.1000", features = ["rocm__6_3_1"] }
+```
+
+If no feature corresponds to your ROCm installation then read the next section to learn
 how to generate and submit new bindings for your version.
 
 Next you need to point out where you installed ROCm so that `rustc` can link to your ROCM libraries. To do so set the variable `ROCM_PATH`, or `HIP_PATH` or the more specific `CUBECL_ROCM_PATH` to its
