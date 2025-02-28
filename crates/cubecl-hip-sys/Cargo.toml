@@ -15,15 +15,17 @@ rust-version = "1.81"
 default = []
 
 # ROCm versions
-rocm__6_2_2 = [ "hip_41134" ]
-rocm__6_2_4 = [ "hip_41134" ]
-rocm__6_3_0 = [ "hip_42131" ]
-rocm__6_3_1 = [ "hip_42133" ]
+rocm__6_2_2 = ["hip_41134"]
+rocm__6_2_4 = ["hip_41134"]
+rocm__6_3_0 = ["hip_42131"]
+rocm__6_3_1 = ["hip_42133"]
+rocm__6_3_2 = ["hip_42134"]
 
 # HIP versions
 hip_41134 = []
 hip_42131 = []
 hip_42133 = []
+hip_42134 = []
 
 [dependencies]
 libc = { workspace = true }
