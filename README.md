@@ -31,24 +31,27 @@ Install ROCm in the default directory under `/opt` following the [ROCm documenta
 ## Versioning Scheme
 
 The crates in this repository follow the versioning conventions outlined below:
-- The default supported ROCm version of the crates is used as the base version.
-- The patch version of the ROCm release is multiplied by 1000, allowing multiple revisions of a crate that defaults to the same ROCm version.
+- The latest supported ROCm version of the crates is used as the base version.
+- The patch version of the ROCm release is multiplied by 1000, allowing multiple revisions of a crate for the same ROCm version.
 
 ### Example:
 
-The `cubecl-hip-sys` version `6.2.4000` represents the first release with ROCm `6.2.4` as the default.
-If a fix is required and the default ROCm version remains `6.2.4`, the `cubecl-hip-sys` version is incremented to `6.2.4001`.
+The `cubecl-hip-sys` version `6.2.4000` represents the first release with ROCm `6.2.4`.
+If a fix is required and the ROCm version remains `6.2.4`, the `cubecl-hip-sys` version is incremented to `6.2.4001`.
 
 ## Usage
 
-Add the crate [cubecl-hip-sys][2] to the `Cargo.toml` of your project and enable the feature
+Add the crate [cubecl-hip-sys][2] to the `Cargo.toml` file of your project and enable the feature
 corresponding to the version of ROCm you have installed.
+
+If no feature is provided then the build script will attempt to find the default ROCm version installed on your system.
+Read the `warning` messages in the build output to learn about the script behavior.
 
 ```toml
 cubecl-hip-sys = { version = "6.3.1000", features = ["rocm__6_3_1"] }
 ```
 
-If no feature corresponds to your ROCm installation then read the next section to learn
+If you installed a newer ROCm version that is not yet supported by this crate then read the next section to learn
 how to generate and submit new bindings for your version.
 
 Next you need to point out where you installed ROCm so that `rustc` can link to your ROCM libraries. To do so set the variable `ROCM_PATH`, or `HIP_PATH` or the more specific `CUBECL_ROCM_PATH` to its
@@ -75,11 +78,10 @@ Here is a table of the libraries covered by each crate:
 To run tests you need to first meet the expectations for both `Prerequisites` and `Usage`
 sections.
 
-Then execute the following xtask command. If you want to test against a different version of
-ROCm than the default one, use the `-v <version>`, for instance `-v 6.2.2`:
+Then execute the following xtask command by providing the version of ROCm to test, for instance `-v 6.2.2`:
 
 ```sh
-# test default ROCm bindings
+# test ROCm bindings againt the system default ROCm installation if found
 cargo xtask test
 # test a specific version that is not the default
 cargo xtask test -v 6.2.2
