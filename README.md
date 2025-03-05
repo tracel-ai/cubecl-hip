@@ -61,6 +61,8 @@ Here is the table of currently available bindings:
 | 6.2.2        | rocm__6_2_2 | cubecl-hip-sys |
 | 6.2.4        | rocm__6_2_4 | cubecl-hip-sys |
 | 6.3.0        | rocm__6_3_0 | cubecl-hip-sys |
+| 6.3.1        | rocm__6_3_1 | cubecl-hip-sys |
+| 6.3.2        | rocm__6_3_2 | cubecl-hip-sys |
 
 Here is a table of the libraries covered by each crate:
 
