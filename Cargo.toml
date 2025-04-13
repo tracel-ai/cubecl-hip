@@ -10,7 +10,7 @@
         edition = "2021"
         license = "MIT OR Apache-2.0"
         readme  = "README.md"
-        version = "6.4.0000"
+        version = "6.4.0"
 
     [workspace.dependencies]
         bindgen = "0.70.1"
@@ -24,4 +24,3 @@
 
 [profile.dev]
     debug = 0 # Speed up compilation time and not necessary.
-
