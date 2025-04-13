@@ -1,34 +1,36 @@
 [package]
-authors = ["Tracel Technologies Inc."]
-categories = ["external-ffi-bindings"]
-description = "Rust bindings for AMD ROCm HIP runtime libraries used by CubeCL."
-keywords = ["cubecl", "ROCm", "HIP", "API", "bindings"]
-edition.workspace = true
-license.workspace = true
-name = "cubecl-hip-sys"
-readme.workspace = true
-repository = "https://github.com/tracel-ai/cubecl-hip/tree/main/crates/cubecl-hip-sys"
-version.workspace = true
-rust-version = "1.81"
+    authors           = ["Tracel Technologies Inc."]
+    categories        = ["external-ffi-bindings"]
+    description       = "Rust bindings for AMD ROCm HIP runtime libraries used by CubeCL."
+    edition.workspace = true
+    keywords          = ["cubecl", "ROCm", "HIP", "API", "bindings"]
+    license.workspace = true
+    name              = "cubecl-hip-sys"
+    readme.workspace  = true
+    repository        = "https://github.com/tracel-ai/cubecl-hip/tree/main/crates/cubecl-hip-sys"
+    rust-version      = "1.81"
+    version.workspace = true
 
 [features]
-default = []
+    default = []
 
-# ROCm versions
-rocm__6_2_2 = ["hip_41134"]
-rocm__6_2_4 = ["hip_41134"]
-rocm__6_3_0 = ["hip_42131"]
-rocm__6_3_1 = ["hip_42133"]
-rocm__6_3_2 = ["hip_42134"]
+    # ROCm versions
+    rocm__6_2_2 = ["hip_41134"]
+    rocm__6_2_4 = ["hip_41134"]
+    rocm__6_3_0 = ["hip_42131"]
+    rocm__6_3_1 = ["hip_42133"]
+    rocm__6_3_2 = ["hip_42134"]
+    rocm__6_4_0 = ["hip_43482"]
 
-# HIP versions
-hip_41134 = []
-hip_42131 = []
-hip_42133 = []
-hip_42134 = []
+    # HIP versions
+    hip_41134 = []
+    hip_42131 = []
+    hip_42133 = []
+    hip_42134 = []
+    hip_43482 = []
 
 [dependencies]
-libc = { workspace = true }
+    libc = {workspace = true}
 
 [dev-dependencies]
-rstest = { workspace = true }
+    rstest = {workspace = true}
