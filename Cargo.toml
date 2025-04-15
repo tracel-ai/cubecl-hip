@@ -1,29 +1,26 @@
 [workspace]
-# Try
-# require version 2 to avoid "feature" additiveness for dev-dependencies
-# https://doc.rust-lang.org/cargo/reference/resolver.html#feature-resolver-version-2
-resolver = "2"
+    # Try
+    # require version 2 to avoid "feature" additiveness for dev-dependencies
+    # https://doc.rust-lang.org/cargo/reference/resolver.html#feature-resolver-version-2
+    resolver = "2"
 
-members = [
-    "crates/*",
-    "xtask",
-]
+    members = ["crates/*", "xtask"]
 
-[workspace.package]
-edition = "2021"
-version = "6.3.2000"
-license = "MIT OR Apache-2.0"
-readme = "README.md"
+    [workspace.package]
+        edition = "2021"
+        license = "MIT OR Apache-2.0"
+        readme  = "README.md"
+        version = "6.4.0"
 
-[workspace.dependencies]
-bindgen = "0.70.1"
-libc = "0.2.159"
-log = "0.4.22"
-rstest = "0.2.1"
-strum = { version = "0.26.3", features = ["derive"] }
+    [workspace.dependencies]
+        bindgen = "0.70.1"
+        libc    = "0.2.159"
+        log     = "0.4.22"
+        rstest  = "0.2.1"
+        strum   = {version = "0.26.3", features = ["derive"]}
 
-### For xtask crate ###
-tracel-xtask = { version = "=1.1.8" }
+        ### For xtask crate ###
+        tracel-xtask = {version = "=1.1.8"}
 
 [profile.dev]
-debug = 0 # Speed up compilation time and not necessary.
+    debug = 0 # Speed up compilation time and not necessary.
