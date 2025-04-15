@@ -66,6 +66,9 @@ Here is the table of currently available bindings:
 | 6.3.0        | rocm__6_3_0 | cubecl-hip-sys |
 | 6.3.1        | rocm__6_3_1 | cubecl-hip-sys |
 | 6.3.2        | rocm__6_3_2 | cubecl-hip-sys |
+| 6.3.3        | rocm__6_3_3 | cubecl-hip-sys |
+| 6.3.4        | rocm__6_3_4 | cubecl-hip-sys |
+| 6.4.0        | rocm__6_4_0 | cubecl-hip-sys |
 
 Here is a table of the libraries covered by each crate:
 
@@ -123,14 +126,7 @@ hip feature.
 rocm__6_3_0 = [ "hip_42131" ]
 ```
 
-4) Replace the default feature in the `Cargo.toml` file be the latest one, in this case `rocm__6_3_0`.
-
-```toml
-[features]
-default = ["rocm__6_3_0"]
-```
-
-5) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
+4) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
 conditionally to the new feature you just declared as well as the re-exports:
 
 ```rs
@@ -140,12 +136,12 @@ mod bindings_42131;
 pub use bindings_42131::*;
 ```
 
-6) Run the tests as explain in the previous section using the new feature you just created.
+5) Run the tests as explain in the previous section using the new feature you just created.
 
-7) Open a pull request with the modifications, do not forget to add the new generated bindings
+6) Open a pull request with the modifications, do not forget to add the new generated bindings
 file in the `crates/cubecl-hip-sys/src/bindings/` directory.
 
-8) Note that the CI runner might need to be updated by an administrator to install the new version of ROCm.
+7) Note that the CI runner might need to be updated by an administrator to install the new version of ROCm.
 
 [1]: https://rocmdocs.amd.com/projects/install-on-linux/en/latest/install/detailed-install.html
 [2]: https://crates.io/crates/cubecl-hip-sys
