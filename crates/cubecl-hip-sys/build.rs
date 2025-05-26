@@ -1,7 +1,6 @@
 use std::env;
 
 const ROCM_FEATURE_PREFIX: &str = "CARGO_FEATURE_ROCM__";
-const ROCM_HIP_FEATURE_PREFIX: &str = "CARGO_FEATURE_HIP_";
 
 include!("src/build_script.rs");
 
@@ -104,10 +103,10 @@ fn set_default_rocm_version(rocm_path: impl AsRef<Path>) -> std::io::Result<()> 
 
     // Set default feature with the version found on the system
     let rocm_system_version = get_rocm_system_version(&rocm_path)?;
-    let hip_system_patch = get_hip_system_version(&rocm_path)?;
-    println!("cargo::warning=Found default version of ROCm on system: {rocm_system_version}. Associated HIP patch version is: {}", hip_system_patch.patch);
+    let hip_system_patch = get_hip_patch_version_from_hipconfig()?;
+    println!("cargo::warning=Found default version of ROCm on system: {rocm_system_version}. Associated HIP patch version is: {}", hip_system_patch);
     let default_rocm_feature = format!("rocm__{}", rocm_system_version).replace(".", "_");
-    let default_hip_feature = format!("hip_{}", hip_system_patch.patch);
+    let default_hip_feature = format!("hip_{}", hip_system_patch);
     println!("cargo:rustc-cfg=feature=\"{}\"", default_rocm_feature);
     println!("cargo:rustc-cfg=feature=\"{}\"", default_hip_feature);
     env::set_var(
@@ -115,7 +114,7 @@ fn set_default_rocm_version(rocm_path: impl AsRef<Path>) -> std::io::Result<()> 
         "1",
     );
     env::set_var(
-        format!("{ROCM_HIP_FEATURE_PREFIX}{}", hip_system_patch.patch),
+        format!("{ROCM_HIP_FEATURE_PREFIX}{}", hip_system_patch),
         "1",
     );
     Ok(())
@@ -147,33 +146,24 @@ fn get_rocm_feature_version() -> Version {
     panic!("No valid ROCm feature version found. One 'rocm__<version>' feature must be set. For instance for ROCm 6.2.2 the feature is rocm__6_2_2.")
 }
 
-/// Return the ROCm HIP patch version corresponding to the enabled hip_<patch_version> feature
-fn get_hip_feature_patch_version() -> u32 {
-    for (key, value) in env::vars() {
-        if key.starts_with(ROCM_HIP_FEATURE_PREFIX) && value == "1" {
-            if let Some(patch) = key.strip_prefix(ROCM_HIP_FEATURE_PREFIX) {
-                if let Ok(patch) = patch.parse::<u32>() {
-                    return patch;
-                }
-            }
-        }
-    }
-
-    panic!("No valid ROCm HIP feature found. One 'hip_<patch>' feature must be set.")
-}
-
 fn main() {
     println!("cargo::rerun-if-changed=build.rs");
-    println!("cargo::rerun-if-env-changed=CUBECL_ROCM_PATH");
     println!("cargo::rerun-if-env-changed=ROCM_PATH");
     println!("cargo::rerun-if-env-changed=HIP_PATH");
 
-    let mut paths: Vec<_> = ["CUBECL_ROCM_PATH", "ROCM_PATH", "HIP_PATH"]
+    let mut paths: Vec<_> = ["ROCM_PATH", "HIP_PATH"]
         .into_iter()
         .filter_map(|var| env::var(var).ok())
         .collect();
-    // default installation path
-    paths.push("/opt/rocm".to_string());
+    // default installation path from hipconfig
+    let hip_config_path = match get_hip_path_from_hipconfig() {
+        Ok(path) => path,
+        Err(ref e) if e.kind() == std::io::ErrorKind::NotFound => {
+            panic!("Could not find '{HIPCONFIG}' in your PATH. You should install ROCm HIP or ensure '{HIPCONFIG}' is available.");
+        }
+        Err(e) => panic!("Failed to run '{HIPCONFIG} -p', reason: {}", e),
+    };
+    paths.push(hip_config_path);
 
     let mut rocm_path_candidates = paths
         .iter()
@@ -190,13 +180,10 @@ fn main() {
         ensure_single_rocm_version_feature_set();
         ensure_single_hip_feature_set();
         // verify HIP compatibility
-        let Version {
-            patch: hip_system_patch_version,
-            ..
-        } = get_hip_system_version(valid_rocm_path).unwrap();
+        let hip_system_patch = get_hip_patch_version_from_hipconfig().unwrap();
         let hip_feature_patch_version = get_hip_feature_patch_version();
-        if hip_system_patch_version != hip_feature_patch_version {
-            panic!("Incompatible HIP bindings found. Expected to find HIP patch version {hip_feature_patch_version}, but found HIP patch version {hip_system_patch_version}.");
+        if hip_system_patch != hip_feature_patch_version {
+            panic!("Incompatible HIP bindings found. Expected to find HIP patch version {hip_feature_patch_version}, but found HIP patch version {hip_system_patch}.");
         }
 
         println!("cargo::rustc-link-lib=dylib=hiprtc");

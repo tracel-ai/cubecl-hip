@@ -54,8 +54,9 @@ cubecl-hip-sys = { version = "6.3.1000", features = ["rocm__6_3_1"] }
 If you installed a newer ROCm version that is not yet supported by this crate then read the next section to learn
 how to generate and submit new bindings for your version.
 
-Next you need to point out where you installed ROCm so that `rustc` can link to your ROCM libraries. To do so set the variable `ROCM_PATH`, or `HIP_PATH` or the more specific `CUBECL_ROCM_PATH` to its
-installation base directory, it is often `/opt/rocm`.
+The HIP configuration is obtained via the `hipconfig` utility. Make sure that `hipconfig` is available in your `PATH`.
+You can also select a HIP version manually by setting the `HIP_PATH` environment variable, indeed in such case the
+`hipconfig` utility will return the value of `HIP_PATH`.
 
 Here is the table of currently available bindings:
 
