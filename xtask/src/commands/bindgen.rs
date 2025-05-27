@@ -29,7 +29,7 @@ fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> any
         .into_owned();
     let include_path = get_include_path(installation_path, version)?;
     println!("rocm path: {rocm_path}");
-    let hip_patch = build_script::get_hip_patch_version_from_hipconfig()?;
+    let hip_patch = build_script::get_hip_patch_version();
     println!("hip patch: {hip_patch}");
     let members = get_workspace_members(WorkspaceMemberType::Crate);
     for member in members {

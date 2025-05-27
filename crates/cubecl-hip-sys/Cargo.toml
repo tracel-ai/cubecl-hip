@@ -13,18 +13,7 @@ version.workspace = true
 
 [features]
 default = []
-
-# ROCm versions
-rocm__6_2_2 = ["hip_41134"]
-rocm__6_2_4 = ["hip_41134"]
-rocm__6_3_0 = ["hip_42131"]
-rocm__6_3_1 = ["hip_42133"]
-rocm__6_3_2 = ["hip_42134"]
-rocm__6_3_3 = ["hip_42134"]
-rocm__6_3_4 = ["hip_42134"]
-rocm__6_4_0 = ["hip_43482"]
-
-# HIP versions
+# supported HIP patch versions
 hip_41134 = []
 hip_42131 = []
 hip_42133 = []
