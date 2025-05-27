@@ -65,55 +65,40 @@ Here is the table of currently available bindings:
 
 ## Running tests
 
-To run tests you need to first meet the expectations for both `Prerequisites` and `Usage`
-sections.
+To run tests you need to first meet the expectations for `Prerequisites` section.
 
-Then execute the following xtask command by providing the version of ROCm to test, for instance `-v 6.2.2`:
+Then execute the following xtask command:
 
 ```sh
 # test ROCm bindings againt the system default ROCm installation if found
 cargo xtask test
-# test a specific version that is not the default
-cargo xtask test -v 6.2.2
+# test a specific version that is not the default by providing a value for HIP_PATH using -p
+xtask test -p /opt/rocm-6.3.0
 ```
-
-Important: always make sure that ROCm environment variable (see Usage) points to a version that matches the
-tested version.
 
 ## Generate bindings for a given version of ROCm
 
-1) To generate the bindings you need to first meet the expectations for both `Prerequisites`
-and `Usage` sections.
+1) To generate the bindings you first need to meet the expectations for `Prerequisites` section.
 
-2) Generate the bindings using the dedicated xtask command `bindgen`. For instance, to generate
-the bindings for the crate `cubecl-hip-sys` and the ROCm version `6.3.0`:
+2) Make sure that `hipconfig` returns the path of the HIP version you want to wrap. Adapt the `HIP_PATH`
+environment variable to point to the version you are interested in.
+
+3) Generate the bindings using the dedicated xtask command `bindgen`:
 
 ```sh
-cargo xtask bindgen -c cubecl-hip-sys -v 6.3.0
+cargo xtask bindgen
 ```
 
-3) If the HIP bindings patch version has changed, declare a new `hip` feature in the `Cargo.toml`
-of the corresponding crate `cubecl-hip-sys` with the format `hip_<patch_version>`. For instance
-the version `6.3.0` has a new HIP patch version which is `42131`. Is the patch version did not
-change then skip this step.
+4) Declare a new `hip` feature in the `Cargo.toml` in `cubecl-hip-sys` crate with the format
+`hip_<patch_version>`. You can retrieve the patch version with the command `hipconfig --version`.
+For instance for a new HIP patch version which is `42131` add the following feature:
 
 ```toml
 [features]
 hip_42131 = []
 ```
 
-4) Declare a new `rocm` feature in the `Cargo.toml` of the corresponding crate `cubecl-hip-sys`
-with the format `rocm__<version>` where `<version>` is the ROCm version with `_` separator and
-add a dependency on its corresponding HIP bindings patch version. Note that sometimes the HIP
-bindings are not changed between two version of ROCm, in this case reuse the already existing
-hip feature.
-
-```toml
-[features]
-rocm__6_3_0 = [ "hip_42131" ]
-```
-
-4) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
+5) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
 conditionally to the new feature you just declared as well as the re-exports:
 
 ```rs
@@ -123,12 +108,13 @@ mod bindings_42131;
 pub use bindings_42131::*;
 ```
 
-5) Run the tests as explain in the previous section using the new feature you just created.
+5) Run the tests as explain in the previous section.
 
 6) Open a pull request with the modifications, do not forget to add the new generated bindings
 file in the `crates/cubecl-hip-sys/src/bindings/` directory.
 
-7) Note that the CI runner might need to be updated by an administrator to install the new version of ROCm.
+7) Note that the CI runner might need to be updated by an administrator so that the new HIP version is available
+on the runner.
 
 [1]: https://rocmdocs.amd.com/projects/install-on-linux/en/latest/install/detailed-install.html
 [2]: https://crates.io/crates/cubecl-hip-sys

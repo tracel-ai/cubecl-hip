@@ -27,6 +27,12 @@ pub fn get_hip_ld_library_path() -> String {
     format!("{rocm_path}/{lib_dir}")
 }
 
+/// Return the include path for HIP
+pub fn get_hip_include_path() -> String {
+    let hip_path = get_hip_path();
+    format!("{hip_path}/include")
+}
+
 /// Execute hipconfig
 fn exec_hipconfig(args: &[&str]) -> std::io::Result<String> {
     match Command::new(HIPCONFIG).args(args).output() {

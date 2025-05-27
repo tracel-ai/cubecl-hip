@@ -1,6 +1,6 @@
 use std::path::{Path, PathBuf};
 
-use cubecl_hip_sys::build_script;
+use cubecl_hip_sys::hipconfig;
 use tracel_xtask::{
     prelude::*,
     utils::workspace::{get_workspace_members, WorkspaceMember, WorkspaceMemberType},
@@ -9,27 +9,20 @@ use tracel_xtask::{
 #[derive(clap::Args)]
 pub struct BindgenCmdArgs {
     /// Name of the crates for which we need to generate bindings. Pass "all" for all crates.
-    #[arg(short, long, value_delimiter = ',')]
+    #[arg(short, long, value_delimiter = ',', default_value = "cubecl-hip-sys")]
     crates: Vec<String>,
-    /// Base installation path of the ROCm libraries installation.
-    #[arg(short = 'p', long, default_value = "/opt")]
-    installation_path: String,
-    /// Version of the ROCm libraries to generate bindings for.
-    #[arg(short, long)]
-    version: String,
 }
 
 pub(crate) fn handle_command(args: BindgenCmdArgs) -> anyhow::Result<()> {
-    run_bindgen(&args.crates, &args.installation_path, &args.version)
+    run_bindgen(&args.crates)
 }
 
-fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> anyhow::Result<()> {
-    let rocm_path = get_rocm_path(installation_path, version)?
-        .to_string_lossy()
-        .into_owned();
-    let include_path = get_include_path(installation_path, version)?;
+fn run_bindgen(crates: &[String]) -> anyhow::Result<()> {
+    let rocm_path = hipconfig::get_rocm_path();
     println!("rocm path: {rocm_path}");
-    let hip_patch = build_script::get_hip_patch_version();
+    let include_path = hipconfig::get_hip_include_path();
+    println!("hip include path: {include_path}");
+    let hip_patch = hipconfig::get_hip_patch_version();
     println!("hip patch: {hip_patch}");
     let members = get_workspace_members(WorkspaceMemberType::Crate);
     for member in members {
@@ -55,30 +48,6 @@ fn run_bindgen(crates: &[String], installation_path: &str, version: &str) -> any
         }
     }
     Ok(())
-}
-
-fn get_rocm_path(installation_path: &str, rocm_version: &str) -> anyhow::Result<PathBuf> {
-    let path = Path::new(installation_path).join(format!("rocm-{}", rocm_version));
-    if path.exists() {
-        Ok(path)
-    } else {
-        Err(anyhow::anyhow!(
-            "Cannot find ROCm base installation path on your system: {}",
-            path.display()
-        ))
-    }
-}
-
-fn get_include_path(installation_path: &str, rocm_version: &str) -> anyhow::Result<String> {
-    let path = get_rocm_path(installation_path, rocm_version)?.join("include");
-    if path.exists() {
-        Ok(path.to_string_lossy().into_owned())
-    } else {
-        Err(anyhow::anyhow!(
-            "Cannot find include path on your system: {}",
-            path.display()
-        ))
-    }
 }
 
 fn get_output_path(member: &WorkspaceMember) -> anyhow::Result<PathBuf> {
