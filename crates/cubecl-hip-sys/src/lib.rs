@@ -6,7 +6,8 @@
 #![allow(non_upper_case_globals)]
 #![allow(unused_variables)]
 
-pub mod build_script;
+pub mod hipconfig;
+pub use hipconfig::*;
 
 #[cfg(target_os = "linux")]
 mod bindings;
