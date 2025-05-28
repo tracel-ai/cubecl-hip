@@ -5,32 +5,32 @@ use regex::Regex;
 pub const HIPCONFIG: &str = "hipconfig";
 
 /// Retrieve the ROCM_PATH with `hipconfig -R` command.
-pub fn get_rocm_path() -> String {
-    exec_hipconfig(&["-R"]).unwrap()
+pub fn get_rocm_path() -> std::io::Result<String> {
+    exec_hipconfig(&["-R"])
 }
 
 /// Retrieve the HIP_PATH with `hipconfig -p` command.
-pub fn get_hip_path() -> String {
-    exec_hipconfig(&["-p"]).unwrap()
+pub fn get_hip_path() -> std::io::Result<String> {
+    exec_hipconfig(&["-p"])
 }
 
 /// Retrieve the HIP patch number from the `hipconfig --version` output
-pub fn get_hip_patch_version() -> String {
-    let hip_version = exec_hipconfig(&["--version"]).unwrap();
+pub fn get_hip_patch_version() -> std::io::Result<String> {
+    let hip_version = exec_hipconfig(&["--version"])?;
     parse_hip_patch_number(&hip_version)
 }
 
 /// Return the HIP path suitable for LD_LIBRARY_PATH.
-pub fn get_hip_ld_library_path() -> String {
-    let rocm_path = get_rocm_path();
-    let lib_dir = get_hip_library_directory_name(&rocm_path);
-    format!("{rocm_path}/{lib_dir}")
+pub fn get_hip_ld_library_path() -> std::io::Result<String> {
+    let rocm_path = get_rocm_path()?;
+    let lib_dir = get_hip_library_directory_name(&rocm_path)?;
+    Ok(format!("{rocm_path}/{lib_dir}"))
 }
 
 /// Return the include path for HIP
-pub fn get_hip_include_path() -> String {
-    let hip_path = get_hip_path();
-    format!("{hip_path}/include")
+pub fn get_hip_include_path() -> std::io::Result<String> {
+    let hip_path = get_hip_path()?;
+    Ok(format!("{hip_path}/include"))
 }
 
 /// Execute hipconfig
@@ -46,8 +46,9 @@ fn exec_hipconfig(args: &[&str]) -> std::io::Result<String> {
                 );
             }
         }
-        Err(ref e) if e.kind() == std::io::ErrorKind::NotFound => {
-            panic!("Could not find '{HIPCONFIG}' in your PATH. You should install ROCm HIP or ensure '{HIPCONFIG}' is available. Fro more information please visit https://rocm.docs.amd.com/projects/install-on-linux/en/latest/.");
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
+            println!("cargo::warning=Could not find '{HIPCONFIG}' in your PATH. You should install ROCm HIP or ensure '{HIPCONFIG}' is available. For more information please visit https://rocm.docs.amd.com/projects/install-on-linux/en/latest/.");
+            Err(e)
         }
         Err(e) => panic!(
             "Failed to run '{HIPCONFIG}' with args '{args:?}', reason: {}",
@@ -57,11 +58,11 @@ fn exec_hipconfig(args: &[&str]) -> std::io::Result<String> {
 }
 
 /// extract the HIP patch number from hipconfig version output
-fn parse_hip_patch_number(version: &str) -> String {
+fn parse_hip_patch_number(version: &str) -> std::io::Result<String> {
     let re = Regex::new(r"\d+\.\d+\.(\d+)-").expect("regex should compile");
     if let Some(caps) = re.captures(version) {
         if let Some(m) = caps.get(1) {
-            return m.as_str().to_string();
+            return Ok(m.as_str().to_string());
         }
     }
     // cannot parse for the patch number
@@ -69,13 +70,13 @@ fn parse_hip_patch_number(version: &str) -> String {
 }
 
 /// Return the library directory using hipconfig
-fn get_hip_library_directory_name(rocm_path: &str) -> String {
-    let clang_path = exec_hipconfig(&["-l"]).unwrap();
+fn get_hip_library_directory_name(rocm_path: &str) -> std::io::Result<String> {
+    let clang_path = exec_hipconfig(&["-l"])?;
     parse_hip_library_directory_name(rocm_path, &clang_path)
 }
 
 /// Parse out the first subdirectory under the ROCm path
-fn parse_hip_library_directory_name(rocm_path: &str, clang_path: &str) -> String {
+fn parse_hip_library_directory_name(rocm_path: &str, clang_path: &str) -> std::io::Result<String> {
     let rocm = rocm_path.trim().trim_end_matches('/');
     let clang = clang_path.trim();
     // Build a regex like "^/opt/rocm/([^/]+)"
@@ -83,7 +84,7 @@ fn parse_hip_library_directory_name(rocm_path: &str, clang_path: &str) -> String
     let re = Regex::new(&pattern).expect("regex should compile");
 
     if let Some(caps) = re.captures(clang) {
-        return caps[1].to_string();
+        return Ok(caps[1].to_string());
     }
     panic!("Cannot retrieve the name of the HIP library directoy.");
 }
@@ -100,7 +101,7 @@ mod tests {
     #[case::missing_hyphen("6.4.43482", None)]
     #[case::completely_invalid("no numbers", None)]
     fn test_parse_hip_patch_number(#[case] input: &str, #[case] expected: Option<&str>) {
-        let result = std::panic::catch_unwind(|| parse_hip_patch_number(input));
+        let result = parse_hip_patch_number(input);
         match expected {
             Some(expected_str) => {
                 let output = result.expect("should not panic for valid version");
@@ -126,7 +127,7 @@ mod tests {
         #[case] clang: &str,
         #[case] expected: Option<&str>,
     ) {
-        let result = std::panic::catch_unwind(|| parse_hip_library_directory_name(rocm, clang));
+        let result = parse_hip_library_directory_name(rocm, clang);
         match expected {
             Some(expected_dir) => {
                 // For valid inputs, it must not panic and return the directory name

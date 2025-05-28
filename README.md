@@ -30,13 +30,19 @@ Install ROCm following the [ROCm documentation][1]:
 
 ## Versioning Scheme
 
-The crates in this repository follow the same versioning as HIP. Note that HIP version is somewhat different than ROCm version.
-The patch number of HIP version is a monotonic number that uniquely indentify the version of HIP.
+The crates in this repository follow the same versioning as HIP _but drop the minor version_ and use the patch number for
+this crate release number:
+
+```
+<rocm_major>.<hip_patch>.<bindings_version>
+```
+
+`bindings_version` starts at 0 for each new `<hip_patch>`, it allows us to release fixes for a same HIP patch.
+
+For instance `6.43482.1` represents the second release (the one after the initial `6.43482.0`) for HIP `43482`.
 
 This versioning scheme is in place as of May 2025, any previous version of this crate followed a different versioning scheme based
 on ROCm version instead of HIP.
-
-Note also that multiple versions of ROCm can ship the same version of HIP.
 
 ### Example:
 

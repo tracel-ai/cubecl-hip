@@ -18,11 +18,11 @@ pub(crate) fn handle_command(args: BindgenCmdArgs) -> anyhow::Result<()> {
 }
 
 fn run_bindgen(crates: &[String]) -> anyhow::Result<()> {
-    let rocm_path = hipconfig::get_rocm_path();
+    let rocm_path = hipconfig::get_rocm_path()?;
     println!("rocm path: {rocm_path}");
-    let include_path = hipconfig::get_hip_include_path();
+    let include_path = hipconfig::get_hip_include_path()?;
     println!("hip include path: {include_path}");
-    let hip_patch = hipconfig::get_hip_patch_version();
+    let hip_patch = hipconfig::get_hip_patch_version()?;
     println!("hip patch: {hip_patch}");
     let members = get_workspace_members(WorkspaceMemberType::Crate);
     for member in members {

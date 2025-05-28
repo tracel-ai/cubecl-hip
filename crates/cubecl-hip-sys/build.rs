@@ -30,9 +30,11 @@ fn main() {
     println!("cargo::rerun-if-env-changed=ROCM_PATH");
     println!("cargo::rerun-if-env-changed=HIP_PATH");
     let hip_system_patch = get_hip_patch_version();
-    set_hip_feature(&hip_system_patch);
-    println!("cargo::rustc-link-lib=dylib=hiprtc");
-    println!("cargo::rustc-link-lib=dylib=amdhip64");
-    let lib_path = get_hip_ld_library_path();
-    println!("cargo::rustc-link-search=native={lib_path}");
+    if let Ok(ref patch) = hip_system_patch {
+        set_hip_feature(patch);
+        println!("cargo::rustc-link-lib=dylib=hiprtc");
+        println!("cargo::rustc-link-lib=dylib=amdhip64");
+        let lib_path = get_hip_ld_library_path().unwrap();
+        println!("cargo::rustc-link-search=native={lib_path}");
+    }
 }
