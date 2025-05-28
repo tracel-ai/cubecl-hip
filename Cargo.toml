@@ -10,7 +10,7 @@ members = ["crates/*", "xtask"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
 readme  = "README.md"
-version = "6.43482.1"
+version = "6.4.4348200"
 
 [workspace.dependencies]
 bindgen = "0.70.1"

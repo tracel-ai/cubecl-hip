@@ -36,5 +36,16 @@ fn main() {
         println!("cargo::rustc-link-lib=dylib=amdhip64");
         let lib_path = get_hip_ld_library_path().unwrap();
         println!("cargo::rustc-link-search=native={lib_path}");
+    } else {
+        // There is no 'hipconfig' on the system, so we assume there is no HIP installation available on the system.
+        // Nevertheless we still want crates that depend on the bindings to compile even if they don't need to
+        // link against the HIP libraries, especially for cargo clippy.
+        // We decide to set the last version of HIP bindings as the default for this purpose, i.e. the HIP version that
+        // corresponds to last published version of 'cubecl-hip-sys'.
+        let feature = extract_latest_hip_feature_from_path("Cargo.toml").unwrap();
+        println!(
+            "cargo::warning=Defaulting to the latest feature of HIP bindings available: {feature}"
+        );
+        println!("cargo:rustc-cfg=feature=\"{feature}\"");
     }
 }
