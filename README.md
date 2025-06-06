@@ -45,8 +45,8 @@ Note also that multiple versions of ROCm can ship the same version of HIP.
 
 ## Usage
 
-Add the crate [cubecl-hip-sys][2] to the `Cargo.toml` file of your project. If no feature is set then cargo will select the HIP
-version returned by the `hipconfig` utility.
+Add the crate [cubecl-hip-sys][2] to the `Cargo.toml` file of your project. Cargo will select the HIP version returned by 
+the `hipconfig` utility.
 
 To specify a different version of HIP manually set the environment variable HIP_PATH to a valid HIP installation path. You can
 verify that your system points to the expected version with the command `hipconfig --version`.
