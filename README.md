@@ -31,7 +31,7 @@ Install ROCm following the [ROCm documentation][1]:
 ## Versioning Scheme
 
 The crates in this repository follow the same versioning as HIP. Note that HIP version is somewhat different than ROCm version.
-The patch number of HIP version is a monotonic number that uniquely indentify the version of HIP.
+The patch number of HIP version is a monotonic number that uniquely identify the version of HIP.
 
 Moreover we concatenate two additional digits to the HIP patch version in order to be able to release fixes for the same HIP patch
 number.
