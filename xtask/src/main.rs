@@ -16,10 +16,12 @@ enum Command {
 
 fn main() -> anyhow::Result<()> {
     let start = Instant::now();
-    let args = init_xtask::<Command>()?;
+    let args = init_xtask::<Command>(parse_args::<Command>()?)?;
     match args.command {
         Command::Bindgen(cmd_args) => commands::bindgen::handle_command(cmd_args),
-        Command::Test(cmd_args) => commands::test::handle_command(cmd_args),
+        Command::Test(cmd_args) => {
+            commands::test::handle_command(cmd_args, args.environment, args.context)
+        }
         _ => dispatch_base_commands(args),
     }?;
     let duration = start.elapsed();
