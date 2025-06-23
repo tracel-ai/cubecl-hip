@@ -9,9 +9,7 @@
 pub mod hipconfig;
 pub use hipconfig::*;
 
-#[cfg(target_os = "linux")]
 mod bindings;
-#[cfg(target_os = "linux")]
 #[allow(unused)]
 pub use bindings::*;
 
