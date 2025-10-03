@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/tracel-ai/cubecl-hip/main/assets/CubeCL.webp" width="256px"/>
 
-<h1>CubeCL Rust bindings for ROCm HIP</h1>
+<h1>CubeCL Rust system bindings for ROCm HIP</h1>
 
 [![Discord](https://img.shields.io/discord/1038839012602941528.svg?color=7289da&&logo=discord)](https://discord.gg/uPEBbYYDB6)
 [![Current Crates.io Version](https://img.shields.io/crates/v/cubecl-hip-sys)](https://crates.io/crates/cubecl-hip-sys)
