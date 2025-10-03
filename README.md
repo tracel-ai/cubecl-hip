@@ -33,10 +33,12 @@ Install ROCm following the [ROCm documentation][1]:
 The crates in this repository follow the same versioning as HIP. Note that HIP version is somewhat different than ROCm version.
 The patch number of HIP version is a monotonic number that uniquely identify the version of HIP.
 
-We had a pre-release number (that acts as official release number), for instance `6.4.43482-1` represents the first release of the
-bindings for HIP `43482` of ROCm `6.4.x` and `6.4.43482-2` represents the second release for these same bindings.
+Moreover we concatenate two additional digits to the HIP patch version in order to be able to release fixes for the same HIP patch
+number.
 
-This versioning scheme is in place as of October 2025, any previous version of this crate followed a different versioning scheme based
+For instance `6.4.4348200` represents the first release of the bindings for HIP `43482` of ROCm `6.4.x` and `6.4.4348201` represents the second release for these same bindings.
+
+This versioning scheme is in place as of May 2025, any previous version of this crate followed a different versioning scheme based
 on ROCm version instead of HIP.
 
 Note also that multiple versions of ROCm can ship the same version of HIP.
@@ -52,9 +54,7 @@ verify that your system points to the expected version with the command `hipconf
 Remark: Don't set manually the `hip_xxx` feature for this crate. This is the responsibility of the `build.rs` script to set it
 accordingly to your `hipconfig` output.
 
-Here is the table of available bindings.
-Note that the deprecated versions could theorically been used but the versionning scheme was not stabilized.
-The oldest recommended version to use is `6.4.43483-2` which as a stabilized versioning scheme.
+Here is the table of currently available bindings:
 
 | HIP Version | ROCm Version Range | Bindings version to use |
 |:------------|:-------------------|-------------------------|
@@ -62,8 +62,8 @@ The oldest recommended version to use is `6.4.43483-2` which as a stabilized ver
 | 42131       | 6.3.0              | deprecated              |
 | 42133       | 6.3.1              | deprecated              |
 | 42134       | 6.3.2~6.3.4        | deprecated              |
-| 43482       | 6.4.0              | deprecated              |
-| 43483       | 6.4.1              | 6.4.43483-2             |
+| 43482       | 6.4.0              | 6.4.4348201             |
+| 43483       | 6.4.1              | 6.4.4348300             |
 
 ## Running tests
 
