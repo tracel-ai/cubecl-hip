@@ -21,7 +21,7 @@ rstest  = "0.25.0"
 strum   = {version = "0.26.3", features = ["derive"]}
 
 ### For xtask crate ###
-tracel-xtask = {version = "2.1.4"}
+tracel-xtask = {version = "=2.1.9"}
 
 [profile.dev]
 debug = 0 # Speed up compilation time and not necessary.

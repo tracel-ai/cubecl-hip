@@ -3,7 +3,7 @@ use std::path::{Path, PathBuf};
 use cubecl_hip_sys::hipconfig;
 use tracel_xtask::{
     prelude::*,
-    utils::workspace::{get_workspace_members, WorkspaceMember, WorkspaceMemberType},
+    utils::workspace::{WorkspaceMember, WorkspaceMemberType, get_workspace_members},
 };
 
 #[derive(clap::Args)]

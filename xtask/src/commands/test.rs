@@ -15,7 +15,9 @@ pub(crate) fn handle_command(
     ctx: Context,
 ) -> anyhow::Result<()> {
     if let Some(path) = args.hip_path.clone() {
-        std::env::set_var("HIP_PATH", path);
+        unsafe {
+            std::env::set_var("HIP_PATH", path);
+        }
     }
     base_commands::test::handle_command(args.try_into().unwrap(), env, ctx)
 }
