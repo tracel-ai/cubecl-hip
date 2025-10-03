@@ -33,19 +33,17 @@ Install ROCm following the [ROCm documentation][1]:
 The crates in this repository follow the same versioning as HIP. Note that HIP version is somewhat different than ROCm version.
 The patch number of HIP version is a monotonic number that uniquely identify the version of HIP.
 
-Moreover we concatenate two additional digits to the HIP patch version in order to be able to release fixes for the same HIP patch
-number.
+We had a pre-release number (that acts as official release number), for instance `6.4.43482-1` represents the first release of the
+bindings for HIP `43482` of ROCm `6.4.x` and `6.4.43482-2` represents the second release for these same bindings.
 
-For instance `6.4.4348200` represents the first release of the bindings for HIP `43482` of ROCm `6.4.x` and `6.4.4348201` represents the second release for these same bindings.
-
-This versioning scheme is in place as of May 2025, any previous version of this crate followed a different versioning scheme based
+This versioning scheme is in place as of October 2025, any previous version of this crate followed a different versioning scheme based
 on ROCm version instead of HIP.
 
 Note also that multiple versions of ROCm can ship the same version of HIP.
 
 ## Usage
 
-Add the crate [cubecl-hip-sys][2] to the `Cargo.toml` file of your project. Cargo will select the HIP version returned by 
+Add the crate [cubecl-hip-sys][2] to the `Cargo.toml` file of your project. Cargo will select the HIP version returned by
 the `hipconfig` utility.
 
 To specify a different version of HIP manually set the environment variable HIP_PATH to a valid HIP installation path. You can
@@ -63,6 +61,7 @@ Here is the table of currently available bindings:
 | 42133       | 6.3.1              |
 | 42134       | 6.3.2~6.3.4        |
 | 43482       | 6.4.0              |
+| 43483       | 6.4.1              |
 
 ## Running tests
 

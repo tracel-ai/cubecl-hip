@@ -1,7 +1,7 @@
 [package]
 name = "xtask"
-version = "1.0.0"
-edition = "2021"
+version = "2.1.9"
+edition = "2024"
 
 [dependencies]
 cubecl-hip-sys = { path = "../crates/cubecl-hip-sys" }

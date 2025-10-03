@@ -42,6 +42,7 @@ jobs:
         uses: tracel-ai/github-actions/check-typos@v1
 
   tests:
+    needs: checks
     runs-on: amd-rx7600
     steps:
       # --------------------------------------------------------------------------------
