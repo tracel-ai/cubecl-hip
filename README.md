@@ -36,7 +36,7 @@ The patch number of HIP version is a monotonic number that uniquely identify the
 Moreover we concatenate two additional digits to the HIP patch version in order to be able to release fixes for the same HIP patch
 number.
 
-For instance `6.4.4348200` represents the first release of the bindings for HIP `43482` of ROCm `6.4.x` and `6.4.4348201` represents the second release for these same bindings.
+For instance `7.0.5183100` represents the first release of the bindings for HIP `51831` of ROCm `7.0.x` and `7.0.5183101` represents the second release for these same bindings.
 
 This versioning scheme is in place as of May 2025, any previous version of this crate followed a different versioning scheme based
 on ROCm version instead of HIP.
@@ -64,7 +64,8 @@ Here is the table of the available bindings versions, the deprecated ones could 
 | 42134       | 6.3.2~6.3.4        | deprecated                   |
 | 43482       | 6.4.0              | 6.4.4348201                  |
 | 43483       | 6.4.1              | 6.4.4348300                  |
-| 43484       | 6.4.2              | 6.4.4348400                  |
+| 43484       | 6.4.2~6.4.3        | 6.4.4348400                  |
+| 51831       | 7.0.0~7.0.1        | 7.0.5183100                  |
 
 ## Running tests
 
@@ -76,7 +77,7 @@ Then execute the following xtask command:
 # test ROCm bindings againt the system default ROCm installation if found
 cargo xtask test
 # test a specific version that is not the default by providing a value for HIP_PATH using -p
-xtask test -p /opt/rocm-6.3.0
+xtask test -p /opt/rocm-7.0.0
 ```
 
 ## Generate bindings for a given version of ROCm
@@ -94,21 +95,21 @@ cargo xtask bindgen
 
 4) Declare a new `hip` feature in the `Cargo.toml` in `cubecl-hip-sys` crate with the format
 `hip_<patch_version>`. You can retrieve the patch version with the command `hipconfig --version`.
-For instance for a new HIP patch version which is `42131` add the following feature:
+For instance for a new HIP patch version which is `51831` add the following feature:
 
 ```toml
 [features]
-hip_42131 = []
+hip_51831 = []
 ```
 
 5) Add the generated bindings module to the file `crates/cubecl-hip-sys/src/bindings/mod.rs`
 conditionally to the new feature you just declared as well as the re-exports:
 
 ```rs
-#[cfg(feature = "hip_42131")]
-mod bindings_42131;
-#[cfg(feature = "hip_42131")]
-pub use bindings_42131::*;
+#[cfg(feature = "hip_51831")]
+mod bindings_51831;
+#[cfg(feature = "hip_51831")]
+pub use bindings_51831::*;
 ```
 
 5) Run the tests as explain in the previous section.
