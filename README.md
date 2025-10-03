@@ -52,16 +52,18 @@ verify that your system points to the expected version with the command `hipconf
 Remark: Don't set manually the `hip_xxx` feature for this crate. This is the responsibility of the `build.rs` script to set it
 accordingly to your `hipconfig` output.
 
-Here is the table of currently available bindings:
+Here is the table of available bindings.
+Note that the deprecated versions could theorically been used but the versionning scheme was not stabilized.
+The oldest recommended version to use is `6.4.43483-2` which as a stabilized versioning scheme.
 
-| HIP Version | ROCm Version Range |
-|:------------|:-------------------|
-| 41134       | 6.2.2~6.2.4        |
-| 42131       | 6.3.0              |
-| 42133       | 6.3.1              |
-| 42134       | 6.3.2~6.3.4        |
-| 43482       | 6.4.0              |
-| 43483       | 6.4.1              |
+| HIP Version | ROCm Version Range | Bindings version to use |
+|:------------|:-------------------|-------------------------|
+| 41134       | 6.2.2~6.2.4        | deprecated              |
+| 42131       | 6.3.0              | deprecated              |
+| 42133       | 6.3.1              | deprecated              |
+| 42134       | 6.3.2~6.3.4        | deprecated              |
+| 43482       | 6.4.0              | deprecated              |
+| 43483       | 6.4.1              | 6.4.43483-2             |
 
 ## Running tests
 
